@@ -2,6 +2,7 @@ package com.example.kusitms
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -15,8 +16,8 @@ class LoginActivity : AppCompatActivity() {
 
     fun init(){
         login.setOnClickListener {
-//            val myToast = Toast.makeText(this.applicationContext, "흐아앙", Toast.LENGTH_SHORT)
-//            myToast.show()
+            val myToast = Toast.makeText(this.applicationContext, "흐아앙", Toast.LENGTH_SHORT)
+            myToast.show()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
