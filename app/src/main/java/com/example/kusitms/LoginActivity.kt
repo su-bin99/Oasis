@@ -16,8 +16,8 @@ class LoginActivity : AppCompatActivity() {
 
     fun init(){
         login.setOnClickListener {
-            val myToast = Toast.makeText(this.applicationContext, "흐아앙", Toast.LENGTH_SHORT)
-            myToast.show()
+//            val myToast = Toast.makeText(this.applicationContext, "흐아앙", Toast.LENGTH_SHORT)
+//            myToast.show()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
