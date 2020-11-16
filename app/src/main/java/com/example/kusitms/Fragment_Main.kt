@@ -9,6 +9,7 @@ import android.view.ViewGroup
 class Fragment_Main : Fragment() {
     private var root: View? = null
 
+    //깃..알다가도 모르겟다
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
