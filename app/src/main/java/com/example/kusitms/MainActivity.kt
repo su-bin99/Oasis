@@ -10,9 +10,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
-    val textArray = arrayListOf<String>("추천", "공고","커뮤니티", "마이페이지")
+    val textArray = arrayListOf<String>("메인", "장소","사람", "액티비티", "마이페이지")
     val iconArray = arrayListOf<Int>(R.drawable.icon_gyoyang, R.drawable.icon_major,
-        R.drawable.icon_map, R.drawable.icon_programmer )
+        R.drawable.icon_map, R.drawable.icon_programmer, R.drawable.icon_programmer )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
