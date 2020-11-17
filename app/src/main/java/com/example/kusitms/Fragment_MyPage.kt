@@ -30,7 +30,6 @@ class Fragment_MyPage : Fragment() {
 
     fun init() {
         Glide.with(this).load(R.drawable.membershipicon1).circleCrop().into(membershipIcon);
-
         Glide.with(this).load(R.drawable.user).circleCrop().into(mypage_personalimg);
 
     }
