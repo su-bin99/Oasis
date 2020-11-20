@@ -42,6 +42,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#EA4335"
+        android:id="@+id/google"
         android:text="구글로 로그인"/>
     <View
         android:layout_width="match_parent"
