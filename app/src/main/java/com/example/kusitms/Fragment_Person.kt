@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_person.view.*
 
 /**
@@ -14,6 +17,10 @@ import kotlinx.android.synthetic.main.fragment_person.view.*
 class Fragment_Person : Fragment() {
     private var root: View? = null
     var data:ArrayList<Data_Person> = ArrayList<Data_Person>()
+
+    lateinit var rdb : DatabaseReference
+    var findQuary = false
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,6 +38,17 @@ class Fragment_Person : Fragment() {
     fun init() {
         root!!.recyclerView.layoutManager = LinearLayoutManager(requireActivity(),
             LinearLayoutManager.VERTICAL, false)
-        root!!.recyclerView.adapter = Adapter_Person(data)
+        rdb = FirebaseDatabase.getInstance().getReference("Products/items")
+        val query = FirebaseDatabase.getInstance().reference
+            .child("Products/items") .limitToLast(50)
+        val option = FirebaseRecyclerOptions.Builder<Data_Person>()
+            .setQuery(query, Data_Person::class.java)
+            .build()
+        root!!.recyclerView.adapter = Adapter_Person(option)
+
     }
+
+
+
+
 }
