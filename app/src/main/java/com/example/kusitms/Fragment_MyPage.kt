@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_mypage.*
 
 /**
@@ -13,6 +14,8 @@ import kotlinx.android.synthetic.main.fragment_mypage.*
  */
 class Fragment_MyPage : Fragment() {
     private var root: View? = null
+    var database = FirebaseDatabase.getInstance()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +34,7 @@ class Fragment_MyPage : Fragment() {
     fun init() {
         Glide.with(this).load(R.drawable.membershipicon1).circleCrop().into(membershipIcon);
         Glide.with(this).load(R.drawable.user).circleCrop().into(mypage_personalimg);
-
+//        var rDatabase = database.getReference("Activity").child()
     }
 
 }
