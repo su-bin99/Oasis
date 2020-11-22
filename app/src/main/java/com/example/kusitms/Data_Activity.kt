@@ -1,37 +1,20 @@
 package com.example.kusitms
 
 data class Data_Activity(
-    var contents :Data_activity_contents,
-    var info : Data_activity_info,
-    var participates :Data_activity_participates,
-    var tag : Data_activity_tag
-) {
-}
-
-data class Data_activity_contents(
-    var content : String,
-    var pic : String
-){
-}
-
-data class Data_activity_info(
+    var activity_concept : ArrayList<String>,
+    var activity_field : ArrayList<String>,
     var activity_id : Int,
+    var activity_type : ArrayList<String>,
+    var content : String,
+    var maxPeoplenum : Int,
+    var participate : ArrayList<String>,
+    var pic_url : String,
     var subject : String,
     var time : String,
     var writer : String
-){
-}
-
-data class Data_activity_participates(
-    var id : String,
-    var review : String
-    ){
-}
-
-data class Data_activity_tag(
-    var concept : String,
-    var field : String,
-    var pattern : String,
-    var peoplenum : Int
-    ){
+) {
+    constructor():
+            this(ArrayList<String>(), ArrayList<String>(),
+                0, ArrayList<String>(), "", 0,
+                ArrayList<String>(), "", "", "", "")
 }
