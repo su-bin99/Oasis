@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:gravity="left"
+    android:layout_margin="15dp">
+    <Button
+        android:id="@+id/activity_submitBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="submit" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="작성자 :  "
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/activity_userId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="myidissubin"
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
+    <EditText
+        android:hint = "컨셉을 입력하세요 "
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/activity_concept"/>
+
+    <EditText
+        android:hint = "분야를 입력하세요 "
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/activity_field"/>
+
+    <EditText
+        android:hint = "유형을 입력하세요 "
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/activity_type"/>
+
+    <EditText
+        android:hint= "제목을 입력하세요 "
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/activity_subject"/>
+
+    <EditText
+        android:hint= "최대인원을 입력하세요 "
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/activity_maxPeopleNum"/>
+
+    <EditText
+        android:hint= "내용을 입력하세요 "
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/activity_content"/>
+
+
+
+
+
+
+
+
+</LinearLayout>
