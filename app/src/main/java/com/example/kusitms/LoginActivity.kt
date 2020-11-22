@@ -12,6 +12,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -74,6 +78,15 @@ class LoginActivity : AppCompatActivity() {
                 val account = result.signInAccount
                 val credential = GoogleAuthProvider.getCredential(account?.idToken, null)
                 FirebaseAuth.getInstance().signInWithCredential(credential)
+
+                val user = Firebase.auth.currentUser
+                val uid = user?.uid
+
+                val database : FirebaseDatabase = FirebaseDatabase.getInstance()
+                val myRef : DatabaseReference = database.getReference("my_page")
+//                val testRef : DatabaseReference = myRef.child("userid")
+                myRef.push().child("uid").setValue(uid.toString())
+//                testRef.setValue(uid.toString())
 
                 val myToast = Toast.makeText(this.applicationContext, "흐아앙", Toast.LENGTH_SHORT)
                 myToast.show()
