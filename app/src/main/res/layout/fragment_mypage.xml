@@ -34,14 +34,31 @@
             android:layout_marginTop="10dp"
             app:srcCompat="@drawable/user" />
 
-        <TextView
-            android:id="@+id/mypage_userId"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:gravity="center"
-            android:text="박재민"
-            android:textSize="18dp" />
+            android:orientation="horizontal"
+            android:layout_marginLeft = "15dp"
+            android:layout_marginRight="15dp"
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="박재민"
+                android:textSize="18dp"/>
+
+            <Button
+                android:id="@+id/nameedit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="수정" />
+        </LinearLayout>
+
+
 
         <LinearLayout
             android:layout_width="match_parent"

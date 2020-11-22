@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -17,6 +18,12 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_login.*
+import java.io.Serializable
+
+data class User(
+    val uid : String
+)
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -81,11 +88,13 @@ class LoginActivity : AppCompatActivity() {
 
                 val user = Firebase.auth.currentUser
                 val uid = user?.uid
+                val name = user?.displayName
+
 
                 val database : FirebaseDatabase = FirebaseDatabase.getInstance()
                 val myRef : DatabaseReference = database.getReference("my_page")
 //                val testRef : DatabaseReference = myRef.child("userid")
-                myRef.push().child("uid").setValue(uid.toString())
+                myRef.child(uid.toString()).child("privacy").child("name").setValue(name.toString())
 //                testRef.setValue(uid.toString())
 
                 val myToast = Toast.makeText(this.applicationContext, "흐아앙", Toast.LENGTH_SHORT)
