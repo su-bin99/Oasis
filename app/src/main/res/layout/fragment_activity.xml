@@ -46,21 +46,23 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/getButton"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_gravity="left"
-            android:text="유형"
             android:background="@drawable/back_corner_circle"
-            android:backgroundTint="@color/lightGray" />
+            android:backgroundTint="@color/lightGray"
+            android:text="가져오기" />
 
         <Button
+            android:id="@+id/insertBtn"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_gravity="left"
             android:layout_marginLeft="20dp"
-            android:text="분야"
             android:background="@drawable/back_corner_circle"
-            android:backgroundTint="@color/lightGray" />
+            android:backgroundTint="@color/lightGray"
+            android:text="저장" />
     </LinearLayout>
 
     <LinearLayout
@@ -79,6 +81,12 @@
             android:textSize="18dp"
             android:text="정렬"/>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
