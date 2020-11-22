@@ -46,23 +46,14 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/getButton"
+            android:id="@+id/writeButton"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_gravity="left"
             android:background="@drawable/back_corner_circle"
             android:backgroundTint="@color/lightGray"
-            android:text="가져오기" />
+            android:text="새글 작성" />
 
-        <Button
-            android:id="@+id/insertBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_gravity="left"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/back_corner_circle"
-            android:backgroundTint="@color/lightGray"
-            android:text="저장" />
     </LinearLayout>
 
     <LinearLayout
