@@ -81,15 +81,15 @@ class WriteActivity_Activity : AppCompatActivity() {
         var dataRef = FirebaseDatabase.getInstance().reference.child("activity").push()
 
         for(i in 0 until activity_concept.size){
-            dataRef.child("activity_concept").child(i.toString()).setValue(content)
+            dataRef.child("activity_concept").child(i.toString()).setValue(concept)
         }
 
         for(i in 0 until activity_field.size){
-            dataRef.child("activity_field").child(i.toString()).setValue(content)
+            dataRef.child("activity_field").child(i.toString()).setValue(field)
         }
 
         for(i in 0 until activity_type.size){
-            dataRef.child("activity_type").child(i.toString()).setValue(content)
+            dataRef.child("activity_type").child(i.toString()).setValue(type)
         }
 
         dataRef.child("activity_id").setValue(activity_id)

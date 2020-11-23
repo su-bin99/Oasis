@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("WrongConstant")
     fun init(){
         viewPager.adapter = MyFragStateAdapter(this)
+        viewPager.isUserInputEnabled = false
         TabLayoutMediator(tabLayout, viewPager){
                 tab: TabLayout.Tab, position: Int ->
             tab.text = textArray[position]

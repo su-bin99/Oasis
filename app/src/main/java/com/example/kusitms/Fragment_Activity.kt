@@ -49,7 +49,7 @@ class Fragment_Activity : Fragment() {
     }
 
     fun init(){
-        writeButton.setOnClickListener{
+        AwriteButton.setOnClickListener{
             val intent = Intent(context, WriteActivity_Activity::class.java)
             startActivity(intent)
         }
