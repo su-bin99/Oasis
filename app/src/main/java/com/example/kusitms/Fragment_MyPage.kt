@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -47,19 +48,12 @@ class Fragment_MyPage : Fragment() {
         super.onResume()
         init()
 
+        //ui적으로 수정된 것을 나타낼 방법 필요
         nameedit.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v: View?) {
-                myName.setValue(name.getText().toString())
-            }
-        })
+                myPage.child(uid.toString()).child("privacy").child("name").setValue(name.getText().toString())
 
-        myName.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {
-            }
 
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val value = snapshot?.value
-                name.text = value as Editable?
             }
         })
 
