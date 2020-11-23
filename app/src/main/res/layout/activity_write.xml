@@ -21,14 +21,14 @@
             android:layout_height="wrap_content"
             android:text="작성자 :  "
             android:textSize="20dp" />
-
+<!--
         <TextView
             android:id="@+id/activity_userId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="myidissubin"
             android:textSize="20dp" />
-
+-->
     </LinearLayout>
 
     <EditText

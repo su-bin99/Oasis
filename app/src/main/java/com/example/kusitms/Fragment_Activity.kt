@@ -11,7 +11,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.firebase.ui.database.SnapshotParser
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_activity.*
 import kotlinx.android.synthetic.main.fragment_activity.view.*
 
@@ -22,6 +24,9 @@ class Fragment_Activity : Fragment() {
     private var root: View? = null
     lateinit var adapter : Adapter_Activity
     var findQuary = false
+
+    val user = Firebase.auth.currentUser
+    val uid = user?.uid
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -56,8 +56,6 @@ class Fragment_MyPage : Fragment() {
 
             }
         })
-
-
     }
 
     fun init() {

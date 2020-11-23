@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_write.*
 import java.lang.Character.isDigit
 import java.lang.Double.parseDouble
@@ -17,6 +19,10 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class WriteActivity_Activity : AppCompatActivity() {
+
+    val user = Firebase.auth.currentUser
+    val uid = user?.uid
+
     var concept = ""
     var field = ""
     var type = ""
@@ -43,7 +49,7 @@ class WriteActivity_Activity : AppCompatActivity() {
             subject = activity_subject.text.toString()
             var temp = activity_maxPeopleNum.text.toString()
             content = activity_content.text.toString()
-            userId = activity_userId.text.toString()
+            userId = uid.toString()
 
             conceptarray.add(concept)
             fieldarray.add(field)
