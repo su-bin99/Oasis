@@ -53,7 +53,7 @@ class Fragment_Person : Fragment() {
 
     fun init() {
         PwriteButton.setOnClickListener{
-            val intent = Intent(context,test::class.java)
+            val intent = Intent(context,WriteActivity_Person::class.java)
             startActivity(intent)
         }
 
