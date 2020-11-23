@@ -14,14 +14,14 @@
         <activity android:name=".WriteActivity_Activity"></activity>
         <activity android:name=".WriteActivity" />
         <activity android:name=".Adapter_Activity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity"/>
+        <activity android:name=".SplashActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SplashActivity" />
         <activity android:name=".MyFragStateAdapter" />
         <activity android:name=".MainActivity" />
     </application>
