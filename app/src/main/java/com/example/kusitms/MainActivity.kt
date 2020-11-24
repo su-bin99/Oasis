@@ -4,6 +4,9 @@ import android.annotation.SuppressLint
 import android.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MotionEvent
+import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_main.*
@@ -25,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     fun init(){
         viewPager.adapter = MyFragStateAdapter(this)
         viewPager.isUserInputEnabled = false
+
         TabLayoutMediator(tabLayout, viewPager){
                 tab: TabLayout.Tab, position: Int ->
             tab.text = textArray[position]
