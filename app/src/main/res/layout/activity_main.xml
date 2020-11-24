@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
 
@@ -17,7 +18,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/tabLayout"/>
+        app:layout_constraintBottom_toTopOf="@+id/tabLayout"
+        android:background="@color/white"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"

@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:backgroundTint="#FFFFFF"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
     <ImageView
         android:id="@+id/img_tab"
         android:layout_width="30dp"

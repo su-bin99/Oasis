@@ -1,101 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical"
-    android:gravity="center">
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/back_corner_circle"/>
+    android:background="@color/white">
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/oasis_coloricon" />
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="2.5"
+            android:background="@drawable/back_corner_circle"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                app:srcCompat="@drawable/ic_search_black_24dp" />
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/back_none"
+                android:hint="이름,분야 또는 직군을 검색해주세요."
+                android:textSize="13dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/PwriteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="4dp"
+        android:layout_gravity="left"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/back_corner_circle"
+        android:backgroundTint="@color/lightGray"
+        android:text="새글 작성" />
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="left"-->
+<!--        android:layout_marginLeft="15dp"-->
+<!--        android:layout_marginTop="25dp"-->
+<!--        android:layout_marginBottom="15dp"-->
+<!--        android:text="신규 노마더"-->
+<!--        android:textSize="23dp"-->
+<!--        android:textStyle="bold" />-->
+
+
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/newNomad_recyclerView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="150dp" />-->
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_gravity="left"
         android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:background="@drawable/back_border"
-        android:layout_gravity="left">
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="15dp"
+        android:text="실리콘밸리 출신 해외파 노마더 "
+        android:textSize="23dp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="사람"
-            android:textSize="23dp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/PwriteButton"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_gravity="left"
-            android:background="@drawable/back_corner_circle"
-            android:backgroundTint="@color/lightGray"
-            android:text="새글 작성" />
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_gravity="left"
-            android:text="유형"
-            android:background="@drawable/back_corner_circle"
-            android:backgroundTint="@color/lightGray" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_gravity="left"
-            android:layout_marginLeft="20dp"
-            android:text="분야"
-            android:background="@drawable/back_corner_circle"
-            android:backgroundTint="@color/lightGray" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/back_border"
-        android:orientation="horizontal"
-        android:gravity="right">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="15dp"
-            android:textSize="18dp"
-            android:text="정렬"/>
-    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

@@ -1,5 +1,6 @@
 package com.example.kusitms.activityTab
 
+import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +9,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kusitms.R
 import com.firebase.ui.database.FirebaseRecyclerOptions
@@ -23,8 +26,7 @@ import kotlinx.android.synthetic.main.fragment_activity.view.*
  */
 class Fragment_Activity : Fragment() {
     private var root: View? = null
-    lateinit var adapter : Adapter_Activity
-    var findQuary = false
+    lateinit var adapter: Adapter_Activity
 
     val user = Firebase.auth.currentUser
     val uid = user?.uid
@@ -39,9 +41,8 @@ class Fragment_Activity : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        initRecyclerView()
+        initAdapter()
         init()
-        adapter.startListening()
     }
 
     override fun onStop() {
@@ -49,57 +50,131 @@ class Fragment_Activity : Fragment() {
         adapter.stopListening()
     }
 
-    fun init(){
-        AwriteButton.setOnClickListener{
+    @SuppressLint("ResourceAsColor")
+    fun init() {
+        root!!.recyclerView.layoutManager = LinearLayoutManager(
+            requireActivity(),
+            LinearLayoutManager.VERTICAL, false
+        )
+
+        AwriteButton.setOnClickListener {
             val intent = Intent(context, WriteActivity_Activity::class.java)
             startActivity(intent)
         }
+
+        ac_radioGroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.ac_radio_lecture -> {
+                    findQueryAdapter("강연회")
+                    ac_radio_lecture.setTextColor(R.color.pink)
+                }
+                R.id.ac_radio_project -> {
+                    findQueryAdapter("프로젝트")
+                    ac_radio_project.setTextColor(R.color.pink)
+                }
+                R.id.ac_radio_conference -> {
+                    findQueryAdapter("컨퍼런스")
+                    ac_radio_conference.setTextColor(R.color.pink)
+                }
+                R.id.ac_radio_study -> {
+                    findQueryAdapter("스터디")
+                    ac_radio_study.setTextColor(R.color.pink)
+                }
+                R.id.ac_radio_etc -> {
+                    findQueryAdapter("기타")
+                    ac_radio_etc.setTextColor(R.color.pink)
+                }
+            }
+        }
     }
 
-    fun initRecyclerView() {
-
-        root!!.recyclerView.layoutManager = LinearLayoutManager(requireActivity(),
-            LinearLayoutManager.VERTICAL, false)
-
+    fun findQueryAdapter(activity_type: String) {
+        if (adapter != null)
+            adapter.stopListening()
         val query = FirebaseDatabase.getInstance().reference
-            .child("activity") .limitToLast(50)
+            .child("activity").orderByChild("activity_type").equalTo(activity_type)
 
         val option = FirebaseRecyclerOptions.Builder<Data_Activity>()
-            .setQuery(query, SnapshotParser{ snapshot ->
-                var activity_concept = ArrayList<String>()
-                var activity_field = ArrayList<String>()
-                var activity_type = ArrayList<String>()
-                var participate = ArrayList<String>()
-                for( i in snapshot.child("activity_concept").children){
-                    activity_concept.add(i.value.toString())
-                }
-                for( i in snapshot.child("activity_field").children){
-                    activity_field.add(i.value.toString())
-                }
-                for( i in snapshot.child("activity_type").children){
-                    activity_type.add(i.value.toString())
-                }
-                for( i in snapshot.child("participate").children){
-                    participate.add(i.value.toString())
-                }
-                Log.d(TAG, "activity_id is: " + snapshot.child("activity_id").value.toString());
-                Data_Activity(
-                    activity_concept, activity_field,
-                    snapshot.child("activity_id").value.toString().toInt(),
-                    activity_type,
-                    snapshot.child("content").value.toString(),
-                    snapshot.child("maxPeoplenum").value.toString().toInt(),
-                    participate,
-                    snapshot.child("pic_url").value.toString(),
-                    snapshot.child("subject").value.toString(),
-                    snapshot.child("time").value.toString(),
-                    snapshot.child("writer").value.toString()
-                )
-            })
+            .setQuery(query,
+                SnapshotParser { snapshot ->
+                    var activity_concept = ArrayList<String>()
+                    var activity_field = ArrayList<String>()
+                    var participate = ArrayList<String>()
+                    for (i in snapshot.child("activity_concept").children) {
+                        activity_concept.add(i.value.toString())
+                    }
+                    for (i in snapshot.child("activity_field").children) {
+                        activity_field.add(i.value.toString())
+                    }
+                    for (i in snapshot.child("participate").children) {
+                        participate.add(i.value.toString())
+                    }
+                    Log.d(
+                        TAG,
+                        "activity_id is: " + snapshot.child("activity_id").value.toString()
+                    );
+                    Data_Activity(
+                        activity_concept, activity_field,
+                        snapshot.child("activity_id").value.toString().toInt(),
+                        snapshot.child("activity_type").value.toString(),
+                        snapshot.child("content").value.toString(),
+                        snapshot.child("maxPeoplenum").value.toString().toInt(),
+                        participate,
+                        snapshot.child("pic_url").value.toString(),
+                        snapshot.child("subject").value.toString(),
+                        snapshot.child("time").value.toString(),
+                        snapshot.child("writer").value.toString()
+                    )
+                })
             .build()
 
         adapter = Adapter_Activity(option)
-        recyclerView.adapter =adapter
+        recyclerView.adapter = adapter
         adapter.startListening()
     }
+
+    fun initAdapter() {
+
+        val query = FirebaseDatabase.getInstance().reference
+            .child("activity").limitToLast(50)
+
+        val option = FirebaseRecyclerOptions.Builder<Data_Activity>()
+            .setQuery(query,
+                SnapshotParser { snapshot ->
+                    var activity_concept = ArrayList<String>()
+                    var activity_field = ArrayList<String>()
+                    var participate = ArrayList<String>()
+                    for (i in snapshot.child("activity_concept").children) {
+                        activity_concept.add(i.value.toString())
+                    }
+                    for (i in snapshot.child("activity_field").children) {
+                        activity_field.add(i.value.toString())
+                    }
+                    for (i in snapshot.child("participate").children) {
+                        participate.add(i.value.toString())
+                    }
+                    Log.d(
+                        TAG,
+                        "activity_id is: " + snapshot.child("activity_id").value.toString()
+                    );
+                    Data_Activity(
+                        activity_concept, activity_field,
+                        snapshot.child("activity_id").value.toString().toInt(),
+                        snapshot.child("activity_type").value.toString(),
+                        snapshot.child("content").value.toString(),
+                        snapshot.child("maxPeoplenum").value.toString().toInt(),
+                        participate,
+                        snapshot.child("pic_url").value.toString(),
+                        snapshot.child("subject").value.toString(),
+                        snapshot.child("time").value.toString(),
+                        snapshot.child("writer").value.toString()
+                    )
+                })
+            .build()
+
+        adapter = Adapter_Activity(option)
+        recyclerView.adapter = adapter
+        adapter.startListening()
+    }
+
 }
