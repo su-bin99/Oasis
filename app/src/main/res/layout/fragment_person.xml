@@ -61,22 +61,22 @@
         android:backgroundTint="@color/lightGray"
         android:text="새글 작성" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="15dp"
-        android:text="신규 노마더"
-        android:textSize="23dp"
-        android:textStyle="bold" />
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="left"-->
+<!--        android:layout_marginLeft="15dp"-->
+<!--        android:layout_marginTop="25dp"-->
+<!--        android:layout_marginBottom="15dp"-->
+<!--        android:text="신규 노마더"-->
+<!--        android:textSize="23dp"-->
+<!--        android:textStyle="bold" />-->
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/newNomad_recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="150dp" />
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/newNomad_recyclerView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="150dp" />-->
 
     <TextView
         android:layout_width="wrap_content"

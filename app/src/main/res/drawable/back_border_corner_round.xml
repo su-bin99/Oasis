@@ -7,10 +7,10 @@
         android:right="1.5dp"
         android:top="1.5dp">
         <shape xmlns:android="http://schemas.android.com/apk/res/android" >
-            <corners android:radius="5dp" />
+            <corners android:radius="30dp" />
             <stroke
                 android:width="1.5dp"
-                android:color="@color/darkGray" />
+                android:color="@color/pink" />
             <solid android:color="#fff" />
         </shape>
     </item>
