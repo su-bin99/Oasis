@@ -52,8 +52,8 @@ class MainActivity : AppCompatActivity() {
             tab.customView = viewArray[position]
         }.attach()
 
-        supportActionBar?.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM)
-        supportActionBar?.setCustomView(R.layout.actionbar)
+//        supportActionBar?.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM)
+//        supportActionBar?.setCustomView(R.layout.actionbar)
     }
 
     fun setupTabIcons(viewPager : ViewPager2) {

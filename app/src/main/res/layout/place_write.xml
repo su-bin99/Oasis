@@ -4,7 +4,8 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:gravity="left"
-    android:layout_margin="15dp">
+    android:layout_margin="15dp"
+    android:background="@color/white"    >
     <Button
         android:id="@+id/place_submitBtn"
         android:layout_width="wrap_content"

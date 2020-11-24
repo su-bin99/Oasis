@@ -1,118 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:gravity="center">
+    android:background="@color/white">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/back_corner_circle"/>
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/oasis_coloricon" />
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="2.5"
+            android:background="@drawable/back_corner_circle"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                app:srcCompat="@drawable/ic_search_black_24dp" />
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/back_none"
+                android:hint="지역을 검색해주세요."
+                android:textSize="13dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/plWriteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="4dp"
+        android:layout_gravity="left"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/back_corner_circle"
+        android:backgroundTint="@color/lightGray"
+        android:text="새글 작성" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_gravity="left"
         android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:background="@drawable/back_border"
-        android:layout_gravity="left">
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="15dp"
+        android:text="지금 뜨는 곳"
+        android:textSize="23dp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="장소"
-            android:textSize="23dp"
-            android:textStyle="bold" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/btn"
+    <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/plWriteButton"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_gravity="left"
-            android:background="@drawable/back_corner_circle"
-            android:backgroundTint="@color/lightGray"
-            android:text="새글 작성" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_gravity="left"
-            android:text="장소 위치"
-            android:background="@drawable/back_corner_circle"
-            android:backgroundTint="@color/lightGray" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_gravity="left"
-            android:layout_marginLeft="10dp"
-            android:text="장소 유형"
-            android:background="@drawable/back_corner_circle"
-            android:backgroundTint="@color/lightGray" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_gravity="left"
-            android:layout_marginLeft="10dp"
-            android:text="인원"
-            android:background="@drawable/back_corner_circle"
-            android:backgroundTint="@color/lightGray" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_gravity="left"
-            android:layout_marginLeft="10dp"
-            android:text="컨셉"
-            android:background="@drawable/back_corner_circle"
-            android:backgroundTint="@color/lightGray" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/back_border"
-        android:orientation="horizontal"
-        android:gravity="right">
-        <TextView
+        <RadioButton
+            android:id="@+id/radioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="15dp"
-            android:textSize="18dp"
-            android:text="정렬"/>
-    </LinearLayout>
+            android:text="RadioButton"
+            android:textColor="@color/selector_click_tab"
+            />
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RadioButton"
+            android:textColor="@color/selector_click_tab"
+            />
+
+    </RadioGroup>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

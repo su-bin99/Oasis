@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     android:gravity="center">
 
     <EditText
@@ -51,7 +52,7 @@
             android:layout_height="40dp"
             android:layout_gravity="left"
             android:background="@drawable/back_corner_circle"
-            android:backgroundTint="@color/lightGray"
+            android:backgroundTint="#E8E6E6"
             android:text="새글 작성" />
 
     </LinearLayout>
