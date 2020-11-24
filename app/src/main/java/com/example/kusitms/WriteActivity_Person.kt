@@ -6,8 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_write.*
 import kotlinx.android.synthetic.main.person_write.*
@@ -27,14 +26,33 @@ class WriteActivity_Person : AppCompatActivity() {
     var content = ""
     var subject = ""
     var tag = ""
-    var writer = ""
-    var uid = ""
+    var uid = person_uid.toString()
     var work = ""
+
+    var value = ""
+
+    var myRef = FirebaseDatabase.getInstance().reference.child("my_page").child(uid).child("privacy").child("name")
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.person_write)
+
+        myRef.addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                value = snapshot.value.toString()
+                println("did you")
+                println(value)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                println("failed to read value")
+            }
+        })
+    }
+
+    override fun onStart() {
+        super.onStart()
         init()
     }
 
@@ -45,17 +63,22 @@ class WriteActivity_Person : AppCompatActivity() {
             content = edit_person_content.text.toString()
             subject = edit_person_subject.text.toString()
             tag = edit_person_tag.text.toString()
-            uid = person_uid.toString()
 
 
+            println("before getname")
+
+
+            print(value)
+            var writer = value
             tagarray.add(tag)
 
+            println("ㅁㅓ가 먼저찍힐까?")
             val currentDateTime = Calendar.getInstance().time
             var time = SimpleDateFormat("yyyy.MM.dd HH:mm", Locale.KOREA).format(currentDateTime)
             insertData(content, subject, tagarray, time, uid, work, writer)
         }
     }
-
+ 
     fun insertData(
                    person_content : String,
                    person_subject : String,
@@ -77,8 +100,8 @@ class WriteActivity_Person : AppCompatActivity() {
         dataRef.child("person_work").setValue(person_work)
         dataRef.child("person_writer").setValue(person_writer)
 
-        val myToast = Toast.makeText(this.applicationContext, "글 작성이 완료되었습니다.", Toast.LENGTH_SHORT)
-        myToast.show()
+//        val myToast = Toast.makeText(this.applicationContext, "글 작성이 완료되었습니다.", Toast.LENGTH_SHORT)
+//        myToast.show()
 
         this.finish()
     }
