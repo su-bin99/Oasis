@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.kusitms.WriteActivity_Place
 
 import com.example.kusitms.R
 import androidx.recyclerview.widget.LinearLayoutManager

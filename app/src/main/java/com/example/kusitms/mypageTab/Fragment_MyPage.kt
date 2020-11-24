@@ -1,19 +1,15 @@
-package com.example.kusitms
+package com.example.kusitms.mypageTab
 
 import android.os.Bundle
-import android.text.Editable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.fragment_mypage.*
-import com.example.kusitms.LoginActivity
+import com.example.kusitms.R
 import com.google.firebase.database.*
 
 /**
