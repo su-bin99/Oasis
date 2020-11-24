@@ -3,6 +3,7 @@ package com.example.kusitms.personTab
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kusitms.R
@@ -17,6 +18,8 @@ class Adapter_Person(options: FirebaseRecyclerOptions<Data_Person>) :
         var pWriterText : TextView = itemView.findViewById(R.id.pWriterText)
         var pSubjectText : TextView = itemView.findViewById(R.id.pSubjectText)
         var pTagText : TextView = itemView.findViewById(R.id.pTagText)
+
+
 
 
         init {
@@ -45,6 +48,7 @@ class Adapter_Person(options: FirebaseRecyclerOptions<Data_Person>) :
             tag += "#"+i
         }
         holder.pTagText.text = tag
+
     }
 
 }
