@@ -1,4 +1,4 @@
-package com.example.kusitms
+package com.example.kusitms.activityTab
 
 data class Data_Activity(
     var activity_concept : ArrayList<String>,

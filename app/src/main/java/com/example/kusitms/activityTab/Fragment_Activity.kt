@@ -1,4 +1,4 @@
-package com.example.kusitms
+package com.example.kusitms.activityTab
 
 import android.content.ContentValues.TAG
 import android.content.Intent
@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.kusitms.R
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.firebase.ui.database.SnapshotParser
 import com.google.firebase.auth.ktx.auth

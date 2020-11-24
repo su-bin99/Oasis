@@ -1,10 +1,11 @@
-package com.example.kusitms
+package com.example.kusitms.placeTab
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.kusitms.R
 
 class Adapter_Place(val items:ArrayList<Data_Place>)
     : RecyclerView.Adapter<Adapter_Place.MyViewHolder>(){
@@ -14,7 +15,7 @@ class Adapter_Place(val items:ArrayList<Data_Place>)
         fun OnItemClick(holder : MyViewHolder, view : View, position : Int)
     }
 
-    var itemClickListener : OnItemClickListener ?= null
+    var itemClickListener : OnItemClickListener?= null
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 //    var clNumText: TextView = itemView.findViewById(R.id.classNum)
@@ -34,7 +35,7 @@ class Adapter_Place(val items:ArrayList<Data_Place>)
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): Adapter_Place.MyViewHolder {
+    ): MyViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.row_place, parent, false)
 
         context = parent.getContext()
@@ -45,7 +46,7 @@ class Adapter_Place(val items:ArrayList<Data_Place>)
         return items.size
     }
 
-    override fun onBindViewHolder(holder: Adapter_Place.MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 //        holder.clNumText.text = items[position].ClassNum.toString()
 //        holder.clNameText.text = items[position].ClassName
 //        holder.timeText.text = items[position].Time
