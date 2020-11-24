@@ -74,11 +74,13 @@ class Fragment_Person : Fragment() {
                     person_tag.add(i.value.toString())
                 }
                 Data_Person(
-                    snapshot.child("person_writer").value.toString(),
                     snapshot.child("person_content").value.toString(),
-                    snapshot.child("person_time").value.toString(),
                     snapshot.child("person_subject").value.toString(),
-                    person_tag
+                    person_tag,
+                    snapshot.child("person_time").value.toString(),
+                    snapshot.child("person_uid").value.toString(),
+                    snapshot.child("person_work").value.toString(),
+                    snapshot.child("person_writer").value.toString()
 
                 )
             }

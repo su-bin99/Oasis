@@ -44,10 +44,11 @@
         android:id="@+id/edit_person_subject"/>
 
     <EditText
-        android:hint = "태 입력하세요 "
+        android:hint = "태그을 입력하세요 "
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/edit_person_tag"/>
+
 
 
 </LinearLayout>
