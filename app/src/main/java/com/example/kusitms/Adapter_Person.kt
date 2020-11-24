@@ -14,12 +14,12 @@ class Adapter_Person(options: FirebaseRecyclerOptions<Data_Person>) :
     var itemClickListener: OnItemClickListener? = null
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var pNameText : TextView
-        var pDepartText : TextView
+        var pWriterText : TextView = itemView.findViewById(R.id.pWriterText)
+        var pSubjectText : TextView = itemView.findViewById(R.id.pSubjectText)
+        var pTagText : TextView = itemView.findViewById(R.id.pTagText)
+
 
         init {
-            pNameText = itemView.findViewById(R.id.personName)
-            pDepartText = itemView.findViewById(R.id.personDepart)
             itemView.setOnClickListener {
                 itemClickListener?.OnItemClick(it, adapterPosition)
             }
@@ -38,7 +38,13 @@ class Adapter_Person(options: FirebaseRecyclerOptions<Data_Person>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int, model: Data_Person) {
-        holder.pNameText.text = model.name
-        holder.pDepartText.text = model.depart
+        holder.pWriterText.text = model.person_writer
+        holder.pSubjectText.text = model.person_subject
+        var tag= ""
+        for ( i in model.person_tag){
+            tag += "#"+i
+        }
+        holder.pTagText.text = tag
     }
+
 }

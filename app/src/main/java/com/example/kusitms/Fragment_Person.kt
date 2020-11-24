@@ -1,14 +1,20 @@
 package com.example.kusitms
 
+import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.database.FirebaseRecyclerOptions
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.firebase.ui.database.SnapshotParser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.*
+import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.fragment_person.*
 import kotlinx.android.synthetic.main.fragment_person.view.*
 
 /**
@@ -16,10 +22,13 @@ import kotlinx.android.synthetic.main.fragment_person.view.*
  */
 class Fragment_Person : Fragment() {
     private var root: View? = null
-    var data:ArrayList<Data_Person> = ArrayList<Data_Person>()
-
-    lateinit var rdb : DatabaseReference
+//    var data:ArrayList<Data_Person> = ArrayList<Data_Person>()
+    lateinit var adapter : Adapter_Person
+//    lateinit var rdb : DatabaseReference
     var findQuary = false
+
+    val user = Firebase.auth.currentUser
+    val uid = user?.uid
 
 
     override fun onCreateView(
@@ -30,25 +39,55 @@ class Fragment_Person : Fragment() {
         return root
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onStart() {
+        super.onStart()
+        initRecyclerView()
         init()
+        adapter.startListening()
+    }
+
+    override fun onStop(){
+        super.onStop()
+        adapter.stopListening()
     }
 
     fun init() {
-        root!!.recyclerView.layoutManager = LinearLayoutManager(requireActivity(),
-            LinearLayoutManager.VERTICAL, false)
-        rdb = FirebaseDatabase.getInstance().getReference("Products/items")
-        val query = FirebaseDatabase.getInstance().reference
-            .child("Products/items") .limitToLast(50)
-        val option = FirebaseRecyclerOptions.Builder<Data_Person>()
-            .setQuery(query, Data_Person::class.java)
-            .build()
-        root!!.recyclerView.adapter = Adapter_Person(option)
+        PwriteButton.setOnClickListener{
+            val intent = Intent(context,WriteActivity_Person::class.java)
+            startActivity(intent)
+        }
+
 
     }
 
+    fun initRecyclerView(){
+        root!!.recyclerView.layoutManager = LinearLayoutManager(requireActivity(),
+        LinearLayoutManager.VERTICAL, false)
 
+        val query = FirebaseDatabase.getInstance().reference
+            .child("person").limitToLast(50)
 
+        val option = FirebaseRecyclerOptions.Builder<Data_Person>()
+            .setQuery(query) { snapshot ->
+                var person_tag = ArrayList<String>()
+                for(i in snapshot.child("person_tag").children){
+                    person_tag.add(i.value.toString())
+                }
+                Data_Person(
+                    snapshot.child("person_writer").value.toString(),
+                    snapshot.child("person_content").value.toString(),
+                    snapshot.child("person_time").value.toString(),
+                    snapshot.child("person_subject").value.toString(),
+                    person_tag
+
+                )
+            }
+            .build()
+
+        adapter = Adapter_Person(option)
+        recyclerView.adapter =adapter
+        adapter.startListening()
+
+    }
 
 }

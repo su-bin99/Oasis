@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.kusitms">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,8 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".WriteActivity_Activity"></activity>
-        <activity android:name=".WriteActivity" />
-        <activity android:name=".Adapter_Activity" />
+        <activity android:name=".WriteActivity_Person" />
+        <activity android:name=".Adapter_Activity"
+            tools:ignore="Instantiatable" />
         <activity android:name=".LoginActivity"/>
         <activity android:name=".SplashActivity" >
             <intent-filter>
@@ -22,8 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MyFragStateAdapter" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".WriteActivity_Place"/>
     </application>
 
 </manifest>

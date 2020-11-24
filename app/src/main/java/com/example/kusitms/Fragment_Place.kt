@@ -31,7 +31,7 @@ class Fragment_Place : Fragment() {
         writeplace.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v : View?){
                 //fragment에서 activity로 이동
-//                val intent = Intent(context, WriteActivity::class.java)
+//                val intent = Intent(context, WriteActivity_Place::class.java)
 //                startActivity(intent)
             }
         })

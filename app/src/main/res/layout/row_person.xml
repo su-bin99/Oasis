@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/personName"
+        android:id="@+id/pWriterText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -14,7 +14,7 @@
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/personDepart"
+        android:id="@+id/pSubjectText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
@@ -23,4 +23,12 @@
         android:text="TextView" />
 
 
+    <TextView
+        android:id="@+id/pTagText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="20dp"
+        android:gravity="left"
+        android:text="TextView" />
 </LinearLayout>

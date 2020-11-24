@@ -13,6 +13,7 @@
         android:layout_marginRight="15dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/back_corner_circle"/>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,7 +31,28 @@
             android:text="사람"
             android:textSize="23dp"
             android:textStyle="bold" />
+
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/PwriteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="left"
+            android:background="@drawable/back_corner_circle"
+            android:backgroundTint="@color/lightGray"
+            android:text="새글 작성" />
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
