@@ -31,15 +31,25 @@
             android:textSize="23dp"
             android:textStyle="bold" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="장소 입력"
-            android:textSize="23dp"
-            android:id="@+id/writeplace"
-            />
+    </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/plWriteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="left"
+            android:background="@drawable/back_corner_circle"
+            android:backgroundTint="@color/lightGray"
+            android:text="새글 작성" />
 
     </LinearLayout>
 

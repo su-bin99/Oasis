@@ -1,6 +1,19 @@
 package com.example.kusitms
 
 data class Data_Place (
-    var activity_Name :String,
-    var pt :Int) {
+    var place_content : String,
+    var place_photo : String,
+    var reserve_person : String,
+    var place_review :String,
+    var place_subject : String,
+    var place_concept : String,
+    var place_maxnum : Int,
+    var place_type : String,
+    var place_time : String,
+    var place_writer : String
+    ) {
+    constructor():
+            this("", "", "", "",
+            "", "",0,  "", "",""
+            )
 }
