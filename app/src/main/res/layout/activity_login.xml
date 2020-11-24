@@ -6,8 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/white"
-    tools:context=".LoginActivity">
+    android:background="@drawable/login_background_img"
+    tools:context=".LoginActivity"
+    android:scaleType="centerCrop"    >
 
     <EditText
         android:id="@+id/user_id"
@@ -24,21 +25,13 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="로그인"/>
-    <Button
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="카카오톡으로 로그인"
-        android:backgroundTint="#FAE400"/>
+
     <Button
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#1877F2"
         android:text="페이스북으로 로그인인"/>
-    <Button
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#03C75A"
-        android:text="네이버로 로그인"/>
+
     <Button
         android:layout_width="300dp"
         android:layout_height="wrap_content"

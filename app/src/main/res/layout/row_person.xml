@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="130dp"
     android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp"
     android:layout_marginTop="10dp"
+    android:layout_marginRight="20dp"
     android:layout_marginBottom="10dp"
 
     android:background="@drawable/back_corner_circle"
@@ -16,6 +16,7 @@
         android:id="@+id/personImg"
         android:layout_width="150dp"
         android:layout_height="match_parent"
+        android:scaleType="centerCrop"
         app:srcCompat="@drawable/user" />
 
     <LinearLayout
@@ -29,18 +30,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/pWriterText"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_gravity="left"
                 android:gravity="center"
                 android:text="박재민"
                 android:textSize="17dp"
-                android:textStyle="bold"
-                android:layout_gravity="left"/>
+                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/membership"
@@ -49,13 +49,13 @@
                 android:layout_marginLeft="5dp"
                 app:srcCompat="@drawable/icon_gyoyang" />
 
-<!--            <Button-->
-<!--                android:layout_width="55dp"-->
-<!--                android:layout_height="30dp"-->
-<!--                android:layout_gravity="right"-->
-<!--                android:gravity="center"-->
-<!--                android:text="팔로우"-->
-<!--                android:textSize="10dp"/>-->
+            <!--            <Button-->
+            <!--                android:layout_width="55dp"-->
+            <!--                android:layout_height="30dp"-->
+            <!--                android:layout_gravity="right"-->
+            <!--                android:gravity="center"-->
+            <!--                android:text="팔로우"-->
+            <!--                android:textSize="10dp"/>-->
 
         </LinearLayout>
 
@@ -64,16 +64,16 @@
             android:id="@+id/pSubjectText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="left"
             android:layout_marginTop="5dp"
+            android:gravity="left"
             android:text="소프트웨어 엔지니어"
             android:textSize="13dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:id="@+id/pTagLayout1"
@@ -118,6 +118,7 @@
                     android:textSize="13dp" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/pTagLayout3"
                 android:layout_width="wrap_content"
@@ -140,7 +141,6 @@
             </LinearLayout>
 
         </LinearLayout>
-
 
 
     </LinearLayout>

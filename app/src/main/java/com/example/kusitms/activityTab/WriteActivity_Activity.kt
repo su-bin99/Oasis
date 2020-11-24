@@ -37,7 +37,6 @@ class WriteActivity_Activity : AppCompatActivity() {
         activity_submitBtn.setOnClickListener {
             var conceptarray = ArrayList<String>()
             var fieldarray = ArrayList<String>()
-            var typearray = ArrayList<String>()
 
             concept = activity_concept.text.toString()
             field = activity_field.text.toString()
@@ -49,7 +48,6 @@ class WriteActivity_Activity : AppCompatActivity() {
 
             conceptarray.add(concept)
             fieldarray.add(field)
-            typearray.add(type)
 
             try {
                 MaxPeopleNum = temp.toInt()
@@ -59,7 +57,7 @@ class WriteActivity_Activity : AppCompatActivity() {
 
             val currentDateTime = Calendar.getInstance().time
             var time = SimpleDateFormat("yyyy.MM.dd HH:mm", Locale.KOREA).format(currentDateTime)
-            insertData(conceptarray, fieldarray, 0, typearray, content, MaxPeopleNum,
+            insertData(conceptarray, fieldarray, 0, type, content, MaxPeopleNum,
                 pic_url, subject, time, userId )
         }
     }
@@ -67,7 +65,7 @@ class WriteActivity_Activity : AppCompatActivity() {
     fun insertData(activity_concept : ArrayList<String>,
                    activity_field : ArrayList<String>,
                    activity_id : Int,
-                   activity_type : ArrayList<String>,
+                   type : String,
                    content : String,
                    maxPeoplenum : Int,
                    pic_url : String,
@@ -84,10 +82,6 @@ class WriteActivity_Activity : AppCompatActivity() {
             dataRef.child("activity_field").child(i.toString()).setValue(field)
         }
 
-        for(i in 0 until activity_type.size){
-            dataRef.child("activity_type").child(i.toString()).setValue(type)
-        }
-
         dataRef.child("activity_id").setValue(activity_id)
             .addOnSuccessListener {
                 Log.d(ContentValues.TAG, "activity_id저장성공 ");
@@ -95,6 +89,7 @@ class WriteActivity_Activity : AppCompatActivity() {
             .addOnFailureListener{
                 Log.d(ContentValues.TAG, "activity_id저장실패 ");
             }
+        dataRef.child("activity_type").setValue(type)
         dataRef.child("content").setValue(content)
         dataRef.child("maxPeoplenum").setValue(maxPeoplenum)
         dataRef.child("pic_url").setValue(pic_url)

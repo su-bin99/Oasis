@@ -3,33 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"    >
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/plWriterText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:textSize="20dp"
-        android:gravity="left"
-        android:text="TextView" />
+
+    <ImageView
+        android:id="@+id/placeImg"
+        android:layout_width="360dp"
+        android:layout_height="170dp"
+        android:layout_gravity="center_horizontal"
+        app:srcCompat="@drawable/place_img"/>
 
     <TextView
         android:id="@+id/plSubjectText"
-        android:layout_width="wrap_content"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_weight="1"
-        android:gravity="left"
-        android:text="TextView" />
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:text="코워킹스페이스를 재해석한 f공간"
+        android:textSize="15dp"/>
 
-
-    <TextView
-        android:id="@+id/plTypeText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:textSize="20dp"
-        android:gravity="left"
-        android:text="TextView" />
 </LinearLayout>
+

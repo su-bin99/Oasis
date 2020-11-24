@@ -17,7 +17,7 @@
             android:layout_gravity="left"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/back_border">
+            android:background="@drawable/back_corner_circle_s">
 
             <TextView
                 android:id="@+id/textView"

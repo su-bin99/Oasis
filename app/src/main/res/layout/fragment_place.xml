@@ -72,29 +72,76 @@
         android:textSize="23dp"
         android:textStyle="bold" />
 
-
-    <RadioGroup
+    <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/radioButton"
+        >
+        <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="RadioButton"
-            android:textColor="@color/selector_click_tab"
-            />
+            android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/radioButton3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="RadioButton"
-            android:textColor="@color/selector_click_tab"
-            />
+            <RadioButton
+                android:id="@+id/radio_shareOffice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:button="@null"
+                android:text="공유오피스"
+                android:textColor="#252525" />
 
-    </RadioGroup>
+            <RadioButton
+                android:id="@+id/radio_personalOffice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="개인오피스"
+                android:button="@null"
+                android:textColor="#252525"/>
+
+            <RadioButton
+                android:id="@+id/radio_cafe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="카페"
+                android:button="@null"
+                android:textColor="#252525"
+                />
+
+            <RadioButton
+                android:id="@+id/radio_studyRoom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="스터디룸"
+                android:button="@null"
+                />
+
+            <RadioButton
+                android:id="@+id/radioButton5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="RadioButton5"
+                android:button="@null"
+                android:textColor="#252525"
+                />
+
+            <RadioButton
+                android:id="@+id/radioButton6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="RadioButton5"
+                android:button="@null"
+                android:textColor="#252525"
+                />
+
+        </RadioGroup>
+    </HorizontalScrollView>
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
