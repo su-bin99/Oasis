@@ -6,7 +6,7 @@
     android:gravity="left"
     android:layout_margin="15dp">
     <Button
-        android:id="@+id/person_submitBtn"
+        android:id="@+id/place_submitBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="submit" />
@@ -32,22 +32,44 @@
     </LinearLayout>
 
     <EditText
-        android:hint = "본문을 입력하세요 "
+        android:hint = "내용을 입력하세요 "
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edit_person_content"/>
+        android:id="@+id/edit_place_content"/>
 
     <EditText
-        android:hint = "제목을 입력하세요 "
+        android:hint = "사진를 입력하세요 "
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edit_person_subject"/>
+        android:id="@+id/edit_place_photo"/>
 
     <EditText
-        android:hint = "태그을 입력하세요 "
+        android:hint = "제목 입력하세요 "
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edit_person_tag"/>
+        android:id="@+id/edit_place_subject"/>
+
+    <EditText
+        android:hint= "컨셉을 입력하세요 "
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_place_concept"/>
+
+    <EditText
+        android:hint= "최대인원을 입력하세요"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_place_maxnum"/>
+
+    <EditText
+        android:hint= "유형을 입력하세요 "
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_place_type"/>
+
+
+
+
 
 
 
