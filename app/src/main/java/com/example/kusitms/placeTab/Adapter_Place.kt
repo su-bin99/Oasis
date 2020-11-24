@@ -1,4 +1,4 @@
-package com.example.kusitms
+package com.example.kusitms.placeTab
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,13 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.kusitms.R
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 
 class Adapter_Place(options : FirebaseRecyclerOptions<Data_Place>):
    FirebaseRecyclerAdapter<Data_Place, Adapter_Place.ViewHolder>(options){
 
-    var itemClickListener : OnItemClickListener ?= null
+    var itemClickListener : OnItemClickListener?= null
 
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         var writerText : TextView = itemView.findViewById(R.id.plWriterText)
@@ -26,17 +27,18 @@ class Adapter_Place(options : FirebaseRecyclerOptions<Data_Place>):
         }
     }
 
-    interface OnItemClickListener{
-        fun OnItemClick(view: View, position:Int){
-
+    interface OnItemClickListener {
+        fun OnItemClick(view: View, position: Int) {
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Adapter_Place.ViewHolder {
         val v = LayoutInflater.from(parent.context)
             .inflate(R.layout.row_place, parent, false)
         return ViewHolder(v)
     }
+
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int, model: Data_Place) {
         holder.writerText.text = model.place_writer

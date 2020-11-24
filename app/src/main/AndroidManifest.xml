@@ -12,9 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WriteActivity_Activity"></activity>
-        <activity android:name=".WriteActivity_Person" />
-        <activity android:name=".Adapter_Activity"
+        <activity android:name=".activityTab.WriteActivity_Activity"></activity>
+        <activity android:name=".personTab.WriteActivity_Person" />
+        <activity android:name=".activityTab.Adapter_Activity"
             tools:ignore="Instantiatable" />
         <activity android:name=".LoginActivity"/>
         <activity android:name=".SplashActivity" >
@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".WriteActivity_Place"/>
+        <activity android:name=".placeTab.WriteActivity_Place"/>
     </application>
 
 </manifest>

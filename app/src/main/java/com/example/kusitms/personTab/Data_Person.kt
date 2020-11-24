@@ -1,4 +1,4 @@
-package com.example.kusitms
+package com.example.kusitms.personTab
 
 data class Data_Person (
     /*

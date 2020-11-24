@@ -1,11 +1,11 @@
-package com.example.kusitms
+package com.example.kusitms.placeTab
 
 import android.content.ContentValues
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.kusitms.R
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase

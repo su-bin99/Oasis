@@ -1,4 +1,4 @@
-package com.example.kusitms
+package com.example.kusitms.placeTab
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,9 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
-import kotlinx.android.extensions.*
-import android.widget.Button
+
+import com.example.kusitms.R
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.ktx.auth

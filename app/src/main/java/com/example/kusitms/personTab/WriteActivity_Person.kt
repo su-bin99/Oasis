@@ -1,20 +1,15 @@
-package com.example.kusitms
+package com.example.kusitms.personTab
 
-import android.content.ContentValues
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
+import com.example.kusitms.R
 import com.google.firebase.auth.ktx.auth
+
 import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.activity_write.*
 import kotlinx.android.synthetic.main.person_write.*
-import java.lang.Character.isDigit
-import java.lang.Double.parseDouble
-import java.lang.Integer.parseInt
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
 import java.util.*
 import kotlin.collections.ArrayList
 

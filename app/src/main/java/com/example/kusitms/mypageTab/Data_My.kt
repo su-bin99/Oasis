@@ -1,4 +1,4 @@
-package com.example.kusitms
+package com.example.kusitms.mypageTab
 
 data class Data_My(
     val name : String,

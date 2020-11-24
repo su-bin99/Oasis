@@ -1,16 +1,14 @@
-package com.example.kusitms
+package com.example.kusitms.personTab
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.kusitms.R
 import com.firebase.ui.database.FirebaseRecyclerOptions
-import com.firebase.ui.database.SnapshotParser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
@@ -53,7 +51,8 @@ class Fragment_Person : Fragment() {
 
     fun init() {
         PwriteButton.setOnClickListener{
-            val intent = Intent(context,WriteActivity_Person::class.java)
+            val intent = Intent(context,
+                WriteActivity_Person::class.java)
             startActivity(intent)
         }
 
