@@ -141,10 +141,6 @@ class WriteActivity_Activity : AppCompatActivity() {
             dataRef.child("activity_participate").child(i.toString()).setValue(activity_participate)
         }
 
-        dataRef.child("activity_subject").setValue(activity_subject)
-        dataRef.child("activity_time").setValue(activity_time)
-        dataRef.child("activity_writer").setValue(activity_writer)
-        dataRef.child("activity_uid").setValue(activity_uid)
 
         var fileName:String=getImg(selectedImageUri)
         val storage = FirebaseStorage.getInstance()
@@ -154,8 +150,16 @@ class WriteActivity_Activity : AppCompatActivity() {
         var uploadTask = imgRef.putFile(selectedImageUri)
         uploadTask.addOnFailureListener{
         }.addOnSuccessListener {
-            Toast.makeText(this,"upload!",Toast.LENGTH_LONG).show()
         }
+
+        dataRef.child("activity_pic_url").setValue(fileName)
+        dataRef.child("activity_subject").setValue(activity_subject)
+        dataRef.child("activity_time").setValue(activity_time)
+        dataRef.child("activity_writer").setValue(activity_writer)
+        dataRef.child("activity_uid").setValue(activity_uid)
+
+
+
         val myToast = Toast.makeText(this.applicationContext, "글 작성이 완료되었습니다.", Toast.LENGTH_SHORT)
         myToast.show()
 
