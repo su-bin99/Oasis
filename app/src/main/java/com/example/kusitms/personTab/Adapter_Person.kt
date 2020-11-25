@@ -1,5 +1,6 @@
 package com.example.kusitms.personTab
 
+import android.content.Intent
 import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +9,11 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kusitms.R
+import com.example.kusitms.SplashActivity
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.ktx.auth
@@ -78,6 +82,12 @@ class Adapter_Person(options: FirebaseRecyclerOptions<Data_Person>) :
                 holder.pTagLayoutArray[i].setBackgroundResource(R.drawable.back_none)
             }
         }
+
+        holder.itemView.setOnClickListener{
+            val intent = Intent(holder.itemView?.context, SplashActivity::class.java)
+            holder.itemView.context.startActivity(intent)
+        }
+
 
     }
 

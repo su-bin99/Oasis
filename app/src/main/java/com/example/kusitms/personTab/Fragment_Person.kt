@@ -56,7 +56,6 @@ class Fragment_Person : Fragment() {
             startActivity(intent)
         }
 
-
     }
 
     fun initRecyclerView(){
