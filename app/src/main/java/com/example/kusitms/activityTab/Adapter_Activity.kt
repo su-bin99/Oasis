@@ -3,8 +3,10 @@ package com.example.kusitms.activityTab
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.kusitms.R
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
@@ -49,8 +51,6 @@ class Adapter_Activity(options: FirebaseRecyclerOptions<Data_Activity>) :
         for ( i in model.activity_type){
             type += " #" + i
         }
-
-
         holder.typeText.text = type
 
     }

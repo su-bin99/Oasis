@@ -44,13 +44,13 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <EditText
+            <TextView
                 android:id="@+id/name"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
-                android:text="박재민"
+                android:text="gd"
                 android:textSize="18dp" />
 
             <Button
