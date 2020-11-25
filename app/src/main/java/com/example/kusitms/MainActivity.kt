@@ -19,8 +19,8 @@ import kotlinx.android.synthetic.main.fragment_mypage.view.*
 
 class MainActivity : AppCompatActivity() {
     val textArray = arrayListOf<String>("홈", "장소","사람", "액티비티", "MY")
-    val iconArray = arrayListOf<Int>(R.drawable.icon_gyoyang, R.drawable.icon_major,
-        R.drawable.icon_map, R.drawable.icon_programmer, R.drawable.icon_programmer )
+    val iconArray = arrayListOf<Int>(R.drawable.icon_home, R.drawable.icon_place,
+        R.drawable.icon_person, R.drawable.icon_activity, R.drawable.icon_mypage )
 
 
 
@@ -55,19 +55,4 @@ class MainActivity : AppCompatActivity() {
 //        supportActionBar?.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM)
 //        supportActionBar?.setCustomView(R.layout.actionbar)
     }
-
-    fun setupTabIcons(viewPager : ViewPager2) {
-        val viewFirst = layoutInflater.inflate(R.layout.custom_tab, null)
-        val textFirst = viewFirst.findViewById<TextView>(R.id.txt_tab)
-        val imgFirst = viewFirst.findViewById<ImageView>(R.id.txt_tab)
-
-        viewFirst.txt_tab.setText("")
-        viewFirst.img_tab.setImageResource(R.drawable.icon_major)
-        imgFirst.setImageResource(R.drawable.icon_major)
-        textFirst.setText("샘플")
-
-    }
-
-
-
 }
