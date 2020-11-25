@@ -190,3 +190,12 @@ class Fragment_Activity : Fragment() {
         adapter.startListening()
     }
 }
+
+/*
+    var
+    var searchBtn: Button = findViewById(R.id.searchBtn)
+        searchBtn.setOnClickListener {
+            search(searchWord.text.toString(), "activity_content")
+        }
+
+ */
