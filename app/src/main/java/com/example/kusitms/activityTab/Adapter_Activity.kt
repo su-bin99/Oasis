@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kusitms.R
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 
 class Adapter_Activity(options: FirebaseRecyclerOptions<Data_Activity>) :
     FirebaseRecyclerAdapter<Data_Activity, Adapter_Activity.ViewHolder>(options) {
@@ -43,6 +45,7 @@ class Adapter_Activity(options: FirebaseRecyclerOptions<Data_Activity>) :
         holder.writerText.text = model.activity_writer
         holder.subjectText.text = model.activity_subject
         var type = ""
+
         for ( i in model.activity_type){
             type += " #" + i
         }
