@@ -52,7 +52,6 @@ class Adapter_Activity(options: FirebaseRecyclerOptions<Data_Activity>) :
             type += " #" + i
         }
 
-
         holder.typeText.text = type
 
     }
