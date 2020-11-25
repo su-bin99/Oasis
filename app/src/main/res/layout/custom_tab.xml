@@ -16,7 +16,7 @@
         android:layout_gravity="center"
         android:scaleType="fitCenter"
         android:tint="@color/selector_click_tab"
-        tools:src="@drawable/icon_gyoyang"/>
+        tools:src="@drawable/icon_activity"/>
     <TextView
         android:gravity="center"
         android:id="@+id/txt_tab"
