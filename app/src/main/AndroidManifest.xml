@@ -30,6 +30,7 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".placeTab.WriteActivity_Place"/>
+        <activity android:name=".personTab.Info_Person"/>
     </application>
 
 </manifest>
