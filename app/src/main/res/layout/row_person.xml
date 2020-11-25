@@ -55,7 +55,15 @@
             <!--                android:gravity="center"-->
             <!--                android:text="팔로우"-->
             <!--                android:textSize="10dp"/>-->
-            
+
+            <Button
+                android:id="@+id/followbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:backgroundTint="#E91E63"
+                android:text="follow"
+                android:textColor="#FFFFFF" />
 
         </LinearLayout>
 
