@@ -1,19 +1,29 @@
 package com.example.kusitms.placeTab
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
 
 import com.example.kusitms.R
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.kusitms.activityTab.Adapter_Activity
+import com.example.kusitms.activityTab.Data_Activity
+import com.example.kusitms.activityTab.WriteActivity_Activity
 import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.firebase.ui.database.SnapshotParser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.activity_write.*
+import kotlinx.android.synthetic.main.fragment_activity.*
 import kotlinx.android.synthetic.main.fragment_place.*
+import kotlinx.android.synthetic.main.fragment_place.recyclerView
 import kotlinx.android.synthetic.main.fragment_place.view.*
 
 /**
@@ -26,6 +36,7 @@ class Fragment_Place : Fragment() {
 
     val user = Firebase.auth.currentUser
     val uid = user?.uid
+    var radio_checkedid_before = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,9 +49,8 @@ class Fragment_Place : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        initRecyclerView()
+        initAdapter()
         init()
-        adapter.startListening()
     }
 
     override fun onStop() {
@@ -48,19 +58,65 @@ class Fragment_Place : Fragment() {
         adapter.stopListening()
     }
 
-    fun init(){
+    @SuppressLint("ResourceAsColor")
+    fun init() {
+        root!!.recyclerView.layoutManager = LinearLayoutManager(
+            requireActivity(),
+            LinearLayoutManager.VERTICAL, false
+        )
+        var lectureRadio: RadioButton = root!!.findViewById(R.id.pl_radio_shareOffice)
+        lectureRadio.isChecked = true
+        radio_checkedid_before = R.id.pl_radio_shareOffice
+
         plWriteButton.setOnClickListener{
             val intent = Intent(context, WriteActivity_Place::class.java)
             startActivity(intent)
         }
+
+        pl_radioGroup.setOnCheckedChangeListener { group, checkedId ->
+            var thisCheckedBtn: RadioButton = root!!.findViewById(checkedId)
+            if(radio_checkedid_before != checkedId){
+                var beforeCheckedBtn: RadioButton = root!!.findViewById(radio_checkedid_before)
+                beforeCheckedBtn.setTextColor(R.color.darkGray)
+            }
+            when (checkedId) {
+                R.id.pl_radio_shareOffice -> {
+                    findQueryAdapter("공유오피스")
+                    thisCheckedBtn.setTextColor(R.color.pink)
+                    radio_checkedid_before = R.id.pl_radio_shareOffice
+                }
+                R.id.pl_radio_personalOffice -> {
+                    findQueryAdapter("개인오피스")
+                    thisCheckedBtn.setTextColor(R.color.pink)
+                    radio_checkedid_before = R.id.pl_radio_personalOffice
+                }
+                R.id.pl_radio_studyRoom -> {
+                    findQueryAdapter("스터디룸")
+                    thisCheckedBtn.setTextColor(R.color.pink)
+                    radio_checkedid_before = R.id.pl_radio_studyRoom
+                }
+                R.id.pl_radio_cafe -> {
+                    findQueryAdapter("카페")
+                    thisCheckedBtn.setTextColor(R.color.pink)
+                    radio_checkedid_before = R.id.pl_radio_cafe
+                }
+                R.id.pl_radio_etc -> {
+                    findQueryAdapter("기타")
+                    thisCheckedBtn.setTextColor(R.color.pink)
+                    radio_checkedid_before = R.id.pl_radio_etc
+                }
+            }
+        }
     }
 
-    fun initRecyclerView(){
-        root!!.recyclerView.layoutManager = LinearLayoutManager(requireActivity(),
-        LinearLayoutManager.VERTICAL, false)
+    fun initAdapter(){
+        //처음 들어갈 때 그냥 첫번째 라디오버튼 눌린거로 보여주기 위해서 공유오피스로 쿼리문... 파이팅
+
+//        val query = FirebaseDatabase.getInstance().reference
+//            .child("place").limitToLast(50)
 
         val query = FirebaseDatabase.getInstance().reference
-            .child("place").limitToLast(50)
+            .child("place").child("place_tag").child("place_type").equalTo("공유오피스")
 
         val option = FirebaseRecyclerOptions.Builder<Data_Place>()
             .setQuery(query, {snapshot ->
@@ -83,4 +139,34 @@ class Fragment_Place : Fragment() {
         recyclerView.adapter = adapter
         adapter.startListening()
     }
+
+    fun findQueryAdapter(place_type: String) {
+        if (adapter != null)
+            adapter.stopListening()
+        val query = FirebaseDatabase.getInstance().reference
+            .child("place").child("place_tag").child("place_type").equalTo(place_type)
+
+        val option = FirebaseRecyclerOptions.Builder<Data_Place>()
+            .setQuery(query,
+                SnapshotParser { snapshot ->
+                    Data_Place(
+                        snapshot.child("photo_content").value.toString(),
+                        snapshot.child("place_photo").value.toString(),
+                        snapshot.child("reserve_person").value.toString(),
+                        snapshot.child("place_reserve").child("place_review").value.toString(),
+                        snapshot.child("place_subject").value.toString(),
+                        snapshot.child("place_tag").child("place_concept").value.toString(),
+                        snapshot.child("place_tag").child("place_maxnum").value.toString().toInt(),
+                        snapshot.child("place_tag").child("place_type").value.toString(),
+                        snapshot.child("place_time").value.toString(),
+                        snapshot.child("place_writer").value.toString()
+                    )
+                })
+            .build()
+
+        adapter = Adapter_Place(option)
+        recyclerView.adapter = adapter
+        adapter.startListening()
+    }
+
 }
