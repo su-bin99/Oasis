@@ -1,8 +1,12 @@
 package com.example.kusitms.activityTab
 
 import android.content.ContentValues
+import android.content.Intent
+import android.database.Cursor
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
 import com.example.kusitms.R
@@ -12,12 +16,17 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_write.*
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
 class WriteActivity_Activity : AppCompatActivity() {
+
+    private val GET_GALLERY_IMAGE = 200
+    lateinit var selectedImageUri:Uri
 
     val user = Firebase.auth.currentUser
     val userid = user?.uid
@@ -87,6 +96,14 @@ class WriteActivity_Activity : AppCompatActivity() {
             insertData(type, fieldarray, content,0, pic_url, act_object, participatearray,
                 subject, time, writer, uid)
         }
+        picBtn.setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.setDataAndType(
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                "image/*"
+            )
+            startActivityForResult(intent, GET_GALLERY_IMAGE)
+        }
     }
 
     fun insertData(activity_type : String,
@@ -129,10 +146,45 @@ class WriteActivity_Activity : AppCompatActivity() {
         dataRef.child("activity_writer").setValue(activity_writer)
         dataRef.child("activity_uid").setValue(activity_uid)
 
+        var fileName:String=getImg(selectedImageUri)
+        val storage = FirebaseStorage.getInstance()
+        val storageRef = storage.reference
+        var imgRef = storageRef.child("images/$fileName")
+
+        var uploadTask = imgRef.putFile(selectedImageUri)
+        uploadTask.addOnFailureListener{
+        }.addOnSuccessListener {
+            Toast.makeText(this,"upload!",Toast.LENGTH_LONG).show()
+        }
         val myToast = Toast.makeText(this.applicationContext, "글 작성이 완료되었습니다.", Toast.LENGTH_SHORT)
         myToast.show()
 
         this.finish()
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(resultCode, requestCode, data)
+
+        if (requestCode == GET_GALLERY_IMAGE && resultCode == RESULT_OK && data != null && data.data != null) {
+
+            selectedImageUri= data.data!!
+            picView.setImageURI(selectedImageUri)
+        }
+    }
+    private fun absolutelyPath(path: Uri): String {
+
+        var proj: Array<String> = arrayOf(MediaStore.Images.Media.DATA)
+        var c: Cursor = contentResolver.query(path, proj, null, null, null)!!
+        var index = c.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+        c.moveToFirst()
+
+        return c.getString(index)
+    }
+    private fun getImg(path: Uri):String {
+        var aPath=absolutelyPath(path)
+        var file = File(aPath)
+
+        return file.name
     }
 }

@@ -119,7 +119,7 @@ class Fragment_Place : Fragment() {
             .child("place").child("place_tag").child("place_type").equalTo("공유오피스")
 
         val option = FirebaseRecyclerOptions.Builder<Data_Place>()
-            .setQuery(query, {snapshot ->
+            .setQuery(query) { snapshot ->
                 Data_Place(
                     snapshot.child("photo_content").value.toString(),
                     snapshot.child("place_photo").value.toString(),
@@ -133,7 +133,7 @@ class Fragment_Place : Fragment() {
                     snapshot.child("place_writer").value.toString(),
                     snapshot.child("place_uid").value.toString()
                 )
-            })
+            }
             .build()
 
         adapter = Adapter_Place(option)
@@ -160,7 +160,8 @@ class Fragment_Place : Fragment() {
                         snapshot.child("place_tag").child("place_maxnum").value.toString().toInt(),
                         snapshot.child("place_tag").child("place_type").value.toString(),
                         snapshot.child("place_time").value.toString(),
-                        snapshot.child("place_writer").value.toString()
+                        snapshot.child("place_writer").value.toString(),
+                        snapshot.child("place_uid").value.toString()
                     )
                 })
             .build()

@@ -40,9 +40,8 @@ class Adapter_Activity(options: FirebaseRecyclerOptions<Data_Activity>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int, model: Data_Activity) {
-        holder.writerText.text = model.writer
-        holder.subjectText.text = model.subject
-        holder.activityIdText.text = model.activity_id.toString()
+        holder.writerText.text = model.activity_writer
+        holder.subjectText.text = model.activity_subject
         var type = ""
         for ( i in model.activity_type){
             type += " #" + i
