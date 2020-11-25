@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -44,12 +45,27 @@ class Fragment_MyPage : Fragment() {
         super.onResume()
         init()
 
+
         //ui적으로 수정된 것을 나타낼 방법 필요
+        //우선 수정 버튼 누르면 이름 뜨도록 해둠..
         nameedit.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v: View?) {
-                myPage.child(uid.toString()).child("privacy").child("name").setValue(name.getText().toString())
+                val myData = myPage.child(uid.toString()).child("privacy").child("name")
+//                myData.setValue(name.getText().toString())
 
+                myData.addListenerForSingleValueEvent(object : ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        var a = snapshot.value.toString()
+                        name.text = a
+                        print(a)
+                        println(name.text)
+                        println("did it")
+                    }
 
+                    override fun onCancelled(error: DatabaseError) {
+                        println("failed")
+                    }
+                })
             }
         })
     }

@@ -1,14 +1,19 @@
 package com.example.kusitms.mypageTab
 
+
 data class Data_My(
-    val name : String,
-    val grade : String,
-    val point : String,
-    val following : String,
-    val follower : String,
-    val gwansim_place : String,
-    val gwansim_activity : String,
-    val participate_activity : String,
-    val field : String,
-    val company : String
-)
+    var name : String,
+    var photo : String,
+    var following : ArrayList<String>,
+    var follower : ArrayList<String>,
+    var level : String,
+    var point : Int,
+    var like_activity : ArrayList<String>,
+    var like_place : ArrayList<String>,
+    var comment : ArrayList<String>,
+    var writing : ArrayList<String>
+){
+    constructor():
+            this("","",ArrayList<String>(),ArrayList<String>(),"",0,
+            ArrayList<String>(),ArrayList<String>(),ArrayList<String>(),ArrayList<String>())
+}
