@@ -13,6 +13,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.kusitms.R
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 
 class Adapter_Activity(options: FirebaseRecyclerOptions<Data_Activity>) :
     FirebaseRecyclerAdapter<Data_Activity, Adapter_Activity.ViewHolder>(options) {
@@ -20,6 +22,9 @@ class Adapter_Activity(options: FirebaseRecyclerOptions<Data_Activity>) :
 
     var itemClickListener: OnItemClickListener? = null
     var context: Context? = null
+
+    val storage = FirebaseStorage.getInstance()
+    val storageRef = storage.reference
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var subjectText: TextView = itemView.findViewById(R.id.subjectText)
@@ -46,10 +51,15 @@ class Adapter_Activity(options: FirebaseRecyclerOptions<Data_Activity>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int, model: Data_Activity) {
         holder.subjectText.text = model.activity_subject
-        Glide.with(context!!).load(R.drawable.place_img)
+        var imgRef: StorageReference =storageRef.child("images/${model.activity_pic_url}")
+        imgRef.downloadUrl.addOnSuccessListener {
+                Uri->
+            val imageURL=Uri.toString()
+            Glide.with(holder.itemView.context).load(imageURL)
             .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
             .override(360, 170)
             .into(holder.imageView);
+        }
     }
 
 
