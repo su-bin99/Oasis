@@ -7,7 +7,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kusitms.R
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.place_write.*
 import java.text.SimpleDateFormat
@@ -15,7 +18,7 @@ import java.util.*
 
 class WriteActivity_Place : AppCompatActivity(){
     val user = Firebase.auth.currentUser
-    val uid = user?.uid
+    val userid = user?.uid
 
     var content = ""
     var photo = ""
@@ -27,10 +30,30 @@ class WriteActivity_Place : AppCompatActivity(){
     var type = ""
     var time = ""
     var writer = ""
+    var uid = userid.toString()
+
+    var value = ""
+
+    var myRef = FirebaseDatabase.getInstance().reference.child("my_page").child(uid).child("privacy").child("name")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.place_write)
+        myRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                value = snapshot.value.toString()
+                println("did you")
+                println(value)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                println("failed to read value")
+            }
+        })
+    }
+
+    override fun onStart() {
+        super.onStart()
         init()
     }
 
@@ -52,9 +75,9 @@ class WriteActivity_Place : AppCompatActivity(){
             val currentDateTime = Calendar.getInstance().time
             time = SimpleDateFormat("yyyy.MM.dd HH:mm", Locale.KOREA).format(currentDateTime)
 
-            writer = uid.toString()
+            writer = value
 
-            insertData(content, photo, reserveperson, review, subject, concept, maxnum, type, time, writer)
+            insertData(content, photo, reserveperson, review, subject, concept, maxnum, type, time, writer, uid)
         }
     }
 
@@ -68,7 +91,8 @@ class WriteActivity_Place : AppCompatActivity(){
         place_maxnum : Int,
         place_type : String,
         place_time : String,
-        place_writer : String
+        place_writer : String,
+        place_uid : String
     ){
         var dataRef = FirebaseDatabase.getInstance().reference.child("place").push()
 
@@ -82,6 +106,7 @@ class WriteActivity_Place : AppCompatActivity(){
         dataRef.child("place_tag").child("place_type").setValue(place_type)
         dataRef.child("place_time").setValue(place_time)
         dataRef.child("place_writer").setValue(place_writer)
+        dataRef.child("place_uid").setValue(place_uid)
 
         val myToast = Toast.makeText(this.applicationContext, "글 작성이 완료되었습니다.", Toast.LENGTH_SHORT)
         myToast.show()

@@ -113,33 +113,26 @@ class Fragment_Activity : Fragment() {
         val option = FirebaseRecyclerOptions.Builder<Data_Activity>()
             .setQuery(query,
                 SnapshotParser { snapshot ->
-                    var activity_concept = ArrayList<String>()
                     var activity_field = ArrayList<String>()
-                    var participate = ArrayList<String>()
-                    for (i in snapshot.child("activity_concept").children) {
-                        activity_concept.add(i.value.toString())
-                    }
+                    var activity_participate = ArrayList<String>()
                     for (i in snapshot.child("activity_field").children) {
                         activity_field.add(i.value.toString())
                     }
                     for (i in snapshot.child("participate").children) {
-                        participate.add(i.value.toString())
+                        activity_participate.add(i.value.toString())
                     }
-                    Log.d(
-                        TAG,
-                        "activity_id is: " + snapshot.child("activity_id").value.toString()
-                    );
                     Data_Activity(
-                        activity_concept, activity_field,
-                        snapshot.child("activity_id").value.toString().toInt(),
                         snapshot.child("activity_type").value.toString(),
-                        snapshot.child("content").value.toString(),
-                        snapshot.child("maxPeoplenum").value.toString().toInt(),
-                        participate,
-                        snapshot.child("pic_url").value.toString(),
-                        snapshot.child("subject").value.toString(),
-                        snapshot.child("time").value.toString(),
-                        snapshot.child("writer").value.toString()
+                        activity_field,
+                        snapshot.child("activity_content").value.toString(),
+                        snapshot.child("activity_maxPeoplenum").value.toString().toInt(),
+                        snapshot.child("activity_pic_url").value.toString(),
+                        snapshot.child("activity_object").value.toString(),
+                        activity_participate,
+                        snapshot.child("activity_subject").value.toString(),
+                        snapshot.child("activity_time").value.toString(),
+                        snapshot.child("activity_writer").value.toString(),
+                        snapshot.child("activity_uid").value.toString()
                     )
                 })
             .build()
@@ -161,33 +154,33 @@ class Fragment_Activity : Fragment() {
         val option = FirebaseRecyclerOptions.Builder<Data_Activity>()
             .setQuery(query,
                 SnapshotParser { snapshot ->
-                    var activity_concept = ArrayList<String>()
                     var activity_field = ArrayList<String>()
-                    var participate = ArrayList<String>()
-                    for (i in snapshot.child("activity_concept").children) {
-                        activity_concept.add(i.value.toString())
-                    }
+                    var activity_participate = ArrayList<String>()
                     for (i in snapshot.child("activity_field").children) {
                         activity_field.add(i.value.toString())
                     }
-                    for (i in snapshot.child("participate").children) {
-                        participate.add(i.value.toString())
+                    for (i in snapshot.child("activity_participate").children) {
+                        activity_participate.add(i.value.toString())
                     }
+                    /*
                     Log.d(
                         TAG,
                         "activity_id is: " + snapshot.child("activity_id").value.toString()
                     );
+
+                     */
                     Data_Activity(
-                        activity_concept, activity_field,
-                        snapshot.child("activity_id").value.toString().toInt(),
                         snapshot.child("activity_type").value.toString(),
-                        snapshot.child("content").value.toString(),
-                        snapshot.child("maxPeoplenum").value.toString().toInt(),
-                        participate,
-                        snapshot.child("pic_url").value.toString(),
-                        snapshot.child("subject").value.toString(),
-                        snapshot.child("time").value.toString(),
-                        snapshot.child("writer").value.toString()
+                        activity_field,
+                        snapshot.child("activity_content").value.toString(),
+                        snapshot.child("activity_maxPeoplenum").value.toString().toInt(),
+                        snapshot.child("activity_pic_url").value.toString(),
+                        snapshot.child("activity_object").value.toString(),
+                        activity_participate,
+                        snapshot.child("activity_subject").value.toString(),
+                        snapshot.child("activity_time").value.toString(),
+                        snapshot.child("activity_writer").value.toString(),
+                        snapshot.child("activity_uid").value.toString()
                     )
                 })
             .build()

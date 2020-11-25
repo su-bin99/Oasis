@@ -36,7 +36,7 @@
         android:hint = "컨셉을 입력하세요 "
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/activity_concept"/>
+        android:id="@+id/activity_participate"/>
 
     <EditText
         android:hint = "분야를 입력하세요 "

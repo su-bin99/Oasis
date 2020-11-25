@@ -54,7 +54,7 @@
     <Button
         android:id="@+id/plWriteButton"
         android:layout_width="wrap_content"
-        android:layout_height="4dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="left"
         android:layout_marginLeft="15dp"
         android:background="@drawable/back_corner_circle"

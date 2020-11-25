@@ -10,10 +10,11 @@ data class Data_Place (
     var place_maxnum : Int,
     var place_type : String,
     var place_time : String,
-    var place_writer : String
+    var place_writer : String,
+    var place_uid : String
     ) {
     constructor():
             this("", "", "", "",
-            "", "",0,  "", "",""
+            "", "",0,  "", "","",""
             )
 }

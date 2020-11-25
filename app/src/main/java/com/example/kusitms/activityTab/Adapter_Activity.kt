@@ -45,7 +45,7 @@ class Adapter_Activity(options: FirebaseRecyclerOptions<Data_Activity>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int, model: Data_Activity) {
-        holder.subjectText.text = model.subject
+        holder.subjectText.text = model.activity_subject
         Glide.with(context!!).load(R.drawable.place_img)
             .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
             .override(360, 170)

@@ -4,6 +4,7 @@ import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -28,6 +29,8 @@ class Adapter_Person(options: FirebaseRecyclerOptions<Data_Person>) :
         var pTagLayout2 : LinearLayout =  itemView.findViewById(R.id.pTagLayout2)
         var pTagLayout3 : LinearLayout =  itemView.findViewById(R.id.pTagLayout3)
         var pTagLayoutArray = arrayListOf<LinearLayout>(pTagLayout1, pTagLayout2, pTagLayout3)
+
+
 
         init {
             itemView.setOnClickListener {
@@ -59,7 +62,6 @@ class Adapter_Person(options: FirebaseRecyclerOptions<Data_Person>) :
                 holder.pTagLayoutArray[i].setBackgroundResource(R.drawable.back_none)
             }
         }
-
     }
 
 }
