@@ -72,74 +72,64 @@
         android:textSize="23dp"
         android:textStyle="bold" />
 
-    <HorizontalScrollView
+    <RadioGroup
+        android:id="@+id/pl_radioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
-        <RadioGroup
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/pl_radio_shareOffice"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="30dp"
+            android:text="    공유오피스    "
+            android:background="@drawable/radio_button_selector"
+            android:textColor="#252525"
+            android:button="@android:color/transparent"
+            android:textSize="15dp" />
 
-            <RadioButton
-                android:id="@+id/radio_shareOffice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:button="@null"
-                android:text="공유오피스"
-                android:textColor="#252525" />
+        <RadioButton
+            android:id="@+id/pl_radio_personalOffice"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="    개인오피스    "
+            android:textColor="#252525"
+            android:button="@android:color/transparent"
+            android:background="@drawable/radio_button_selector"
+            android:textSize="15dp"/>
 
-            <RadioButton
-                android:id="@+id/radio_personalOffice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="개인오피스"
-                android:button="@null"
-                android:textColor="#252525"/>
+        <RadioButton
+            android:id="@+id/pl_radio_studyRoom"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="    스터디룸    "
+            android:textColor="#252525"
+            android:button="@android:color/transparent"
+            android:background="@drawable/radio_button_selector"
+            android:textSize="15dp"/>
 
-            <RadioButton
-                android:id="@+id/radio_cafe"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="카페"
-                android:button="@null"
-                android:textColor="#252525"
-                />
+        <RadioButton
+            android:id="@+id/pl_radio_cafe"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="    카페    "
+            android:button="@android:color/transparent"
+            android:background="@drawable/radio_button_selector"
+            android:textSize="15dp"/>
 
-            <RadioButton
-                android:id="@+id/radio_studyRoom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="스터디룸"
-                android:button="@null"
-                />
+        <RadioButton
+            android:id="@+id/pl_radio_etc"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="    기타    "
+            android:textColor="#252525"
+            android:button="@android:color/transparent"
+            android:background="@drawable/radio_button_selector"
+            android:textSize="15dp"
+            />
 
-            <RadioButton
-                android:id="@+id/radioButton5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="RadioButton5"
-                android:button="@null"
-                android:textColor="#252525"
-                />
-
-            <RadioButton
-                android:id="@+id/radioButton6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="RadioButton5"
-                android:button="@null"
-                android:textColor="#252525"
-                />
-
-        </RadioGroup>
-    </HorizontalScrollView>
+    </RadioGroup>
 
 
 

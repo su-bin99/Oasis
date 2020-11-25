@@ -3,6 +3,7 @@ package com.example.kusitms.activityTab
 import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatRadioButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kusitms.R
 import com.firebase.ui.database.FirebaseRecyclerOptions
@@ -30,6 +32,7 @@ class Fragment_Activity : Fragment() {
 
     val user = Firebase.auth.currentUser
     val uid = user?.uid
+    var radio_checkedid_before = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,6 +59,9 @@ class Fragment_Activity : Fragment() {
             requireActivity(),
             LinearLayoutManager.VERTICAL, false
         )
+        var lectureRadio: RadioButton = root!!.findViewById(R.id.ac_radio_lecture)
+        lectureRadio.isChecked = true
+        radio_checkedid_before = R.id.ac_radio_lecture
 
         AwriteButton.setOnClickListener {
             val intent = Intent(context, WriteActivity_Activity::class.java)
@@ -63,26 +69,36 @@ class Fragment_Activity : Fragment() {
         }
 
         ac_radioGroup.setOnCheckedChangeListener { group, checkedId ->
+            var thisCheckedBtn: RadioButton = root!!.findViewById(checkedId)
+            if(radio_checkedid_before != checkedId){
+                var beforeCheckedBtn: RadioButton = root!!.findViewById(radio_checkedid_before)
+                beforeCheckedBtn.setTextColor(R.color.darkGray)
+            }
             when (checkedId) {
                 R.id.ac_radio_lecture -> {
                     findQueryAdapter("강연회")
-                    ac_radio_lecture.setTextColor(R.color.pink)
+                    thisCheckedBtn.setTextColor(R.color.pink)
+                    radio_checkedid_before = R.id.ac_radio_lecture
                 }
                 R.id.ac_radio_project -> {
                     findQueryAdapter("프로젝트")
-                    ac_radio_project.setTextColor(R.color.pink)
+                    thisCheckedBtn.setTextColor(R.color.pink)
+                    radio_checkedid_before = R.id.ac_radio_project
                 }
                 R.id.ac_radio_conference -> {
                     findQueryAdapter("컨퍼런스")
-                    ac_radio_conference.setTextColor(R.color.pink)
+                    thisCheckedBtn.setTextColor(R.color.pink)
+                    radio_checkedid_before = R.id.ac_radio_conference
                 }
                 R.id.ac_radio_study -> {
                     findQueryAdapter("스터디")
-                    ac_radio_study.setTextColor(R.color.pink)
+                    thisCheckedBtn.setTextColor(R.color.pink)
+                    radio_checkedid_before = R.id.ac_radio_study
                 }
                 R.id.ac_radio_etc -> {
                     findQueryAdapter("기타")
-                    ac_radio_etc.setTextColor(R.color.pink)
+                    thisCheckedBtn.setTextColor(R.color.pink)
+                    radio_checkedid_before = R.id.ac_radio_etc
                 }
             }
         }
@@ -127,9 +143,13 @@ class Fragment_Activity : Fragment() {
     }
 
     fun initAdapter() {
+        //처음 들어갈 때 그냥 첫번째 라디오버튼 눌린거로 보여주기 위해서 강연로 쿼리,,
+
+//        val query = FirebaseDatabase.getInstance().reference
+//            .child("activity").limitToLast(50)
 
         val query = FirebaseDatabase.getInstance().reference
-            .child("activity").limitToLast(50)
+            .child("activity").orderByChild("activity_type").equalTo("강연회")
 
         val option = FirebaseRecyclerOptions.Builder<Data_Activity>()
             .setQuery(query,
@@ -169,5 +189,4 @@ class Fragment_Activity : Fragment() {
         recyclerView.adapter = adapter
         adapter.startListening()
     }
-
 }
