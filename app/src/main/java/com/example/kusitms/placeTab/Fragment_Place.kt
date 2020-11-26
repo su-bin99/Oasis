@@ -12,18 +12,12 @@ import android.widget.RadioButton
 
 import com.example.kusitms.R
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.kusitms.activityTab.Adapter_Activity
-import com.example.kusitms.activityTab.Data_Activity
-import com.example.kusitms.activityTab.WriteActivity_Activity
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.firebase.ui.database.SnapshotParser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.activity_write.*
-import kotlinx.android.synthetic.main.fragment_activity.*
 import kotlinx.android.synthetic.main.fragment_place.*
-import kotlinx.android.synthetic.main.fragment_place.recyclerView
 import kotlinx.android.synthetic.main.fragment_place.view.*
 
 /**
@@ -116,7 +110,7 @@ class Fragment_Place : Fragment() {
 //            .child("place").limitToLast(50)
 
         val query = FirebaseDatabase.getInstance().reference
-            .child("place").child("place_tag").child("place_type").equalTo("공유오피스")
+            .child("place").orderByChild("place_tag/place_type").equalTo("공유오피스")
 
         val option = FirebaseRecyclerOptions.Builder<Data_Place>()
             .setQuery(query) { snapshot ->
@@ -141,11 +135,12 @@ class Fragment_Place : Fragment() {
         adapter.startListening()
     }
 
+    @SuppressLint("RestrictedApi")
     fun findQueryAdapter(place_type: String) {
         if (adapter != null)
             adapter.stopListening()
         val query = FirebaseDatabase.getInstance().reference
-            .child("place").child("place_tag").child("place_type").equalTo(place_type)
+            .child("place").orderByChild("place_tag/place_type").equalTo(place_type)
 
         val option = FirebaseRecyclerOptions.Builder<Data_Place>()
             .setQuery(query,
@@ -166,9 +161,11 @@ class Fragment_Place : Fragment() {
                 })
             .build()
 
+        println(place_type + "갯수 : " + option.snapshots.size)
         adapter = Adapter_Place(option)
         recyclerView.adapter = adapter
         adapter.startListening()
+
     }
 
 }

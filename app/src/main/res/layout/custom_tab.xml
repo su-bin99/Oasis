@@ -9,9 +9,9 @@
     >
     <ImageView
         android:id="@+id/img_tab"
-        android:layout_width="30dp"
-        android:layout_height="25dp"
-        android:layout_marginBottom="6dp"
+        android:layout_width="22dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="6dp"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
@@ -25,7 +25,7 @@
         android:layout_marginBottom="6dp"
         android:layout_gravity="center"
         android:textIsSelectable="true"
-        android:textSize="13dp"
+        android:textSize="11dp"
         android:textColor="@color/selector_click_tab"
         tools:text="사람"/>
 </LinearLayout>
