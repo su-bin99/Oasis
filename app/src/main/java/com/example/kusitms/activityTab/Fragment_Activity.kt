@@ -45,7 +45,6 @@ class Fragment_Activity : Fragment() {
     override fun onStart() {
         super.onStart()
         initAdapter()
-
         init()
     }
 

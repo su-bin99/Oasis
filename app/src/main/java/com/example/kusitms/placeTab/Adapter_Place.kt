@@ -1,6 +1,9 @@
 package com.example.kusitms.placeTab
 
+import android.content.ContentValues
 import android.content.Context
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +14,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.kusitms.R
+import com.example.kusitms.activityTab.Info_Activity
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import kotlinx.android.synthetic.main.fragment_mypage.*
@@ -48,10 +52,13 @@ class Adapter_Place(options : FirebaseRecyclerOptions<Data_Place>):
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int, model: Data_Place) {
         holder.subjectText.text = model.place_subject
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView?.context, Info_Place::class.java)
+            holder.itemView.context.startActivity(intent)
+        }
         Glide.with(context!!).load(R.drawable.place_img)
             .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
             .override(360, 170)
             .into(holder.imageView);
-
     }
 }

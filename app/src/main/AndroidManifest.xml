@@ -4,9 +4,13 @@
     package="com.example.kusitms">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-feature android:name="android.hardware.camera" android:required="false" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -15,13 +19,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true" >
-        <activity android:name=".activityTab.WriteActivity_Activity"></activity>
+        android:usesCleartextTraffic="true">
+        <activity android:name=".placeTab.Info_Place"></activity>
+        <activity android:name=".activityTab.Info_Activity" />
+        <activity android:name=".activityTab.WriteActivity_Activity" />
         <activity android:name=".personTab.WriteActivity_Person" />
-        <activity android:name=".activityTab.Adapter_Activity"
+        <activity
+            android:name=".activityTab.Adapter_Activity"
             tools:ignore="Instantiatable" />
-        <activity android:name=".LoginActivity"/>
-        <activity android:name=".SplashActivity" >
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,8 +36,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".placeTab.WriteActivity_Place"/>
-        <activity android:name=".personTab.Info_Person"/>
+        <activity android:name=".placeTab.WriteActivity_Place" />
+        <activity android:name=".personTab.Info_Person" />
     </application>
 
 </manifest>
