@@ -27,6 +27,8 @@
         <activity
             android:name=".activityTab.Adapter_Activity"
             tools:ignore="Instantiatable" />
+        <activity
+            android:name=".activityTab.SearchActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>

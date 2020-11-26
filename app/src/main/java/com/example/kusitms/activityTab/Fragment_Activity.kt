@@ -1,9 +1,7 @@
 package com.example.kusitms.activityTab
 
 import android.annotation.SuppressLint
-import android.content.ContentValues.TAG
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,15 +9,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
-import android.widget.TextView
-import androidx.appcompat.widget.AppCompatRadioButton
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kusitms.R
+import com.example.kusitms.SplashActivity
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.firebase.ui.database.SnapshotParser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.activity_write.*
 import kotlinx.android.synthetic.main.fragment_activity.*
 import kotlinx.android.synthetic.main.fragment_activity.view.*
 
@@ -68,6 +67,16 @@ class Fragment_Activity : Fragment() {
             startActivity(intent)
         }
 
+        searchBtn.setOnClickListener {
+            var searchWord:String=searchWindow.text.toString()
+
+            activity?.let {
+                val searchIntent = Intent(context, SearchActivity::class.java)
+                searchIntent.putExtra("검색어", searchWord)
+                startActivity(searchIntent)
+            }
+        }
+
         ac_radioGroup.setOnCheckedChangeListener { group, checkedId ->
             var thisCheckedBtn: RadioButton = root!!.findViewById(checkedId)
             if(radio_checkedid_before != checkedId){
@@ -104,11 +113,11 @@ class Fragment_Activity : Fragment() {
         }
     }
 
-    fun findQueryAdapter(activity_type: String) {
+    fun findQueryAdapter(activity_type: String) {//activity_type:강연회 어쩌구
         if (adapter != null)
             adapter.stopListening()
         val query = FirebaseDatabase.getInstance().reference
-            .child("activity").orderByChild("activity_type").equalTo(activity_type)
+            .child("activity").child("activity_subject").equalTo(activity_type)
 
         val option = FirebaseRecyclerOptions.Builder<Data_Activity>()
             .setQuery(query,
@@ -191,11 +200,3 @@ class Fragment_Activity : Fragment() {
     }
 }
 
-/*
-    var
-    var searchBtn: Button = findViewById(R.id.searchBtn)
-        searchBtn.setOnClickListener {
-            search(searchWord.text.toString(), "activity_content")
-        }
-
- */

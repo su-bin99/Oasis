@@ -48,7 +48,7 @@ class Adapter_Activity(options: FirebaseRecyclerOptions<Data_Activity>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context)
             .inflate(R.layout.row_activity, parent, false)
-        context = parent.getContext()
+        context = parent.context
         return ViewHolder(v)
     }
 
