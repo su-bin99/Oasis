@@ -17,13 +17,23 @@ import com.example.kusitms.R
 import com.example.kusitms.activityTab.Info_Activity
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_mypage.*
 
 class Adapter_Place(options : FirebaseRecyclerOptions<Data_Place>):
    FirebaseRecyclerAdapter<Data_Place, Adapter_Place.ViewHolder>(options){
+
+    val user = Firebase.auth.currentUser
+    val uid = user?.uid
+
     var context : Context?= null
 
     var itemClickListener : OnItemClickListener?= null
+
+    var myRef = FirebaseDatabase.getInstance().reference.child("my_page").child(uid.toString()).child("like").child("place")
+
 
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         var subjectText : TextView = itemView.findViewById(R.id.plSubjectText)
@@ -54,8 +64,12 @@ class Adapter_Place(options : FirebaseRecyclerOptions<Data_Place>):
         holder.subjectText.text = model.place_subject
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView?.context, Info_Place::class.java)
+            intent.putExtra("place_subject",model.place_subject)
+            intent.putExtra("place_time",model.place_time)
             holder.itemView.context.startActivity(intent)
         }
+
+
         Glide.with(context!!).load(R.drawable.place_img)
             .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
             .override(360, 170)

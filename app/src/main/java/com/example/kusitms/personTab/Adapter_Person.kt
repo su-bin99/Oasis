@@ -17,7 +17,10 @@ import com.example.kusitms.SplashActivity
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 
 class Adapter_Person(options: FirebaseRecyclerOptions<Data_Person>) :
@@ -26,8 +29,11 @@ class Adapter_Person(options: FirebaseRecyclerOptions<Data_Person>) :
 
     val user = Firebase.auth.currentUser
     val uid = user?.uid
+    val folname = user?.displayName.toString()
 
     var myRef = FirebaseDatabase.getInstance().reference.child("my_page").child(uid.toString()).child("people").child("following")
+
+    var yourRef = FirebaseDatabase.getInstance().reference
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -49,12 +55,6 @@ class Adapter_Person(options: FirebaseRecyclerOptions<Data_Person>) :
             itemView.setOnClickListener {
                 itemClickListener?.OnItemClick(it, adapterPosition)
             }
-
-            pFollowbtn.setOnClickListener(object : View.OnClickListener{
-                override fun onClick(v: View?) {
-                    myRef.child("asdf").setValue("asdf")
-                }
-            })
         }
     }
 
@@ -73,6 +73,17 @@ class Adapter_Person(options: FirebaseRecyclerOptions<Data_Person>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int, model: Data_Person) {
         holder.pWriterText.text = model.person_writer
         holder.pSubjectText.text = model.person_subject
+        var a = model.person_uid
+
+        holder.pFollowbtn.setOnClickListener(object : View.OnClickListener{
+            override fun onClick(v: View?) {
+                var name = model.person_writer
+                myRef.child(name).setValue(a)
+
+                var personuid = model.person_uid
+                yourRef.child("my_page").child(personuid).child("people").child("follower").child(folname).setValue(uid)
+            }
+        })
 
         for ( i in 0..2 ){
             if(i < model.person_tag.size){

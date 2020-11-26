@@ -53,6 +53,13 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:textSize="20dp" />
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="좋아요"
+                android:id="@+id/like"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

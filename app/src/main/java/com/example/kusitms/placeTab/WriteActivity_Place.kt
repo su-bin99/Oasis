@@ -35,6 +35,8 @@ class WriteActivity_Place : AppCompatActivity(){
     var value = ""
 
     var myRef = FirebaseDatabase.getInstance().reference.child("my_page").child(uid).child("privacy").child("name")
+    var hisRef = FirebaseDatabase.getInstance().reference.child("my_page").child(uid).child("history").child("writing")
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,6 +80,8 @@ class WriteActivity_Place : AppCompatActivity(){
             writer = value
 
             insertData(content, photo, reserveperson, review, subject, concept, maxnum, type, time, writer, uid)
+
+            hisRef.child(subject).setValue(time)
         }
     }
 
