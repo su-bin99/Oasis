@@ -53,8 +53,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        val button: Button = findViewById(R.id.google)
-        button.setOnClickListener(object : View.OnClickListener {
+        google.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 signIn()
             }

@@ -1,37 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"    >
+    android:background="@color/lightGray"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:background="@drawable/back_bottom_circle_shadow"
         android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="프로필"
+            android:textSize="17dp" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:background="@drawable/ic_back"
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="15dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="25dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -47,6 +41,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/name"
                     android:layout_width="80dp"
@@ -54,35 +49,36 @@
                     android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:text="박재민"
-                    android:textSize="20dp"
-                    android:textColor="@color/darkGray"/>
+                    android:textColor="@color/darkGray"
+                    android:textSize="20dp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:orientation="horizontal">
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        >
+                        android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/my_followerNum"
                             android:layout_width="50dp"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="1411"
-                            android:textSize="16dp"/>
+                            android:textSize="16dp" />
+
                         <TextView
                             android:layout_width="50dp"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="팔로워"
-                            android:textSize="13dp"/>
+                            android:textSize="13dp" />
 
                     </LinearLayout>
-
 
 
                     <View
@@ -95,33 +91,252 @@
                     <LinearLayout
                         android:layout_width="50dp"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        >
+                        android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/my_followingNum"
                             android:layout_width="50dp"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="24"
-                            android:textSize="16dp"/>
+                            android:textSize="16dp" />
+
                         <TextView
                             android:layout_width="50dp"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="팔로잉"
-                            android:textSize="13dp"/>
+                            android:textSize="13dp" />
 
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
-<!--        <view-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="60dp"-->
-<!--            android:layout_margin="15dp"-->
-<!--            android:background="@drawable/back_corner_roundround"-->
-<!--            android:backgroundTint="@color/darkGray"/>-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="15dp"
+            android:background="@color/lightGray" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="45dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center"
+                    app:srcCompat="@drawable/ic_bookmark" />
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="작성글"
+                    android:textSize="13dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/scrap_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="45dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center"
+                    app:srcCompat="@drawable/ic_heart" />
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="스크랩"
+                    android:textSize="13dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_heart" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:gravity="left|center_vertical"
+            android:background="@drawable/back_none"
+            android:text="예약 히스토리"
+            android:textSize="16dp" />
 
     </LinearLayout>
-</ScrollView>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="3dp"
+        android:background="#878686" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_heart" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:gravity="left|center_vertical"
+            android:background="@drawable/back_none"
+            android:text="이벤트"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="3dp"
+        android:background="#878686" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_heart" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:gravity="left|center_vertical"
+            android:background="@drawable/back_none"
+            android:text="공지사항"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="3dp"
+        android:background="#878686" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_heart" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:gravity="left|center_vertical"
+            android:background="@drawable/back_none"
+            android:text="실험실"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="3dp"
+        android:background="#878686" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_heart" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:gravity="left|center_vertical"
+            android:background="@drawable/back_none"
+            android:text="설정"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
