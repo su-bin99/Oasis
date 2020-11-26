@@ -91,6 +91,7 @@ class WriteActivity_Activity : AppCompatActivity() {
 
             var writer = value
 
+
             val currentDateTime = Calendar.getInstance().time
             var time = SimpleDateFormat("yyyy.MM.dd HH:mm", Locale.KOREA).format(currentDateTime)
             insertData(type, fieldarray, content,0, pic_url, act_object, participatearray,
@@ -153,10 +154,6 @@ class WriteActivity_Activity : AppCompatActivity() {
         }
 
         dataRef.child("activity_pic_url").setValue(fileName)
-        dataRef.child("activity_subject").setValue(activity_subject)
-        dataRef.child("activity_time").setValue(activity_time)
-        dataRef.child("activity_writer").setValue(activity_writer)
-        dataRef.child("activity_uid").setValue(activity_uid)
 
 
 

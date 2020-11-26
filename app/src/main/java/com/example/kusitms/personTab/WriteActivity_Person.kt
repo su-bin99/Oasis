@@ -27,7 +27,7 @@ class WriteActivity_Person : AppCompatActivity() {
     var value = ""
 
     var myRef = FirebaseDatabase.getInstance().reference.child("my_page").child(uid).child("privacy").child("name")
-
+    var pic_url=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,7 +70,7 @@ class WriteActivity_Person : AppCompatActivity() {
             println("ㅁㅓ가 먼저찍힐까?")
             val currentDateTime = Calendar.getInstance().time
             var time = SimpleDateFormat("yyyy.MM.dd HH:mm", Locale.KOREA).format(currentDateTime)
-            insertData(content, subject, tagarray, time, uid, work, writer)
+            insertData(content, subject, tagarray, time, uid, work, writer,pic_url)
         }
     }
  
@@ -81,7 +81,8 @@ class WriteActivity_Person : AppCompatActivity() {
                    person_time : String,
                    person_uid : String,
                    person_work : String,
-                   person_writer : String
+                   person_writer : String,
+                   person_pic_url : String
     ){
         var dataRef = FirebaseDatabase.getInstance().reference.child("person").push()
 
@@ -94,6 +95,7 @@ class WriteActivity_Person : AppCompatActivity() {
         dataRef.child("person_uid").setValue(person_uid)
         dataRef.child("person_work").setValue(person_work)
         dataRef.child("person_writer").setValue(person_writer)
+        dataRef.child("person_pic_url").setValue(person_pic_url)
 
 //        val myToast = Toast.makeText(this.applicationContext, "글 작성이 완료되었습니다.", Toast.LENGTH_SHORT)
 //        myToast.show()

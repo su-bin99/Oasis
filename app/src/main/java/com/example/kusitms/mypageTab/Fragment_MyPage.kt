@@ -31,14 +31,30 @@ class Fragment_MyPage : Fragment() {
     val myUser : DatabaseReference = myPage.child(uid.toString())
     val myName : DatabaseReference = myUser.child("name")
 
+    var myRef = FirebaseDatabase.getInstance().reference.child("my_page").child(uid.toString()).child("people")
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                my_followerNum.text = snapshot.child("follower").childrenCount.toString()
+                my_followingNum.text = snapshot.child("following").childrenCount.toString()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                println("failed to read value")
+            }
+        })
+
+
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_mypage, container, false)
         return root
+
     }
 
     override fun onResume() {
