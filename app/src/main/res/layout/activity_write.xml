@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
-    android:gravity="left"
+    android:layout_margin="15dp"
     android:background="@color/white"
-    android:layout_margin="15dp">
+    android:gravity="left"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
@@ -22,7 +21,7 @@
 
         <Button
             android:id="@+id/picBtn"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="insert image" />
     </LinearLayout>
@@ -37,7 +36,7 @@
             android:layout_height="wrap_content"
             android:text="작성자 :  "
             android:textSize="20dp" />
-<!--
+        <!--
         <TextView
             android:id="@+id/activity_userId"
             android:layout_width="wrap_content"
@@ -48,40 +47,40 @@
     </LinearLayout>
 
     <EditText
-        android:hint = "컨셉을 입력하세요 "
+        android:id="@+id/activity_participate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/activity_participate"/>
+        android:hint="컨셉을 입력하세요 " />
 
     <EditText
-        android:hint = "분야를 입력하세요 "
+        android:id="@+id/activity_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/activity_field"/>
+        android:hint="분야를 입력하세요 " />
 
     <EditText
-        android:hint = "유형을 입력하세요 "
+        android:id="@+id/activity_type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/activity_type"/>
+        android:hint="유형을 입력하세요 " />
 
     <EditText
-        android:hint= "제목을 입력하세요 "
+        android:id="@+id/activity_subject"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/activity_subject"/>
+        android:hint="제목을 입력하세요 " />
 
     <EditText
-        android:hint= "최대인원을 입력하세요 "
+        android:id="@+id/activity_maxPeopleNum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/activity_maxPeopleNum"/>
+        android:hint="최대인원을 입력하세요 " />
 
     <EditText
-        android:hint= "내용을 입력하세요 "
+        android:id="@+id/activity_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/activity_content"/>
+        android:hint="내용을 입력하세요 " />
 
     <ImageView
         android:id="@+id/picView"
