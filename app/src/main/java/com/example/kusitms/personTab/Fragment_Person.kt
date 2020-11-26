@@ -78,7 +78,8 @@ class Fragment_Person : Fragment() {
                     snapshot.child("person_time").value.toString(),
                     snapshot.child("person_uid").value.toString(),
                     snapshot.child("person_work").value.toString(),
-                    snapshot.child("person_writer").value.toString()
+                    snapshot.child("person_writer").value.toString(),
+                    snapshot.child("person_pic_url").value.toString()
 
                 )
             }

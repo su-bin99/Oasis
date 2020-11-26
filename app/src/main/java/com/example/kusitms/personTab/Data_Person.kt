@@ -14,10 +14,11 @@ data class Data_Person (
     var person_time : String,
     var person_uid : String,
     var person_work : String,
-    var person_writer : String
+    var person_writer : String,
+    var person_pic_url : String
 ) {
     constructor():
 //            this("", "","", "", ArrayList<String>())
     this("","",ArrayList<String>(),"",
-        "","","")
+        "","","","")
 }

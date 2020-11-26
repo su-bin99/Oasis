@@ -50,10 +50,10 @@ class Fragment_MyPage : Fragment() {
             }
         })
 
+
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_mypage, container, false)
         return root
-
 
     }
 
