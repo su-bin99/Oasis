@@ -1,7 +1,11 @@
 package com.example.kusitms.placeTab
 
 import android.content.ContentValues
+import android.content.Intent
+import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -12,11 +16,18 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.place_write.*
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
 class WriteActivity_Place : AppCompatActivity(){
+
+    private val GET_GALLERY_IMAGE = 200
+    lateinit var selectedImageUri: Uri
+    var fileName: String = ""
+
     val user = Firebase.auth.currentUser
     val userid = user?.uid
 
@@ -52,6 +63,7 @@ class WriteActivity_Place : AppCompatActivity(){
                 println("failed to read value")
             }
         })
+
     }
 
     override fun onStart() {
@@ -82,6 +94,15 @@ class WriteActivity_Place : AppCompatActivity(){
             insertData(content, photo, reserveperson, review, subject, concept, maxnum, type, time, writer, uid)
 
             hisRef.child(subject).setValue(time)
+
+        }
+        picBtn.setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.setDataAndType(
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                "image/*"
+            )
+            startActivityForResult(intent, GET_GALLERY_IMAGE)
         }
     }
 
@@ -100,6 +121,8 @@ class WriteActivity_Place : AppCompatActivity(){
     ){
         var dataRef = FirebaseDatabase.getInstance().reference.child("place").push()
 
+        upload()
+
         dataRef.child("place_content").setValue(place_content)
         dataRef.child("place_photo").setValue(place_photo)
         dataRef.child("place_reserve").child("place_review").setValue(place_review)
@@ -111,10 +134,49 @@ class WriteActivity_Place : AppCompatActivity(){
         dataRef.child("place_time").setValue(place_time)
         dataRef.child("place_writer").setValue(place_writer)
         dataRef.child("place_uid").setValue(place_uid)
+        dataRef.child("place_photo").setValue(fileName)
 
         val myToast = Toast.makeText(this.applicationContext, "글 작성이 완료되었습니다.", Toast.LENGTH_SHORT)
         myToast.show()
 
         this.finish()
     }
+
+    fun upload() {
+        fileName = getImg(selectedImageUri)
+        val storage = FirebaseStorage.getInstance()
+        val storageRef = storage.reference
+        var imgRef = storageRef.child("images/$fileName")
+
+        var uploadTask = imgRef.putFile(selectedImageUri)
+        uploadTask.addOnFailureListener {
+        }.addOnSuccessListener {
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(resultCode, requestCode, data)
+
+        if (requestCode == GET_GALLERY_IMAGE && resultCode == RESULT_OK && data != null && data.data != null) {
+
+            selectedImageUri= data.data!!
+            picView.setImageURI(selectedImageUri)
+        }
+    }
+    private fun absolutelyPath(path: Uri): String {
+
+        var proj: Array<String> = arrayOf(MediaStore.Images.Media.DATA)
+        var c: Cursor = contentResolver.query(path, proj, null, null, null)!!
+        var index = c.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+        c.moveToFirst()
+
+        return c.getString(index)
+    }
+    private fun getImg(path: Uri):String {
+        var aPath=absolutelyPath(path)
+        var file = File(aPath)
+
+        return file.name
+    }
+
 }
