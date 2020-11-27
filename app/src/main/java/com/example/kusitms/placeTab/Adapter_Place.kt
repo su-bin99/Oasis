@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -73,6 +74,7 @@ class Adapter_Place(options : FirebaseRecyclerOptions<Data_Place>):
 
             intent.putExtra("place_subject",model.place_subject)
             intent.putExtra("place_time",model.place_time)
+            intent.putExtra("place_price",model.place_price)
             intent.putExtra("place_content",model.place_content)
             intent.putExtra("place_photo",model.place_photo)
             intent.putExtra("place_concept",model.place_concept)
@@ -81,6 +83,8 @@ class Adapter_Place(options : FirebaseRecyclerOptions<Data_Place>):
             intent.putExtra("place_writer",model.place_writer)
             intent.putExtra("place_subject", model.place_subject)
             intent.putExtra("place_time", model.place_time)
+
+            Toast.makeText(context, model.place_subject, Toast.LENGTH_LONG).show()
 
             holder.itemView.context.startActivity(intent)
         }
@@ -96,7 +100,7 @@ class Adapter_Place(options : FirebaseRecyclerOptions<Data_Place>):
         imgRef.downloadUrl.addOnSuccessListener {
                 Uri->
             val imageURL=Uri.toString()
-            if(imageURL == "")
+            if(model.place_photo=="")
                 Glide.with(holder.itemView.context).load(R.drawable.place_img)
             else {
                 Glide.with(holder.itemView.context).load(imageURL)

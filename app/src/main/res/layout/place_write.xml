@@ -61,6 +61,14 @@
         android:id="@+id/edit_place_photo"/>
 
     <EditText
+        android:id="@+id/edit_place_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="시간 당 가격을 원 단위로 입력하세요"
+        android:inputType="number" />
+
+    <EditText
         android:hint = "제목 입력하세요 "
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

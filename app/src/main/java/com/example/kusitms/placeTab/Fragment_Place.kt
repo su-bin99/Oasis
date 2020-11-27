@@ -117,6 +117,7 @@ class Fragment_Place : Fragment() {
                 Data_Place(
                     snapshot.child("photo_content").value.toString(),
                     snapshot.child("place_photo").value.toString(),
+                    snapshot.child("place_price").value.toString().toInt(),
                     snapshot.child("reserve_person").value.toString(),
                     snapshot.child("place_reserve").child("place_review").value.toString(),
                     snapshot.child("place_subject").value.toString(),
@@ -148,6 +149,7 @@ class Fragment_Place : Fragment() {
                     Data_Place(
                         snapshot.child("photo_content").value.toString(),
                         snapshot.child("place_photo").value.toString(),
+                        snapshot.child("place_price").value.toString().toInt(),
                         snapshot.child("reserve_person").value.toString(),
                         snapshot.child("place_reserve").child("place_review").value.toString(),
                         snapshot.child("place_subject").value.toString(),

@@ -87,7 +87,7 @@ class Adapter_Person(options: FirebaseRecyclerOptions<Data_Person>) :
         imgRef.downloadUrl.addOnSuccessListener {
                 Uri->
             val imageURL=Uri.toString()
-            if(imageURL == "")
+            if(model.person_pic_url == "")
                 Glide.with(holder.itemView.context).load(R.drawable.ic_launcher_foreground)
             else {
                 Glide.with(holder.itemView.context).load(imageURL)

@@ -33,6 +33,7 @@ class WriteActivity_Place : AppCompatActivity(){
 
     var content = ""
     var photo = ""
+    var price=0
     var reserveperson = ""
     var review = ""
     var subject = ""
@@ -75,6 +76,7 @@ class WriteActivity_Place : AppCompatActivity(){
         place_submitBtn.setOnClickListener{
             content = edit_place_content.text.toString()
             photo = edit_place_photo.text.toString()
+            price=edit_place_price.text.toString().toInt()
             subject = edit_place_subject.text.toString()
             concept = edit_place_concept.text.toString()
             var temp = edit_place_maxnum.text.toString()
@@ -91,7 +93,7 @@ class WriteActivity_Place : AppCompatActivity(){
 
             writer = value
 
-            insertData(content, photo, reserveperson, review, subject, concept, maxnum, type, time, writer, uid)
+            insertData(content, photo, price, reserveperson, review, subject, concept, maxnum, type, time, writer, uid)
 
             hisRef.child(subject).setValue(time)
 
@@ -109,6 +111,7 @@ class WriteActivity_Place : AppCompatActivity(){
     fun insertData(
         place_content : String,
         place_photo : String,
+        place_price : Int,
         reserve_person : String,
         place_review :String,
         place_subject : String,
@@ -125,6 +128,7 @@ class WriteActivity_Place : AppCompatActivity(){
 
         dataRef.child("place_content").setValue(place_content)
         dataRef.child("place_photo").setValue(place_photo)
+        dataRef.child("place_price").setValue(place_price)
         dataRef.child("place_reserve").child("place_review").setValue(place_review)
         dataRef.child("place_reserve").child("reserve_person").setValue(reserve_person)
         dataRef.child("place_subject").setValue(place_subject)

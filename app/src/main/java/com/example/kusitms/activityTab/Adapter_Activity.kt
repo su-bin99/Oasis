@@ -64,7 +64,7 @@ class Adapter_Activity(options: FirebaseRecyclerOptions<Data_Activity>) :
         imgRef.downloadUrl.addOnSuccessListener {
                 Uri->
             val imageURL=Uri.toString()
-            if(imageURL == "")
+            if(model.activity_pic_url == "")
                 Glide.with(context!!).load(R.drawable.place_img)
             else {
                 Glide.with(holder.itemView.context).load(imageURL)

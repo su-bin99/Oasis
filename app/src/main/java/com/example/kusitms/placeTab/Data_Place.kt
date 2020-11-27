@@ -3,6 +3,7 @@ package com.example.kusitms.placeTab
 data class Data_Place (
     var place_content : String,
     var place_photo : String,
+    var place_price : Int,
     var reserve_person : String,
     var place_review :String,
     var place_subject : String,
@@ -14,7 +15,7 @@ data class Data_Place (
     var place_uid : String
     ) {
     constructor():
-            this("", "", "", "",
+            this("", "", 0, "", "",
             "", "",0,  "", "","",""
             )
 }

@@ -9,8 +9,11 @@
         <item name="colorAccent">@color/white</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        
+        <item name="android:textViewStyle">@style/NotoSansTextViewStyle</item>
+    </style>
 
+    <style name="NotoSansTextViewStyle" parent="@android:style/Widget.DeviceDefault.TextView">
+        <item name="android:fontFamily">@font/noto_serif_h</item>
     </style>
 
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
