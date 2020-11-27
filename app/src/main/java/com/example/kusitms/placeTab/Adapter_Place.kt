@@ -30,6 +30,9 @@ class Adapter_Place(options : FirebaseRecyclerOptions<Data_Place>):
     val user = Firebase.auth.currentUser
     val uid = user?.uid
 
+    val storage = FirebaseStorage.getInstance()
+    val storageRef = storage.reference
+
     var context: Context? = null
 
     var itemClickListener: OnItemClickListener? = null
@@ -37,8 +40,6 @@ class Adapter_Place(options : FirebaseRecyclerOptions<Data_Place>):
     var myRef = FirebaseDatabase.getInstance().reference.child("my_page").child(uid.toString())
         .child("like").child("place")
 
-    val storage = FirebaseStorage.getInstance()
-    val storageRef = storage.reference
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var subjectText: TextView = itemView.findViewById(R.id.plSubjectText)
@@ -60,7 +61,7 @@ class Adapter_Place(options : FirebaseRecyclerOptions<Data_Place>):
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Adapter_Place.ViewHolder {
         val v = LayoutInflater.from(parent.context)
             .inflate(R.layout.row_place, parent, false)
-        context = parent.getContext()
+        context = parent.context
         return ViewHolder(v)
     }
 
@@ -81,22 +82,19 @@ class Adapter_Place(options : FirebaseRecyclerOptions<Data_Place>):
 //            .into(holder.imageView);
 
 
-        var imgRef: StorageReference = storageRef.child("images/${model.place_photo}")
-        if(imgRef!=null) {
-            imgRef.downloadUrl.addOnSuccessListener { Uri ->
-                val imageURL = Uri.toString()
+        var imgRef: StorageReference =storageRef.child("images/${model.place_photo}")
+        imgRef.downloadUrl.addOnSuccessListener {
+                Uri->
+            val imageURL=Uri.toString()
+            if(imageURL == "")
+                Glide.with(holder.itemView.context).load(R.drawable.ic_launcher_foreground)
+            else {
                 Glide.with(holder.itemView.context).load(imageURL)
 
                     .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
                     .override(360, 170)
                     .into(holder.imageView);
             }
-        }
-        else{
-            Glide.with(context!!).load(R.drawable.place_img)
-                .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
-                .override(360, 170)
-                .into(holder.imageView);
         }
     }
 }

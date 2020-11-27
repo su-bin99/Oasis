@@ -59,18 +59,20 @@ class Adapter_Activity(options: FirebaseRecyclerOptions<Data_Activity>) :
             val intent = Intent(holder.itemView?.context, Info_Activity::class.java)
             holder.itemView.context.startActivity(intent)
         }
-//        holder.imageView
-        Glide.with(context!!).load(R.drawable.place_img)
 
         var imgRef: StorageReference =storageRef.child("images/${model.activity_pic_url}")
         imgRef.downloadUrl.addOnSuccessListener {
                 Uri->
             val imageURL=Uri.toString()
-            Glide.with(holder.itemView.context).load(imageURL)
+            if(imageURL == "")
+                Glide.with(context!!).load(R.drawable.place_img)
+            else {
+                Glide.with(holder.itemView.context).load(imageURL)
 
-            .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
-            .override(360, 170)
-            .into(holder.imageView);
+                    .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
+                    .override(360, 170)
+                    .into(holder.imageView);
+            }
         }
     }
 

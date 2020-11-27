@@ -27,6 +27,7 @@ class WriteActivity_Activity : AppCompatActivity() {
 
     private val GET_GALLERY_IMAGE = 200
     lateinit var selectedImageUri:Uri
+    var fileName: String = ""
 
     val user = Firebase.auth.currentUser
     val userid = user?.uid
@@ -141,18 +142,7 @@ class WriteActivity_Activity : AppCompatActivity() {
         for(i in 0 until activity_participate.size){
             dataRef.child("activity_participate").child(i.toString()).setValue(activity_participate)
         }
-
-
-        var fileName:String=getImg(selectedImageUri)
-        val storage = FirebaseStorage.getInstance()
-        val storageRef = storage.reference
-        var imgRef = storageRef.child("images/$fileName")
-
-        var uploadTask = imgRef.putFile(selectedImageUri)
-        uploadTask.addOnFailureListener{
-        }.addOnSuccessListener {
-        }
-
+        upload()
         dataRef.child("activity_pic_url").setValue(fileName)
 
 
@@ -162,6 +152,18 @@ class WriteActivity_Activity : AppCompatActivity() {
 
         this.finish()
 
+    }
+
+    fun upload() {
+        fileName = getImg(selectedImageUri)
+        val storage = FirebaseStorage.getInstance()
+        val storageRef = storage.reference
+        var imgRef = storageRef.child("images/$fileName")
+
+        var uploadTask = imgRef.putFile(selectedImageUri)
+        uploadTask.addOnFailureListener {
+        }.addOnSuccessListener {
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
