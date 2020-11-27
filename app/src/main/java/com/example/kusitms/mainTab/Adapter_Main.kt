@@ -58,16 +58,16 @@ class Adapter_Main(options: FirebaseRecyclerOptions<Data_home>) :
 //            holder.itemView.context.startActivity(intent)
 //        }
 //        holder.imageView
-        Glide.with(context!!).load(R.drawable.place_img)
+//        Glide.with(context!!).load(R.drawable.place_img)
 
         var imgRef: StorageReference =storageRef.child("images/${model.pic_url}")
         imgRef.downloadUrl.addOnSuccessListener {
                 Uri->
             val imageURL=Uri.toString()
             Glide.with(holder.itemView.context).load(imageURL)
-
-            .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
-            .override(360, 170)
+//
+//            .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
+//            .override(360, 170)
             .into(holder.imageView);
         }
     }
