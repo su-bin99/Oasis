@@ -82,6 +82,20 @@ class Adapter_Person(options: FirebaseRecyclerOptions<Data_Person>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int, model: Data_Person) {
         holder.pWriterText.text = model.person_writer
         holder.pSubjectText.text = model.person_subject
+
+
+        holder.itemView.setOnClickListener{
+            val intent = Intent(holder.itemView?.context, Info_Person::class.java)
+            intent.putExtra("person_content",model.person_content)
+            intent.putExtra("person_subject",model.person_subject)
+            intent.putStringArrayListExtra("person_tag",model.person_tag)
+            intent.putExtra("person_time",model.person_time)
+            intent.putExtra("person_work",model.person_work)
+            intent.putExtra("person_writer",model.person_writer)
+            intent.putExtra("person_pic_url",model.person_pic_url)
+            holder.itemView.context.startActivity(intent)
+        }
+
         var a = model.person_uid
 
         var imgRef: StorageReference =storageRef.child("images/${model.person_pic_url}")
@@ -119,10 +133,7 @@ class Adapter_Person(options: FirebaseRecyclerOptions<Data_Person>) :
             }
         }
 
-        holder.itemView.setOnClickListener{
-            val intent = Intent(holder.itemView?.context, Info_Person::class.java)
-            holder.itemView.context.startActivity(intent)
-        }
+
 
 
     }
