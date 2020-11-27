@@ -41,6 +41,7 @@
         <activity android:name=".personTab.Info_Person" />
         <activity android:name=".personTab.Search_Person" />
 
+        <activity android:name=".mypageTab.History_Activity"/>
     </application>
 
 </manifest>

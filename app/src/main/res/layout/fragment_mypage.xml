@@ -129,6 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginRight="45dp"
+                android:id="@+id/write"
                 android:orientation="vertical">
 
                 <ImageView

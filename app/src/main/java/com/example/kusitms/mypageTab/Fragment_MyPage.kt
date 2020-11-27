@@ -1,5 +1,6 @@
 package com.example.kusitms.mypageTab
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -60,6 +61,11 @@ class Fragment_MyPage : Fragment() {
     override fun onResume() {
         super.onResume()
         init()
+
+        write.setOnClickListener{
+            var intent = Intent(context, History_Activity::class.java)
+            startActivity(intent)
+        }
 
 
 //        //ui적으로 수정된 것을 나타낼 방법 필요
