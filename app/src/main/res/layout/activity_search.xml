@@ -13,7 +13,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/ainfoTab_backBtn"
+            android:id="@+id/asearchTab_backBtn"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginLeft="15dp"
@@ -42,46 +42,66 @@
             android:textSize="18dp" />
     </LinearLayout>
 
-    <LinearLayout
+    <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/a_field_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/back_corner_circle"
-            android:text="분야"
-            android:textSize="18dp" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/spinner">
 
-        <Button
-            android:id="@+id/a_target_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/back_corner_circle"
-            android:text="대상"
-            android:textSize="18dp" />
+                <Spinner
+                    android:id="@+id/a_field_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#7E7C7C" />
+            </RelativeLayout>
 
-        <Button
-            android:id="@+id/a_type_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:background="@drawable/back_corner_circle"
-            android:text="유형"
-            android:textSize="18dp" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/spinner">
 
-        <Button
-            android:id="@+id/a_pNum_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:background="@drawable/back_corner_circle"
-            android:text="유형"
-            android:textSize="18dp" />
-    </LinearLayout>
+                <Spinner
+                    android:id="@+id/a_type_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#7E7C7C" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/spinner">
+
+                <Spinner
+                    android:id="@+id/a_target_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#7E7C7C" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/spinner">
+
+                <Spinner
+                    android:id="@+id/a_pnum_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#7E7C7C" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

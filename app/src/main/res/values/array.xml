@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="a_searchFieldOption">
+        <item>분야</item>
+        <item>개발</item>
+        <item>디자인</item>
+        <item>마케팅</item>
+        <item>기타</item>
+    </string-array>
+
+    <string-array name="a_searchTargetOption">
+        <item>대상</item>
+        <item>초심자</item>
+        <item>중급자</item>
+        <item>상급자</item>
+    </string-array>
+
+    <string-array name="a_searchTypeOption">
+        <item>유형</item>
+        <item>프로젝트</item>
+        <item>강연회</item>
+        <item>컨퍼런스</item>
+        <item>스터디</item>
+    </string-array>
+
+    <string-array name="a_searchPNumOption">
+        <item>명수</item>
+        <item>1~8명</item>
+        <item>9명 이상</item>
+    </string-array>
+</resources>

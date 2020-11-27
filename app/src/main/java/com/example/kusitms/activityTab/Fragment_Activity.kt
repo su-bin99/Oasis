@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatRadioButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kusitms.R
@@ -66,6 +67,18 @@ class Fragment_Activity : Fragment() {
         AwriteButton.setOnClickListener {
             val intent = Intent(context, WriteActivity_Activity::class.java)
             startActivity(intent)
+        }
+
+        a_search_btn.setOnClickListener{
+            val keyword = search_keyword.text.toString()
+            if(keyword == "" ){
+                Toast.makeText(context, "검색어를 입력해주세요", Toast.LENGTH_SHORT).show()
+            }else{
+                val search_intent = Intent(context, Search_Activity::class.java)
+                search_intent.putExtra("keyword", keyword)
+                startActivity(search_intent)
+            }
+
         }
 
         ac_radioGroup.setOnCheckedChangeListener { group, checkedId ->
