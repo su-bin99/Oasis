@@ -46,14 +46,14 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:gravity="center"
-                android:text="박재민"
+                android:id="@+id/pinfoTab_name"
                 android:textSize="20dp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="스타트업 삼산택 대표"
+                android:id="@+id/pinfoTab_work"
                 android:textSize="12dp" />
 
             <LinearLayout
@@ -68,7 +68,7 @@
                     android:layout_height="30dp"
                     android:layout_margin="3dp"
                     android:background="@drawable/back_border_corner_round"
-                    android:text="CEO"
+                    android:id="@+id/pinfoTab_tag1"
                     android:textSize="13dp" />
 
                 <Button
@@ -76,7 +76,7 @@
                     android:layout_height="30dp"
                     android:layout_margin="3dp"
                     android:background="@drawable/back_border_corner_round"
-                    android:text="IT"
+                    android:id="@+id/pinfoTab_tag2"
                     android:textSize="13dp" />
 
                 <Button
@@ -84,7 +84,7 @@
                     android:layout_height="30dp"
                     android:layout_margin="3dp"
                     android:background="@drawable/back_border_corner_round"
-                    android:text="스타트업"
+                    android:id="@+id/pinfoTab_tag3"
                     android:textSize="13dp" />
 
             </LinearLayout>
@@ -101,11 +101,10 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/followerNum"
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="1411"
+                        android:id="@+id/pinfoTab_follower"
                         android:textSize="18dp" />
 
                     <TextView
@@ -130,7 +129,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/followingNum"
+                        android:id="@+id/pinfoTab_following"
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -174,7 +173,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="전 스타트업 삼산택 대표"
+                    android:id="@+id/pinfoTab_subject"
                     android:textSize="13dp" />
             </LinearLayout>
 
@@ -185,17 +184,11 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_marginRight="4dp"
-                    app:srcCompat="@drawable/ic_pushpin" />
-
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="전 스타트업 삼산택 대표"
+                    android:id="@+id/pinfoTab_content"
                     android:textSize="13dp" />
             </LinearLayout>
 
