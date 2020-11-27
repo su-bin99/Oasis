@@ -20,8 +20,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 
 
-class ASearch_Adapter(options: FirebaseRecyclerOptions<Data_Activity>,
-                      keyword : String, type : String ) :
+class ASearch_Adapter(options: FirebaseRecyclerOptions<Data_Activity>) :
     FirebaseRecyclerAdapter<Data_Activity, ASearch_Adapter.ViewHolder>(options){
     //options : 쿼리가 들어가는것 / 어떤 질의에 대한 어댑터냐
 

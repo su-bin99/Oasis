@@ -3,10 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginBottom="10dp"
+    xmlns:ndroid="http://schemas.android.com/tools"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:background="@drawable/back_corner_circle"
     android:orientation="vertical">
 
 
@@ -15,16 +17,20 @@
         android:layout_width="360dp"
         android:layout_height="170dp"
         android:layout_gravity="center_horizontal"
+        android:background="@drawable/back_corner_roundround"
+        ndroid:scaleType="centerCrop"
         app:srcCompat="@drawable/place_img"/>
 
     <TextView
         android:id="@+id/subjectText"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
         android:layout_gravity="center_horizontal"
+        android:fontFamily="@font/noto_serif_h"
         android:text="코워킹스페이스를 재해석한 공간"
-        android:textSize="15dp"/>
+        android:textSize="18dp"/>
 
 </LinearLayout>
 

@@ -69,8 +69,8 @@ class Adapter_Activity(options: FirebaseRecyclerOptions<Data_Activity>) :
             else {
                 Glide.with(holder.itemView.context).load(imageURL)
 
-                    .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
-                    .override(360, 170)
+//                    .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
+//                    .override(360, 170)
                     .into(holder.imageView);
             }
         }
