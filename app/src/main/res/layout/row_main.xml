@@ -9,6 +9,7 @@
 
     <ImageView
         android:id="@+id/home_Img"
+        android:clipToPadding="true"
         android:layout_width="match_parent"
         android:layout_height="130dp"
         android:layout_gravity="center_horizontal"
@@ -25,6 +26,8 @@
         android:layout_marginTop="5dp"
         android:layout_gravity="center_horizontal"
         android:text="코워킹스페이스를 재해석한 f공간"
+        android:textColor="#000000"
+        android:textStyle="bold"
         android:textSize="15dp"/>
 
 </LinearLayout>

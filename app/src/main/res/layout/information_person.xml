@@ -25,7 +25,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,18 +43,23 @@
                 app:srcCompat="@drawable/user" />
 
             <TextView
+                android:id="@+id/pinfoTab_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:gravity="center"
-                android:id="@+id/pinfoTab_name"
-                android:textSize="20dp" />
+                android:text="박재민"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/pinfoTab_work"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:id="@+id/pinfoTab_work"
+                android:text="웅앵 대표"
+                android:textColor="#000000"
                 android:textSize="12dp" />
 
             <LinearLayout
@@ -64,27 +70,27 @@
 
                 <!--                버튼으로 만들었지만.. 그냥 배경 적용하기 편하려고 넣어두었습니다..-->
                 <Button
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="3dp"
-                    android:background="@drawable/back_border_corner_round"
                     android:id="@+id/pinfoTab_tag1"
-                    android:textSize="13dp" />
-
-                <Button
                     android:layout_width="50dp"
                     android:layout_height="30dp"
                     android:layout_margin="3dp"
                     android:background="@drawable/back_border_corner_round"
+                    android:textSize="13dp" />
+
+                <Button
                     android:id="@+id/pinfoTab_tag2"
-                    android:textSize="13dp" />
-
-                <Button
                     android:layout_width="50dp"
                     android:layout_height="30dp"
                     android:layout_margin="3dp"
                     android:background="@drawable/back_border_corner_round"
+                    android:textSize="13dp" />
+
+                <Button
                     android:id="@+id/pinfoTab_tag3"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="3dp"
+                    android:background="@drawable/back_border_corner_round"
                     android:textSize="13dp" />
 
             </LinearLayout>
@@ -101,17 +107,20 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="80dp"
+                        android:id="@+id/pinfoTab_follower"
+                        android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:id="@+id/pinfoTab_follower"
+                        android:text="144"
+                        android:textColor="#000000"
                         android:textSize="18dp" />
 
                     <TextView
-                        android:layout_width="80dp"
+                        android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="팔로워" />
+                        android:text="팔로워"
+                        android:textColor="#000000" />
 
                 </LinearLayout>
 
@@ -124,23 +133,25 @@
                     android:background="@color/lightGray" />
 
                 <LinearLayout
-                    android:layout_width="80dp"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/pinfoTab_following"
-                        android:layout_width="80dp"
+                        android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="24"
+                        android:textColor="#000000"
                         android:textSize="18dp" />
 
                     <TextView
-                        android:layout_width="80dp"
+                        android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="팔로잉" />
+                        android:text="팔로잉"
+                        android:textColor="#000000" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -171,27 +182,22 @@
 
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:id="@+id/pinfoTab_subject"
-                    android:textSize="13dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-
-                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/pinfoTab_content"
+                    android:text="경력사항"
+                    android:textColor="#000000"
                     android:textSize="13dp" />
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/pinfoTab_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="15dp"
+                android:textSize="13dp" />
 
         </LinearLayout>
 
