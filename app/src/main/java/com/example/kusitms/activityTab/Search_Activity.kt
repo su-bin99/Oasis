@@ -80,7 +80,7 @@ class Search_Activity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
                         snapshot.child("activity_type").value.toString(),
                         activity_field,
                         snapshot.child("activity_content").value.toString(),
-                        snapshot.child("activity_maxPeoplenum").value.toString().toInt(),
+                        snapshot.child("activity_maxPeoplenum").value.toString(),
                         snapshot.child("activity_pic_url").value.toString(),
                         snapshot.child("activity_object").value.toString(),
                         activity_participate,
