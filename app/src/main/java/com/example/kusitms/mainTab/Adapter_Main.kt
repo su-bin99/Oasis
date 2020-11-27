@@ -66,8 +66,8 @@ class Adapter_Main(options: FirebaseRecyclerOptions<Data_home>) :
             val imageURL=Uri.toString()
             Glide.with(holder.itemView.context).load(imageURL)
 //
-//            .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
-//            .override(360, 170)
+            .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
+            .override(360, 170)
             .into(holder.imageView);
         }
     }
