@@ -2,6 +2,7 @@ package com.example.kusitms.activityTab
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -57,6 +58,16 @@ class Adapter_Activity(options: FirebaseRecyclerOptions<Data_Activity>) :
 
         holder.itemView.setOnClickListener{
             val intent = Intent(holder.itemView?.context, Info_Activity::class.java)
+            intent.putExtra("activity_type",model.activity_type)
+            intent.putStringArrayListExtra("activity_field",model.activity_field)
+            intent.putExtra("activity_content",model.activity_content)
+            intent.putExtra("activity_maxPeoplenum",model.activity_maxPeoplenum)
+            intent.putExtra("activity_pic_url",model.activity_pic_url)
+            intent.putExtra("activity_object",model.activity_object)
+            intent.putStringArrayListExtra("activity_participate",model.activity_participate)
+            intent.putExtra("activity_subject",model.activity_subject)
+            intent.putExtra("activity_time",model.activity_time)
+            intent.putExtra("activity_writer",model.activity_writer)
             holder.itemView.context.startActivity(intent)
         }
 
@@ -68,13 +79,10 @@ class Adapter_Activity(options: FirebaseRecyclerOptions<Data_Activity>) :
                 Glide.with(context!!).load(R.drawable.place_img)
             else {
                 Glide.with(holder.itemView.context).load(imageURL)
-
-//                    .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
-//                    .override(360, 170)
+                    .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
+                    .override(360, 170)
                     .into(holder.imageView);
             }
         }
     }
-
-
 }

@@ -129,7 +129,7 @@ class Fragment_Activity : Fragment() {
         if (adapter != null)
             adapter.stopListening()
         val query = FirebaseDatabase.getInstance().reference
-            .child("activity").child("activity_subject").equalTo(activity_type)
+            .child("activity").orderByChild("activity_type").equalTo(activity_type)
 
         val option = FirebaseRecyclerOptions.Builder<Data_Activity>()
             .setQuery(query,

@@ -42,8 +42,6 @@ class Info_Place : AppCompatActivity() {
         plinfoTab_price.text=intent.getStringExtra("place_price")
         placeTag.text = intent.getStringExtra("place_concept")
         plinfoTab_type.text = intent.getStringExtra("place_type")
-        plinfoTab_time.text = intent.getStringExtra("place_time")
-        plinfoTab_writer.text = intent.getStringExtra("place_writer")
 
         var pic_url:String=intent.getStringExtra("place_photo").toString()
         getImg(pic_url)

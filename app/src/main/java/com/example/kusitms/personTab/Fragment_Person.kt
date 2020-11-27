@@ -6,13 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kusitms.R
+import com.example.kusitms.personTab.Search_Person
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_person.*
+import kotlinx.android.synthetic.main.fragment_person.recyclerView
 import kotlinx.android.synthetic.main.fragment_person.view.*
 
 /**
@@ -54,6 +57,18 @@ class Fragment_Person : Fragment() {
             val intent = Intent(context,
                 WriteActivity_Person::class.java)
             startActivity(intent)
+        }
+
+        psearch_btn.setOnClickListener {
+            var keyword = psearch_keyword.text.toString()
+            if (keyword == "") {
+                Toast.makeText(context, "검색어를 입력해주세요", Toast.LENGTH_SHORT).show()
+            } else {
+                val psearch_intent = Intent(context, Search_Person::class.java)
+                psearch_intent.putExtra("keyword", keyword)
+                println("시발 뭐가 문제니?" + keyword)
+                startActivity(psearch_intent)
+            }
         }
 
     }

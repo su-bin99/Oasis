@@ -1,38 +1,33 @@
 package com.example.kusitms.personTab
 
+import android.content.Context
 import android.content.Intent
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.kusitms.R
-import com.example.kusitms.SplashActivity
+import com.example.kusitms.activityTab.ASearch_Adapter
+import com.example.kusitms.activityTab.Data_Activity
+import com.example.kusitms.activityTab.Info_Activity
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import kotlinx.android.synthetic.main.fragment_mypage.*
 
-class Adapter_Person(options: FirebaseRecyclerOptions<Data_Person>) :
-    FirebaseRecyclerAdapter<Data_Person, Adapter_Person.ViewHolder>(options) {
+
+class PSearch_Adapter(options: FirebaseRecyclerOptions<Data_Person>) :
+    FirebaseRecyclerAdapter<Data_Person, PSearch_Adapter.ViewHolder>(options){
+    //options : 쿼리가 들어가는것 / 어떤 질의에 대한 어댑터냐
+
     var itemClickListener: OnItemClickListener? = null
-
     val storage = FirebaseStorage.getInstance()
     val storageRef = storage.reference
 
@@ -83,19 +78,12 @@ class Adapter_Person(options: FirebaseRecyclerOptions<Data_Person>) :
         holder.pWriterText.text = model.person_writer
         holder.pSubjectText.text = model.person_subject
 
-        var tag1 = model.person_tag.get(0)
-        var tag2 = model.person_tag.get(1)
-        var tag3 = model.person_tag.get(2)
 
         holder.itemView.setOnClickListener{
             val intent = Intent(holder.itemView?.context, Info_Person::class.java)
             intent.putExtra("person_content",model.person_content)
             intent.putExtra("person_subject",model.person_subject)
-
-            intent.putExtra("person_tag1", tag1)
-            intent.putExtra("person_tag2",tag2)
-            intent.putExtra("person_tag3",tag3)
-
+            intent.putStringArrayListExtra("person_tag",model.person_tag)
             intent.putExtra("person_time",model.person_time)
             intent.putExtra("person_work",model.person_work)
             intent.putExtra("person_writer",model.person_writer)
@@ -140,6 +128,11 @@ class Adapter_Person(options: FirebaseRecyclerOptions<Data_Person>) :
             }
         }
 
+        holder.itemView.setOnClickListener{
+            val intent = Intent(holder.itemView?.context, Info_Person::class.java)
+            holder.itemView.context.startActivity(intent)
+        }
 
     }
+
 }

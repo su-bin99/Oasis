@@ -20,7 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activityTab.Search_Activity"></activity>
+        <activity android:name=".activityTab.Search_Activity" />
         <activity android:name=".placeTab.Info_Place" />
         <activity android:name=".activityTab.Info_Activity" />
         <activity android:name=".activityTab.WriteActivity_Activity" />
@@ -39,6 +39,9 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".placeTab.WriteActivity_Place" />
         <activity android:name=".personTab.Info_Person" />
+        <activity android:name=".personTab.Search_Person" />
+
+        <activity android:name=".mypageTab.History_Activity"/>
     </application>
 
 </manifest>
