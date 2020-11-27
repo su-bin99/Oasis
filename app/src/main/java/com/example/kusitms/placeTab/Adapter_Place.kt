@@ -97,7 +97,7 @@ class Adapter_Place(options : FirebaseRecyclerOptions<Data_Place>):
                 Uri->
             val imageURL=Uri.toString()
             if(imageURL == "")
-                Glide.with(holder.itemView.context).load(R.drawable.ic_launcher_foreground)
+                Glide.with(holder.itemView.context).load(R.drawable.place_img)
             else {
                 Glide.with(holder.itemView.context).load(imageURL)
 
