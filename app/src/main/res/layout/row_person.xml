@@ -42,6 +42,7 @@
                 android:layout_gravity="left"
                 android:gravity="center"
                 android:text="박재민"
+                android:textColor="#000000"
                 android:textSize="17dp"
                 android:textStyle="bold" />
 
@@ -84,6 +85,7 @@
             android:layout_height="wrap_content"
             android:gravity="left"
             android:text="소프트웨어 엔지니어"
+            android:textColor="#000000"
             android:textSize="13dp" />
 
         <LinearLayout
@@ -116,8 +118,8 @@
                 android:id="@+id/pTagLayout2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:background="@drawable/back_border_corner_round">
 
                 <TextView
