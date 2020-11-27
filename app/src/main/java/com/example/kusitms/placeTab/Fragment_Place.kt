@@ -115,7 +115,7 @@ class Fragment_Place : Fragment() {
         val option = FirebaseRecyclerOptions.Builder<Data_Place>()
             .setQuery(query) { snapshot ->
                 Data_Place(
-                    snapshot.child("photo_content").value.toString(),
+                    snapshot.child("place_content").value.toString(),
                     snapshot.child("place_photo").value.toString(),
                     snapshot.child("place_price").value.toString().toInt(),
                     snapshot.child("reserve_person").value.toString(),
@@ -147,15 +147,15 @@ class Fragment_Place : Fragment() {
             .setQuery(query,
                 SnapshotParser { snapshot ->
                     Data_Place(
-                        snapshot.child("photo_content").value.toString(),
+                        snapshot.child("place_content").value.toString(),
                         snapshot.child("place_photo").value.toString(),
                         snapshot.child("place_price").value.toString().toInt(),
                         snapshot.child("reserve_person").value.toString(),
-                        snapshot.child("place_reserve").child("place_review").value.toString(),
+                        snapshot.child("place_reserve/place_review").value.toString(),
                         snapshot.child("place_subject").value.toString(),
-                        snapshot.child("place_tag").child("place_concept").value.toString(),
-                        snapshot.child("place_tag").child("place_maxnum").value.toString().toInt(),
-                        snapshot.child("place_tag").child("place_type").value.toString(),
+                        snapshot.child("place_tag/place_concept").value.toString(),
+                        snapshot.child("place_tag/place_maxnum").value.toString().toInt(),
+                        snapshot.child("place_tag/place_type").value.toString(),
                         snapshot.child("place_time").value.toString(),
                         snapshot.child("place_writer").value.toString(),
                         snapshot.child("place_uid").value.toString()

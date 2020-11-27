@@ -38,7 +38,6 @@ class Info_Place : AppCompatActivity() {
         plinfoTab_subject.text = intent.getStringExtra("place_subject")
         plinfoTab_content.text = intent.getStringExtra("place_content")
         print(intent.getStringExtra("place_content"))
-        println("입력테스")
         plinfoTab_maxnum.text = intent.getStringExtra("place_maxnum").toString()
         plinfoTab_price.text=intent.getStringExtra("place_price").toString()
         placeTag.text = intent.getStringExtra("place_concept")
