@@ -22,7 +22,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginRight="15dp"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/user" />
+        app:srcCompat="@drawable/users" />
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -93,7 +92,7 @@ class Fragment_MyPage : Fragment() {
     }
 
     fun init() {
-        Glide.with(this).load(R.drawable.user).circleCrop().into(mypage_personalimg);
+        Glide.with(this).load(R.drawable.users).circleCrop().into(mypage_personalimg);
 //        var rDatabase = database.getReference("Activity").child()
     }
 

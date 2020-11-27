@@ -178,13 +178,14 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="horizontal"
-                android:paddingLeft="30sp">
+                android:paddingLeft="30sp"
+                android:paddingRight="10sp">
 
                 <ImageView
                     android:id="@+id/imageView"
                     android:layout_width="20dp"
                     android:layout_height="25dp"
-                    android:layout_gravity="center"
+                    android:layout_gravity="center|fill_vertical"
                     android:gravity="center"
                     app:srcCompat="@drawable/ic_bookmark" />
 
