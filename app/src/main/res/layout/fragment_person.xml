@@ -33,6 +33,7 @@
             android:gravity="center">
 
             <ImageView
+                android:id="@+id/psearch_btn"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="5dp"
@@ -41,11 +42,12 @@
 
 
             <EditText
+                android:id="@+id/psearch_keyword"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/back_none"
-                android:hint="이름,분야 또는 직군을 검색해주세요."
+                android:hint="이름을 검색해주세요."
                 android:textSize="13dp" />
         </LinearLayout>
 
