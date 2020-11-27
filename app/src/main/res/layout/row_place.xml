@@ -12,10 +12,11 @@
 
     <ImageView
         android:id="@+id/placeImg"
-        android:layout_width="360dp"
+        android:layout_width="match_parent"
         android:layout_height="170dp"
         android:layout_gravity="center_horizontal"
-        app:srcCompat="@drawable/place_img"/>
+        app:srcCompat="@drawable/place_img"
+        android:scaleType="fitXY"/>
 
     <TextView
         android:id="@+id/plSubjectText"
