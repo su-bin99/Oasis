@@ -7,96 +7,128 @@
     android:layout_height="match_parent"
     android:gravity="left"
     android:layout_margin="15dp"
-    android:background="@color/white"    >
+    android:background="@color/white">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/place_submitBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="submit" />
-
-        <Button
-            android:id="@+id/picBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="insert image" />
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/back_bottomline"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="작성자 :  "
-            android:textSize="20dp" />
-        <!--
-                <TextView
-                    android:id="@+id/activity_userId"
+        <Button
+            android:id="@+id/place_backbtn"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/ic_back" />
+
+        <Button
+            android:id="@+id/place_send"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right"
+            android:layout_marginLeft="300dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/paperplane"
+            android:gravity="right" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_back"
+                    android:id="@+id/place_pic"/>
+
+                <RelativeLayout
                     android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/spinner">
+
+                    <Spinner
+                        android:id="@+id/a_field_spinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="#7E7C7C" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:hint = "내용을 입력하세요 "
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="myidissubin"
-                    android:textSize="20dp" />
-        -->
-    </LinearLayout>
+                    android:id="@+id/edit_place_content"/>
 
-    <EditText
-        android:hint = "내용을 입력하세요 "
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edit_place_content"/>
+                <EditText
+                    android:hint = "사진를 입력하세요 "
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edit_place_photo"/>
 
-    <EditText
-        android:hint = "사진를 입력하세요 "
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edit_place_photo"/>
+                <EditText
+                    android:id="@+id/edit_place_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="시간 당 가격을 원 단위로 입력하세요"
+                    android:inputType="number" />
 
-    <EditText
-        android:id="@+id/edit_place_price"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="시간 당 가격을 원 단위로 입력하세요"
-        android:inputType="number" />
+                <EditText
+                    android:hint = "제목 입력하세요 "
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edit_place_subject"/>
 
-    <EditText
-        android:hint = "제목 입력하세요 "
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edit_place_subject"/>
+                <EditText
+                    android:hint= "컨셉을 입력하세요 "
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edit_place_concept"/>
 
-    <EditText
-        android:hint= "컨셉을 입력하세요 "
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edit_place_concept"/>
+                <EditText
+                    android:hint= "최대인원을 입력하세요"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edit_place_maxnum"/>
 
-    <EditText
-        android:hint= "최대인원을 입력하세요"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edit_place_maxnum"/>
+                <EditText
+                    android:hint= "유형을 입력하세요 "
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edit_place_type"/>
 
-    <EditText
-        android:hint= "유형을 입력하세요 "
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edit_place_type"/>
+                <ImageView
+                    android:id="@+id/picView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/back_none" />
 
-    <ImageView
-        android:id="@+id/picView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/back_none" />
 
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

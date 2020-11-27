@@ -73,7 +73,7 @@ class WriteActivity_Place : AppCompatActivity(){
     }
 
     fun init(){
-        place_submitBtn.setOnClickListener{
+        place_send.setOnClickListener{
             content = edit_place_content.text.toString()
             photo = edit_place_photo.text.toString()
             price=edit_place_price.text.toString().toInt()
@@ -98,7 +98,8 @@ class WriteActivity_Place : AppCompatActivity(){
             hisRef.child(subject).setValue(time)
 
         }
-        picBtn.setOnClickListener {
+
+        place_pic.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
             intent.setDataAndType(
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI,

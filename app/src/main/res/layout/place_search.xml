@@ -13,7 +13,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/ainfoTab_backBtn"
+            android:id="@+id/psearchTab_backBtn"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginLeft="15dp"
@@ -42,40 +42,8 @@
             android:textSize="18dp" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/pl_concept_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/back_corner_circle"
-            android:text="컨셉"
-            android:textSize="18dp" />
-
-        <Button
-            android:id="@+id/pl_type_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/back_corner_circle"
-            android:text="유형"
-            android:textSize="18dp" />
-
-        <Button
-            android:id="@+id/pl_pNum_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:background="@drawable/back_corner_circle"
-            android:text="명수"
-            android:textSize="18dp" />
-    </LinearLayout>
-
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="15dp"
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

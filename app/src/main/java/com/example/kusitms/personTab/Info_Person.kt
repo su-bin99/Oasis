@@ -1,7 +1,6 @@
 package com.example.kusitms.personTab
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -15,9 +14,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import kotlinx.android.synthetic.main.fragment_mypage.*
 import kotlinx.android.synthetic.main.information_person.*
-import kotlinx.android.synthetic.main.information_place.*
 
 class Info_Person : AppCompatActivity() {
 
