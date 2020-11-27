@@ -12,6 +12,9 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.example.kusitms.R
 import com.example.kusitms.SplashActivity
 import com.firebase.ui.database.FirebaseRecyclerAdapter
@@ -22,10 +25,15 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 
 class Adapter_Person(options: FirebaseRecyclerOptions<Data_Person>) :
     FirebaseRecyclerAdapter<Data_Person, Adapter_Person.ViewHolder>(options) {
     var itemClickListener: OnItemClickListener? = null
+
+    val storage = FirebaseStorage.getInstance()
+    val storageRef = storage.reference
 
     val user = Firebase.auth.currentUser
     val uid = user?.uid
@@ -75,6 +83,21 @@ class Adapter_Person(options: FirebaseRecyclerOptions<Data_Person>) :
         holder.pSubjectText.text = model.person_subject
         var a = model.person_uid
 
+        var imgRef: StorageReference =storageRef.child("images/${model.person_pic_url}")
+        imgRef.downloadUrl.addOnSuccessListener {
+                Uri->
+            val imageURL=Uri.toString()
+            if(imageURL == "")
+                Glide.with(holder.itemView.context).load(R.drawable.ic_launcher_foreground)
+            else {
+                Glide.with(holder.itemView.context).load(imageURL)
+
+                    .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
+                    .override(360, 170)
+                    .into(holder.imageView);
+            }
+        }
+
         holder.pFollowbtn.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v: View?) {
                 var name = model.person_writer
@@ -84,6 +107,7 @@ class Adapter_Person(options: FirebaseRecyclerOptions<Data_Person>) :
                 yourRef.child("my_page").child(personuid).child("people").child("follower").child(folname).setValue(uid)
             }
         })
+
 
         for ( i in 0..2 ){
             if(i < model.person_tag.size){

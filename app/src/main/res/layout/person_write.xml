@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:gravity="left"
     android:layout_margin="15dp"
     android:background="@color/white">
-    <Button
-        android:id="@+id/person_submitBtn"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="submit" />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/person_submitBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="submit" />
+
+        <Button
+            android:id="@+id/picBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="insert image" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -50,6 +64,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/edit_person_tag"/>
 
-
+    <ImageView
+        android:id="@+id/picView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/back_none" />
 
 </LinearLayout>

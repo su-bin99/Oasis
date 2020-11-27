@@ -20,13 +20,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".placeTab.Info_Place"></activity>
+        <activity android:name=".activityTab.Search_Activity"></activity>
+        <activity android:name=".placeTab.Info_Place" />
         <activity android:name=".activityTab.Info_Activity" />
         <activity android:name=".activityTab.WriteActivity_Activity" />
         <activity android:name=".personTab.WriteActivity_Person" />
         <activity
             android:name=".activityTab.Adapter_Activity"
             tools:ignore="Instantiatable" />
+        <activity
+            android:name=".activityTab.SearchActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
