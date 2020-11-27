@@ -66,6 +66,12 @@ class Adapter_Place(options : FirebaseRecyclerOptions<Data_Place>):
             val intent = Intent(holder.itemView?.context, Info_Place::class.java)
             intent.putExtra("place_subject",model.place_subject)
             intent.putExtra("place_time",model.place_time)
+            intent.putExtra("place_content",model.place_content)
+            intent.putExtra("place_photo",model.place_photo)
+            intent.putExtra("place_concept",model.place_concept)
+            intent.putExtra("place_maxnum",model.place_maxnum)
+            intent.putExtra("place_type",model.place_type)
+            intent.putExtra("place_writer",model.place_writer)
             holder.itemView.context.startActivity(intent)
         }
 

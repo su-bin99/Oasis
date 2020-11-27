@@ -50,16 +50,10 @@
 
     </LinearLayout>
 
-
-    <Button
-        android:id="@+id/plWriteButton"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_marginLeft="15dp"
-        android:background="@drawable/back_corner_circle"
-        android:backgroundTint="@color/lightGray"
-        android:text="새글 작성" />
+        android:orientation="horizontal">
 
     <TextView
         android:layout_width="wrap_content"
@@ -72,6 +66,17 @@
         android:textSize="23dp"
         android:textStyle="bold" />
 
+        <Button
+            android:id="@+id/plWriteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginLeft="170dp"
+            android:background="@drawable/back_border_corner_round"
+            android:backgroundTint="@color/white"
+            android:text="새글 작성" />
+
+    </LinearLayout>
     <RadioGroup
         android:id="@+id/pl_radioGroup"
         android:layout_width="match_parent"
