@@ -27,6 +27,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import kotlinx.android.synthetic.main.fragment_mypage.*
 
 class Adapter_Person(options: FirebaseRecyclerOptions<Data_Person>) :
     FirebaseRecyclerAdapter<Data_Person, Adapter_Person.ViewHolder>(options) {
@@ -105,9 +106,9 @@ class Adapter_Person(options: FirebaseRecyclerOptions<Data_Person>) :
                 Glide.with(holder.itemView.context).load(R.drawable.ic_launcher_foreground)
             else {
                 Glide.with(holder.itemView.context).load(imageURL)
-
-                    .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
-                    .override(360, 170)
+                    .circleCrop()
+//                    .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
+//                    .override(120, 120)
                     .into(holder.imageView);
             }
         }

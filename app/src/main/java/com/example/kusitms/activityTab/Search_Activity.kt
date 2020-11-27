@@ -32,7 +32,6 @@ class Search_Activity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
-        initAdapter()
         init()
     }
 
@@ -57,11 +56,14 @@ class Search_Activity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
         )
 
         initspinner()
+        initAdapter()
     }
 
     fun initAdapter(){
         val query = FirebaseDatabase.getInstance().reference
-            .child("activity").limitToLast(50)
+            .child("activity").orderByChild("activity_subject")
+//            .equalTo("beach")
+            .startAt(searchKeyword).endAt(searchKeyword+"\uf8ff")
 
         val option = FirebaseRecyclerOptions.Builder<Data_Activity>()
             .setQuery(query,
@@ -90,7 +92,7 @@ class Search_Activity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
                 })
             .build()
 
-        activityAdapter = ASearch_Adapter(option, searchKeyword, type)
+        activityAdapter = ASearch_Adapter(option)
         recyclerView.adapter = activityAdapter
         activityAdapter.startListening()
     }
