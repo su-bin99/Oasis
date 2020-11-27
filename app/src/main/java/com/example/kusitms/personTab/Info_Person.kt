@@ -24,15 +24,20 @@ class Info_Person : AppCompatActivity() {
     val user = Firebase.auth.currentUser
     val uid = user?.uid
 
-    var myRef = FirebaseDatabase.getInstance().reference.child("my_page").child(uid.toString()).child("people")
+
+    var myRef = FirebaseDatabase.getInstance().reference.child("my_page")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         myRef.addValueEventListener(object : ValueEventListener {
+
+            var namuid = intent.getStringExtra("person_uid").toString()
+
+
             override fun onDataChange(snapshot: DataSnapshot) {
-                pinfoTab_follower.text = snapshot.child("follower").childrenCount.toString()
-                pinfoTab_following.text = snapshot.child("following").childrenCount.toString()
+                pinfoTab_follower.text = snapshot.child(namuid).child("people").child("follower").childrenCount.toString()
+                pinfoTab_following.text = snapshot.child(namuid).child("people").child("following").childrenCount.toString()
             }
 
             override fun onCancelled(error: DatabaseError) {

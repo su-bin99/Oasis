@@ -100,6 +100,7 @@ class Adapter_Person(options: FirebaseRecyclerOptions<Data_Person>) :
             intent.putExtra("person_work",model.person_work)
             intent.putExtra("person_writer",model.person_writer)
             intent.putExtra("person_pic_url",model.person_pic_url)
+            intent.putExtra("person_uid",model.person_uid)
             holder.itemView.context.startActivity(intent)
         }
 
