@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginTop="10dp"
-                app:srcCompat="@drawable/users" />
+                app:srcCompat="@drawable/user" />
 
             <TextView
                 android:layout_width="match_parent"

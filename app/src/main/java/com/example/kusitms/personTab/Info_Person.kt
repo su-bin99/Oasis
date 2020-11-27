@@ -52,7 +52,7 @@ class Info_Person : AppCompatActivity() {
         pinfoTab_backBtn.setOnClickListener {
             this.finish()
         }
-        Glide.with(this).load(R.drawable.users).circleCrop().into(pinfoTab_personimg);
+        Glide.with(this).load(R.drawable.user).circleCrop().into(pinfoTab_personimg);
     }
 
     fun info(){

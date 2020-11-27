@@ -92,7 +92,7 @@ class Fragment_MyPage : Fragment() {
     }
 
     fun init() {
-        Glide.with(this).load(R.drawable.users).circleCrop().into(mypage_personalimg);
+        Glide.with(this).load(R.drawable.user).circleCrop().into(mypage_personalimg);
 //        var rDatabase = database.getReference("Activity").child()
     }
 

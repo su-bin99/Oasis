@@ -100,7 +100,7 @@
                     android:layout_height="25dp"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    app:srcCompat="@drawable/user" />
+                    app:srcCompat="@drawable/users" />
 
                 <TextView
                     android:id="@+id/ainfoTab_writer"
