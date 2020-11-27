@@ -118,7 +118,7 @@ class Fragment_Main : Fragment() {
                 SnapshotParser { snapshot ->
                     Data_home(
                         snapshot.child("person_writer").value.toString(),
-                        snapshot.child("place_photo").value.toString()
+                        snapshot.child("person_pic_url").value.toString()
                         //아직 사람은 디비에 이미지 안넣은듯
                     )
                 })

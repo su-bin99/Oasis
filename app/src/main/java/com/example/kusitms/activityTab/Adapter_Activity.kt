@@ -2,6 +2,7 @@ package com.example.kusitms.activityTab
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -78,12 +79,10 @@ class Adapter_Activity(options: FirebaseRecyclerOptions<Data_Activity>) :
                 Glide.with(context!!).load(R.drawable.place_img)
             else {
                 Glide.with(holder.itemView.context).load(imageURL)
-//                    .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
-//                    .override(600, 600)
+                    .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
+                    .override(360, 170)
                     .into(holder.imageView);
             }
         }
     }
-
-
 }
