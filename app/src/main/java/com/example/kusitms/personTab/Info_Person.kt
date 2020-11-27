@@ -63,6 +63,8 @@ class Info_Person : AppCompatActivity() {
         pinfoTab_work.text = intent.getStringExtra("person_work")
         var list = ArrayList<String>()
         list = intent.getStringArrayListExtra("person_tag") as ArrayList<String>
+
+
         pinfoTab_tag1.text = list.get(0).toString()
         pinfoTab_tag2.text = list.get(1).toString()
         pinfoTab_tag3.text = list.get(2).toString()
