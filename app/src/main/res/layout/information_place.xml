@@ -80,7 +80,6 @@
                         android:background="#CC5A5A5A"
                         android:gravity="center_vertical"
                         android:paddingLeft="30sp"
-                        android:text="원목이 숨쉬는 카페✨"
                         android:textColor="#ffffffff"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -98,7 +97,6 @@
                             android:layout_weight="1"
                             android:background="#CC5A5A5A"
                             android:paddingLeft="30sp"
-                            android:text="조용한 분위기/지상층 밝음/창문 환기/원목 인테리어/무료 빔프로, 노트북"
                             android:textColor="#ffffffff"
                             android:textSize="15sp" />
 
@@ -127,7 +125,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="10sp"
-                    android:text="매일 오전 08:00-오후11:00"
                     android:textSize="20dp" />
 
             </LinearLayout>
@@ -150,7 +147,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="10sp"
-                    android:text="012-345-6789"
                     android:textSize="20dp" />
 
             </LinearLayout>
@@ -173,7 +169,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="10sp"
-                    android:text="제주특별자치도 제주시 애월읍"
                     android:textSize="20dp" />
 
             </LinearLayout>
@@ -199,7 +194,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:paddingLeft="10sp"
-                    android:text="dfs"
                     android:textSize="20sp" />
             </LinearLayout>
 
