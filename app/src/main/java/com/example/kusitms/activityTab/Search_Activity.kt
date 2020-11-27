@@ -6,11 +6,18 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide.init
 import com.example.kusitms.R
+import com.example.kusitms.mainTab.Adapter_Main
+import com.example.kusitms.mainTab.Data_home
+import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.firebase.ui.database.SnapshotParser
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_search.*
+import kotlinx.android.synthetic.main.fragment_main.*
 
 class Search_Activity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     var searchKeyword =""
@@ -20,10 +27,18 @@ class Search_Activity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
     var target: String = "대상"
     var pNum: String = "명수"
 
+    lateinit var activityAdapter: ASearch_Adapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
+        initAdapter()
         init()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        activityAdapter.stopListening()
     }
 
     fun init(){
@@ -36,7 +51,48 @@ class Search_Activity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
             this.finish()
         }
 
+        recyclerView.layoutManager = LinearLayoutManager(
+            this,
+            LinearLayoutManager.VERTICAL, false
+        )
+
         initspinner()
+    }
+
+    fun initAdapter(){
+        val query = FirebaseDatabase.getInstance().reference
+            .child("activity").limitToLast(50)
+
+        val option = FirebaseRecyclerOptions.Builder<Data_Activity>()
+            .setQuery(query,
+                SnapshotParser { snapshot ->
+                    var activity_field = ArrayList<String>()
+                    var activity_participate = ArrayList<String>()
+                    for (i in snapshot.child("activity_field").children) {
+                        activity_field.add(i.value.toString())
+                    }
+                    for (i in snapshot.child("participate").children) {
+                        activity_participate.add(i.value.toString())
+                    }
+                    Data_Activity(
+                        snapshot.child("activity_type").value.toString(),
+                        activity_field,
+                        snapshot.child("activity_content").value.toString(),
+                        snapshot.child("activity_maxPeoplenum").value.toString().toInt(),
+                        snapshot.child("activity_pic_url").value.toString(),
+                        snapshot.child("activity_object").value.toString(),
+                        activity_participate,
+                        snapshot.child("activity_subject").value.toString(),
+                        snapshot.child("activity_time").value.toString(),
+                        snapshot.child("activity_writer").value.toString(),
+                        snapshot.child("activity_uid").value.toString()
+                    )
+                })
+            .build()
+
+        activityAdapter = ASearch_Adapter(option, searchKeyword, type)
+        recyclerView.adapter = activityAdapter
+        activityAdapter.startListening()
     }
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
