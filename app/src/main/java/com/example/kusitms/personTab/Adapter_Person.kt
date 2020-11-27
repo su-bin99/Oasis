@@ -133,9 +133,10 @@ class Adapter_Person(options: FirebaseRecyclerOptions<Data_Person>) :
             }
         }
 
-
-
+        holder.itemView.setOnClickListener{
+            val intent = Intent(holder.itemView?.context, Info_Person::class.java)
+            holder.itemView.context.startActivity(intent)
+        }
 
     }
-
 }

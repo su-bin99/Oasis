@@ -78,9 +78,8 @@ class Adapter_Activity(options: FirebaseRecyclerOptions<Data_Activity>) :
                 Glide.with(context!!).load(R.drawable.place_img)
             else {
                 Glide.with(holder.itemView.context).load(imageURL)
-
 //                    .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
-//                    .override(360, 170)
+//                    .override(600, 600)
                     .into(holder.imageView);
             }
         }
