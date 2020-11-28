@@ -109,11 +109,6 @@ class Search_Activity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
                 a_field_spinner.adapter = adapter
             }
 
-            ArrayAdapter.createFromResource(
-                it, R.array.a_searchPNumOption,android.R.layout.simple_spinner_item
-            ).also{adapter ->
-                a_pnum_spinner.adapter = adapter
-            }
 
             ArrayAdapter.createFromResource(
                 it, R.array.a_searchTypeOption,android.R.layout.simple_spinner_item
@@ -128,7 +123,6 @@ class Search_Activity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
             }
         }
         a_field_spinner.onItemSelectedListener= this
-        a_pnum_spinner.onItemSelectedListener = this
         a_type_spinner.onItemSelectedListener= this
         a_target_spinner.onItemSelectedListener = this
     }

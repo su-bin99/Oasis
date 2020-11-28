@@ -36,8 +36,12 @@
     <string-array name="a_searchTargetOption">
         <item>대상</item>
         <item>초심자</item>
+        <item>초심자 및 중급자</item>
         <item>중급자</item>
+        <item>중급자 및 상급자</item>
         <item>상급자</item>
+        <item>전체</item>
+        <item>우수 회원-사막 여우</item>
     </string-array>
 
     <string-array name="a_searchTypeOption">
@@ -48,9 +52,4 @@
         <item>스터디</item>
     </string-array>
 
-    <string-array name="a_searchPNumOption">
-        <item>명수</item>
-        <item>1~8명</item>
-        <item>9명 이상</item>
-    </string-array>
 </resources>
