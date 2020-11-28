@@ -102,7 +102,7 @@ class LoginActivity : AppCompatActivity() {
                 myRef.child(uid.toString()).child("privacy").child("name").setValue(name.toString())
 //                testRef.setValue(uid.toString())
 
-                val myToast = Toast.makeText(this.applicationContext, "흐아앙", Toast.LENGTH_SHORT)
+                val myToast = Toast.makeText(this.applicationContext, "login success", Toast.LENGTH_SHORT)
                 myToast.show()
 
                 val intent = Intent(this, MainActivity::class.java)

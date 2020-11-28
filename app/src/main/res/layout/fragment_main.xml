@@ -61,7 +61,7 @@
                 android:layout_gravity="left"
                 android:layout_marginLeft="15dp"
                 android:layout_marginBottom="10dp"
-                android:text="#해커톤 #폰으로xd보는데밑에는안보이무ㅜ"
+                android:text="#디지털노마드 #강연회 #스터디"
                 android:textSize="15dp"
                 android:textStyle="bold" />
             <androidx.recyclerview.widget.RecyclerView
@@ -118,7 +118,7 @@
                 android:layout_gravity="left"
                 android:layout_marginLeft="15dp"
                 android:layout_marginBottom="10dp"
-                android:text="#힐링스팟 #카페 #휴식"
+                android:text="#풀스택 #크리에이터"
                 android:textSize="15dp"
                 android:textStyle="bold" />
             <androidx.recyclerview.widget.RecyclerView

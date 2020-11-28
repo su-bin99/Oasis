@@ -8,7 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 import com.example.kusitms.R
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -18,38 +19,45 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_write.*
+import kotlinx.android.synthetic.main.place_write.*
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class WriteActivity_Activity : AppCompatActivity() {
+class WriteActivity_Activity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     private val GET_GALLERY_IMAGE = 200
-    lateinit var selectedImageUri:Uri
+    lateinit var selectedImageUri: Uri
     var fileName: String = ""
 
     val user = Firebase.auth.currentUser
     val userid = user?.uid
 
-
-    var type = ""
-    var field = ""
     var content = ""
     var subject = ""
-    var maxPeopleNum = ""
-    var pic_url = ""
-    var act_object = ""
-    var participate = ""
+    var field = ""
+    var maxnum = ""
+    var activity_participate : String=""
+    var type = ""
+    var time = ""
+    var writer = ""
     var uid = userid.toString()
+    var a_object=""
+
     var value = ""
 
-    var myRef = FirebaseDatabase.getInstance().reference.child("my_page").child(uid).child("privacy").child("name")
+    var myRef =
+        FirebaseDatabase.getInstance().reference.child("my_page").child(uid).child("privacy")
+            .child("name")
+    var hisRef =
+        FirebaseDatabase.getInstance().reference.child("my_page").child(uid).child("history")
+            .child("writing")
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_write)
+        setContentView(R.layout.place_write)
         myRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 value = snapshot.value.toString()
@@ -61,6 +69,7 @@ class WriteActivity_Activity : AppCompatActivity() {
                 println("failed to read value")
             }
         })
+
     }
 
     override fun onStart() {
@@ -68,31 +77,32 @@ class WriteActivity_Activity : AppCompatActivity() {
         init()
     }
 
-    fun init(){
-        activity_submitBtn.setOnClickListener {
-            var fieldarray = ArrayList<String>()
-            var participatearray = ArrayList<String>()
-
-            field = activity_field.text.toString()
-            type = activity_type.text.toString()
-            subject = activity_subject.text.toString()
-            maxPeopleNum = activity_maxPeopleNum.text.toString()
+    fun init() {
+        place_send.setOnClickListener {
             content = activity_content.text.toString()
-            participate = activity_participate.text.toString()
-
-
-            fieldarray.add(field)
-            participatearray.add(participate)
-
-            var writer = value
-
-
+            subject = activity_subject.text.toString()
             val currentDateTime = Calendar.getInstance().time
-            var time = SimpleDateFormat("yyyy.MM.dd HH:mm", Locale.KOREA).format(currentDateTime)
-            insertData(type, fieldarray, content,maxPeopleNum, pic_url, act_object, participatearray,
-                subject, time, writer, uid)
+            time = SimpleDateFormat("yyyy.MM.dd HH:mm", Locale.KOREA).format(currentDateTime)
+            writer = value
+
+            insertData(
+                content,
+                field,
+                maxnum,
+                a_object,
+                activity_participate ,
+                fileName,
+                subject,
+                type
+            )
+
+            hisRef.child(subject).setValue(time)
+
         }
-        picBtn.setOnClickListener {
+
+        initSpinner()
+
+        place_pic.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
             intent.setDataAndType(
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
@@ -102,50 +112,65 @@ class WriteActivity_Activity : AppCompatActivity() {
         }
     }
 
-    fun insertData(activity_type : String,
-                   activity_field : ArrayList<String>,
-                   activity_content : String,
-                   activity_maxPeoplenum : String,
-                   activity_pic_url : String,
-                   activity_object : String,
-                   activity_participate : ArrayList<String>,
-                   activity_subject : String,
-                   activity_time : String,
-                   activity_writer : String,
-                   activity_uid : String){
-        var dataRef = FirebaseDatabase.getInstance().reference.child("activity").push()
-
-        dataRef.child("activity_type").setValue(activity_type)
-        for(i in 0 until activity_field.size){
-            dataRef.child("activity_field").child(i.toString()).setValue(field)
-        }
-        dataRef.child("activity_content").setValue(activity_content)
-/*
-        dataRef.child("activity_id").setValue(activity_id)
-            .addOnSuccessListener {
-                Log.d(ContentValues.TAG, "activity_id저장성공 ");
-            }
-            .addOnFailureListener{
-                Log.d(ContentValues.TAG, "activity_id저장실패 ");
+    fun initSpinner() {
+        this.let {
+            ArrayAdapter.createFromResource(
+                it, R.array.a_searchTargetOption, android.R.layout.simple_spinner_item
+            ).also { adapter ->
+                activity_object.adapter = adapter
             }
 
- */
-        dataRef.child("activity_maxPeoplenum").setValue(activity_maxPeoplenum)
-        dataRef.child("activity_pic_url").setValue(activity_pic_url)
-        dataRef.child("activity_object").setValue(activity_object)
-        for(i in 0 until activity_participate.size){
-            dataRef.child("activity_participate").child(i.toString()).setValue(activity_participate)
+            ArrayAdapter.createFromResource(
+                it, R.array.a_searchFieldOption, android.R.layout.simple_spinner_item
+            ).also { adapter ->
+                activity_field.adapter = adapter
+            }
+
+            ArrayAdapter.createFromResource(
+                it, R.array.a_searchTypeOption, android.R.layout.simple_spinner_item
+            ).also { adapter ->
+                activity_type.adapter = adapter
+            }
         }
+        edit_place_concept.onItemSelectedListener = this
+        edit_place_type.onItemSelectedListener = this
+        edit_place_maxnum.onItemSelectedListener = this
+    }
+
+    fun insertData(
+        activity_content: String,
+        activity_field: String,
+        activity_maxPeoplenum: String,
+        activity_object: String,
+        activity_participate: String,
+        activity_pic_url: String,
+        activity_subject: String,
+        activity_type: String) {
+//        println(place_content + "/" +  place_photo + "/" + place_price + "/" +
+//        place_subject + "/" + place_concept + "/" + place_maxnum + "/" + place_type)
+//        if( place_content == "" || place_photo == "" ||  place_price == "" || place_subject == "" ||
+//            place_concept == "컨셉" || place_maxnum == "명수" || place_type == "유형"){
+//            Toast.makeText(this.applicationContext, "빈칸을 모두 입력해주십시오. ", Toast.LENGTH_SHORT).show()
+//        }else{
+        var dataRef = FirebaseDatabase.getInstance().reference.child("place").push()
+
         upload()
-        dataRef.child("activity_pic_url").setValue(fileName)
 
+        dataRef.child("activity_content").setValue(activity_content)
+        dataRef.child("activity_field").setValue(activity_field)
+        dataRef.child("activity_maxPeoplenum").setValue(activity_maxPeoplenum)
+        dataRef.child("activity_object").child("place_review").setValue(activity_object)
+        dataRef.child("activity_participate").child("0").setValue(activity_participate)
+        dataRef.child("activity_pic_url").setValue(fileName)
+        dataRef.child("activity_subject").setValue(activity_subject)
+        dataRef.child("activity_type").setValue(activity_type)
 
 
         val myToast = Toast.makeText(this.applicationContext, "글 작성이 완료되었습니다.", Toast.LENGTH_SHORT)
         myToast.show()
 
         this.finish()
-
+//        }
     }
 
     fun upload() {
@@ -164,11 +189,12 @@ class WriteActivity_Activity : AppCompatActivity() {
         super.onActivityResult(resultCode, requestCode, data)
 
         if (requestCode == GET_GALLERY_IMAGE && resultCode == RESULT_OK && data != null && data.data != null) {
-
-            selectedImageUri= data.data!!
+            selectedImageUri = data.data!!
+            var picView: ImageView =findViewById(R.id.place_picView)
             picView.setImageURI(selectedImageUri)
         }
     }
+
     private fun absolutelyPath(path: Uri): String {
 
         var proj: Array<String> = arrayOf(MediaStore.Images.Media.DATA)
@@ -178,10 +204,24 @@ class WriteActivity_Activity : AppCompatActivity() {
 
         return c.getString(index)
     }
-    private fun getImg(path: Uri):String {
-        var aPath=absolutelyPath(path)
+
+    private fun getImg(path: Uri): String {
+        var aPath = absolutelyPath(path)
         var file = File(aPath)
 
         return file.name
+    }
+
+    override fun onNothingSelected(p0: AdapterView<*>?) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        val selectedItem = parent!!.getItemAtPosition(position).toString()
+        when (parent) {
+            activity_field -> field = selectedItem
+            activity_type -> type = selectedItem
+            activity_object -> a_object = selectedItem
+        }
     }
 }
