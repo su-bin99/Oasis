@@ -45,7 +45,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/back_none"
-                android:hint="지역을 검색해주세요."
+                android:hint="제목을 검색해주세요."
                 android:textSize="13dp" />
         </LinearLayout>
 

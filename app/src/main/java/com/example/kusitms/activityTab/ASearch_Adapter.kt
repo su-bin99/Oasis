@@ -57,10 +57,6 @@ class ASearch_Adapter(options: FirebaseRecyclerOptions<Data_Activity>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int, model: Data_Activity) {
         holder.subjectText.text = model.activity_subject
 
-        holder.itemView.setOnClickListener{
-            val intent = Intent(holder.itemView?.context, Info_Activity::class.java)
-            holder.itemView.context.startActivity(intent)
-        }
 
         var imgRef: StorageReference =storageRef.child("images/${model.activity_pic_url}")
         imgRef.downloadUrl.addOnSuccessListener {

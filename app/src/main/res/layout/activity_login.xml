@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login_background_img"
-    android:gravity="center"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     android:scaleType="centerCrop"
     tools:context=".LoginActivity">
@@ -13,13 +13,37 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="남들과 다른 길을 떠나는\n당신만을 위한\n오아시스"
+        android:text="남들과 다른 길을 떠나는"
+        android:textSize="28dp"
+        android:layout_gravity="left"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="120dp"
+        android:fontFamily="@font/bombaram"
+        android:textColor="@color/white"
+        android:layout_marginBottom="15dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="당신만을 위한"
+        android:textSize="28dp"
+        android:layout_gravity="left"
+        android:layout_marginLeft="30dp"
+        android:fontFamily="@font/bombaram"
+        android:textColor="@color/white"
+        android:layout_marginBottom="15dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="오아시스"
         android:textSize="28dp"
         android:layout_gravity="left"
         android:layout_marginLeft="30dp"
         android:fontFamily="@font/bombaram"
         android:textColor="@color/white"
         android:layout_marginBottom="200dp"/>
+
 
     <LinearLayout
         android:id="@+id/google"
@@ -28,6 +52,7 @@
         android:background="@drawable/back_corner_circle"
         android:gravity="center"
         android:orientation="horizontal">
+
 
         <LinearLayout
             android:layout_width="0dp"
