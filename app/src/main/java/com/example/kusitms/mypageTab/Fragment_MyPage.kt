@@ -6,11 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_mypage.*
 import com.example.kusitms.R
+import com.example.kusitms.SplashActivity
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 /**
@@ -27,11 +30,7 @@ class Fragment_MyPage : Fragment() {
     val uid = user?.uid
 
     val database : FirebaseDatabase = FirebaseDatabase.getInstance()
-    val myPage : DatabaseReference = database.getReference("my_page")
-    val myUser : DatabaseReference = myPage.child(uid.toString())
-    val myName : DatabaseReference = myUser.child("name")
-
-    var myRef = FirebaseDatabase.getInstance().reference.child("my_page").child(uid.toString()).child("people")
+    var myRef = FirebaseDatabase.getInstance().reference.child("my_page").child(uid.toString())
 
 
 
@@ -41,8 +40,9 @@ class Fragment_MyPage : Fragment() {
     ): View? {
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                my_followerNum.text = snapshot.child("follower").childrenCount.toString()
-                my_followingNum.text = snapshot.child("following").childrenCount.toString()
+                my_followerNum.text = snapshot.child("people").child("follower").childrenCount.toString()
+                my_followingNum.text = snapshot.child("people").child("following").childrenCount.toString()
+//                mypage_name.text = snapshot.child("privacy").child("name").toString()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -62,8 +62,9 @@ class Fragment_MyPage : Fragment() {
         init()
 
         write.setOnClickListener{
-            var intent = Intent(context, History_Activity::class.java)
-            startActivity(intent)
+            FirebaseAuth.getInstance().signOut()
+            activity?.finish()
+            Toast.makeText(this.context, "Logout Successfully!", Toast.LENGTH_SHORT).show();
         }
 
 

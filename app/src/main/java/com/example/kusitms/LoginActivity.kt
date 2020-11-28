@@ -88,6 +88,7 @@ class LoginActivity : AppCompatActivity() {
             if (result.isSuccess) {
                 val account = result.signInAccount
                 val credential = GoogleAuthProvider.getCredential(account?.idToken, null)
+
                 FirebaseAuth.getInstance().signInWithCredential(credential)
 
                 val user = Firebase.auth.currentUser
