@@ -37,7 +37,7 @@ class WriteActivity_Activity : AppCompatActivity() {
     var field = ""
     var content = ""
     var subject = ""
-    var maxPeopleNum = 0
+    var maxPeopleNum = ""
     var pic_url = ""
     var act_object = ""
     var participate = ""
@@ -76,7 +76,7 @@ class WriteActivity_Activity : AppCompatActivity() {
             field = activity_field.text.toString()
             type = activity_type.text.toString()
             subject = activity_subject.text.toString()
-            var temp = activity_maxPeopleNum.text.toString()
+            maxPeopleNum = activity_maxPeopleNum.text.toString()
             content = activity_content.text.toString()
             participate = activity_participate.text.toString()
 
@@ -84,18 +84,12 @@ class WriteActivity_Activity : AppCompatActivity() {
             fieldarray.add(field)
             participatearray.add(participate)
 
-            try {
-                maxPeopleNum = temp.toInt()
-            } catch (e: NumberFormatException) {
-                Log.d(ContentValues.TAG, temp + "는 숫자가 아님 ");
-            }
-
             var writer = value
 
 
             val currentDateTime = Calendar.getInstance().time
             var time = SimpleDateFormat("yyyy.MM.dd HH:mm", Locale.KOREA).format(currentDateTime)
-            insertData(type, fieldarray, content,0, pic_url, act_object, participatearray,
+            insertData(type, fieldarray, content,maxPeopleNum, pic_url, act_object, participatearray,
                 subject, time, writer, uid)
         }
         picBtn.setOnClickListener {
@@ -111,7 +105,7 @@ class WriteActivity_Activity : AppCompatActivity() {
     fun insertData(activity_type : String,
                    activity_field : ArrayList<String>,
                    activity_content : String,
-                   activity_maxPeoplenum : Int,
+                   activity_maxPeoplenum : String,
                    activity_pic_url : String,
                    activity_object : String,
                    activity_participate : ArrayList<String>,

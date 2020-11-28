@@ -8,7 +8,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.example.kusitms.R
 import com.firebase.ui.database.FirebaseRecyclerAdapter
@@ -64,10 +66,12 @@ class Adapter_Main(options: FirebaseRecyclerOptions<Data_home>) :
         imgRef.downloadUrl.addOnSuccessListener {
                 Uri->
             val imageURL=Uri.toString()
+            val radius = context!!.resources!!.getDimensionPixelSize(R.dimen.corner_radius)
             Glide.with(holder.itemView.context).load(imageURL)
-//
-            .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
-            .override(360, 170)
+                .transforms(CenterCrop(), RoundedCorners(radius))
+            .placeholder(R.drawable.placeholder_thumbnail_square_dec_primary)
+                .error(R.drawable.placeholder_thumbnail_square_dec_primary)
+                .transition(DrawableTransitionOptions.withCrossFade())
             .into(holder.imageView);
         }
     }

@@ -15,6 +15,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.information_person.*
+import kotlinx.android.synthetic.main.row_person.*
 
 class Info_Person : AppCompatActivity() {
 
@@ -23,16 +24,21 @@ class Info_Person : AppCompatActivity() {
 
     val user = Firebase.auth.currentUser
     val uid = user?.uid
+    val username = user?.displayName
 
-    var myRef = FirebaseDatabase.getInstance().reference.child("my_page").child(uid.toString()).child("people")
+    var myRef = FirebaseDatabase.getInstance().reference.child("my_page")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         myRef.addValueEventListener(object : ValueEventListener {
+
+            var namuid = intent.getStringExtra("person_uid").toString()
+
+
             override fun onDataChange(snapshot: DataSnapshot) {
-                pinfoTab_follower.text = snapshot.child("follower").childrenCount.toString()
-                pinfoTab_following.text = snapshot.child("following").childrenCount.toString()
+                pinfoTab_follower.text = snapshot.child(namuid).child("people").child("follower").childrenCount.toString()
+                pinfoTab_following.text = snapshot.child(namuid).child("people").child("following").childrenCount.toString()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -45,7 +51,15 @@ class Info_Person : AppCompatActivity() {
         super.onStart()
         setContentView(R.layout.information_person)
         init()
+        pInfoTab_followbtn.setOnClickListener {
+            //내거
+            myRef.child(uid.toString()).child("people").child("following").child(intent.getStringExtra("person_writer").toString()).setValue(intent.getStringExtra("person_uid"))
+            //그분꺼
+            myRef.child(intent.getStringExtra("person_uid").toString()).child("people").child("follower").child(username.toString()).setValue(uid.toString())
+        }
         info()
+
+
     }
 
     fun init(){
@@ -70,6 +84,8 @@ class Info_Person : AppCompatActivity() {
         var pic_url:String=intent.getStringExtra("person_pic_url").toString()
         getImg(pic_url)
     }
+
+
 
     fun getImg(name : String){
         var imgRef: StorageReference =storageRef.child("images/${name}")

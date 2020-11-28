@@ -76,27 +76,22 @@ class Fragment_Place : Fragment() {
             when (checkedId) {
                 R.id.pl_radio_shareOffice -> {
                     findQueryAdapter("공유오피스")
-                    thisCheckedBtn.setTextColor(R.color.pink)
                     radio_checkedid_before = R.id.pl_radio_shareOffice
                 }
                 R.id.pl_radio_personalOffice -> {
                     findQueryAdapter("개인오피스")
-                    thisCheckedBtn.setTextColor(R.color.pink)
                     radio_checkedid_before = R.id.pl_radio_personalOffice
                 }
                 R.id.pl_radio_studyRoom -> {
                     findQueryAdapter("스터디룸")
-                    thisCheckedBtn.setTextColor(R.color.pink)
                     radio_checkedid_before = R.id.pl_radio_studyRoom
                 }
                 R.id.pl_radio_cafe -> {
                     findQueryAdapter("카페")
-                    thisCheckedBtn.setTextColor(R.color.pink)
                     radio_checkedid_before = R.id.pl_radio_cafe
                 }
                 R.id.pl_radio_etc -> {
                     findQueryAdapter("기타")
-                    thisCheckedBtn.setTextColor(R.color.pink)
                     radio_checkedid_before = R.id.pl_radio_etc
                 }
             }

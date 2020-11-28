@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="p_writeTypeOption">
+        <item>유형</item>
+        <item>공유오피스</item>
+        <item>개인오피스</item>
+        <item>스터디룸</item>
+    </string-array>
+
+    <string-array name="p_writeConceptOption">
+        <item>컨셉</item>
+        <item>오션뷰</item>
+        <item>산림뷰</item>
+        <item>모던한</item>
+        <item>아늑한</item>
+        <item>밝은</item>
+        <item>한국적</item>
+        <item>유럽풍</item>
+        <item>청량한</item>
+    </string-array>
+
+    <string-array name="p_writePNumOption">
+        <item>명수</item>
+        <item>1~8명</item>
+        <item>9명 이상</item>
+    </string-array>
+
     <string-array name="a_searchFieldOption">
         <item>분야</item>
         <item>개발</item>

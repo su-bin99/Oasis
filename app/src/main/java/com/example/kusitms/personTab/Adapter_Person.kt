@@ -40,9 +40,7 @@ class Adapter_Person(options: FirebaseRecyclerOptions<Data_Person>) :
     val uid = user?.uid
     val folname = user?.displayName.toString()
 
-    var myRef = FirebaseDatabase.getInstance().reference.child("my_page").child(uid.toString()).child("people").child("following")
-
-    var yourRef = FirebaseDatabase.getInstance().reference
+    var myRef = FirebaseDatabase.getInstance().reference
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -100,6 +98,7 @@ class Adapter_Person(options: FirebaseRecyclerOptions<Data_Person>) :
             intent.putExtra("person_work",model.person_work)
             intent.putExtra("person_writer",model.person_writer)
             intent.putExtra("person_pic_url",model.person_pic_url)
+            intent.putExtra("person_uid",model.person_uid)
             holder.itemView.context.startActivity(intent)
         }
 
@@ -123,10 +122,10 @@ class Adapter_Person(options: FirebaseRecyclerOptions<Data_Person>) :
         holder.pFollowbtn.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v: View?) {
                 var name = model.person_writer
-                myRef.child(name).setValue(a)
+                myRef.child("my_page").child(uid.toString()).child("people").child("following").child(name).setValue(a)
 
-                var personuid = model.person_uid
-                yourRef.child("my_page").child(personuid).child("people").child("follower").child(folname).setValue(uid)
+                var personuid = model.person_uid.toString()
+                myRef.child("my_page").child(personuid).child("people").child("follower").child(folname).setValue(uid.toString())
             }
         })
 

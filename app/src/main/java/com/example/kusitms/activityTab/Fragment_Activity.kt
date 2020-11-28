@@ -98,27 +98,22 @@ class Fragment_Activity : Fragment() {
             when (checkedId) {
                 R.id.ac_radio_lecture -> {
                     findQueryAdapter("강연회")
-                    thisCheckedBtn.setTextColor(R.color.pink)
                     radio_checkedid_before = R.id.ac_radio_lecture
                 }
                 R.id.ac_radio_project -> {
                     findQueryAdapter("프로젝트")
-                    thisCheckedBtn.setTextColor(R.color.pink)
                     radio_checkedid_before = R.id.ac_radio_project
                 }
                 R.id.ac_radio_conference -> {
                     findQueryAdapter("컨퍼런스")
-                    thisCheckedBtn.setTextColor(R.color.pink)
                     radio_checkedid_before = R.id.ac_radio_conference
                 }
                 R.id.ac_radio_study -> {
                     findQueryAdapter("스터디")
-                    thisCheckedBtn.setTextColor(R.color.pink)
                     radio_checkedid_before = R.id.ac_radio_study
                 }
                 R.id.ac_radio_etc -> {
                     findQueryAdapter("기타")
-                    thisCheckedBtn.setTextColor(R.color.pink)
                     radio_checkedid_before = R.id.ac_radio_etc
                 }
             }
@@ -146,7 +141,7 @@ class Fragment_Activity : Fragment() {
                         snapshot.child("activity_type").value.toString(),
                         activity_field,
                         snapshot.child("activity_content").value.toString(),
-                        snapshot.child("activity_maxPeoplenum").value.toString().toInt(),
+                        snapshot.child("activity_maxPeoplenum").value.toString(),
                         snapshot.child("activity_pic_url").value.toString(),
                         snapshot.child("activity_object").value.toString(),
                         activity_participate,
@@ -194,7 +189,7 @@ class Fragment_Activity : Fragment() {
                         snapshot.child("activity_type").value.toString(),
                         activity_field,
                         snapshot.child("activity_content").value.toString(),
-                        snapshot.child("activity_maxPeoplenum").value.toString().toInt(),
+                        snapshot.child("activity_maxPeoplenum").value.toString(),
                         snapshot.child("activity_pic_url").value.toString(),
                         snapshot.child("activity_object").value.toString(),
                         activity_participate,

@@ -52,43 +52,44 @@
         </LinearLayout>
 
     </LinearLayout>
-    <Button
-        android:id="@+id/PwriteButton"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_marginLeft="15dp"
-        android:background="@drawable/back_corner_circle"
-        android:backgroundTint="@color/lightGray"
-        android:text="새글 작성" />
+        android:layout_marginBottom="13dp"
+        android:orientation="horizontal">
 
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="left"-->
-<!--        android:layout_marginLeft="15dp"-->
-<!--        android:layout_marginTop="25dp"-->
-<!--        android:layout_marginBottom="15dp"-->
-<!--        android:text="신규 노마더"-->
-<!--        android:textSize="23dp"-->
-<!--        android:textStyle="bold" />-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:text="실리콘밸리 출신 해외파 노마더 "
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="right">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/back_corner_circle"
+                android:layout_marginRight="15dp"
+                android:layout_gravity="center">
+                <TextView
+                    android:id="@+id/PwriteButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:text="새글 작성" />
+            </LinearLayout>
 
+        </LinearLayout>
 
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/newNomad_recyclerView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="150dp" />-->
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="15dp"
-        android:text="실리콘밸리 출신 해외파 노마더 "
-        android:textSize="23dp"
-        android:textStyle="bold" />
+    </LinearLayout>
 
 
     <androidx.recyclerview.widget.RecyclerView

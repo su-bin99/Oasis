@@ -1,102 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
-    android:gravity="left"
-    android:layout_margin="15dp"
-    android:background="@color/white"    >
+    android:background="@color/white"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/back_bottomline"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/place_submitBtn"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="submit" />
+            android:layout_weight="1">
 
-        <Button
-            android:id="@+id/picBtn"
-            android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/place_backbtn"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/ic_back" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="insert image" />
-    </LinearLayout>
+            android:gravity="center">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="글 쓰기"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="8dp"
+                android:textColor="#000000"
+                android:textSize="18dp" />
+        </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="작성자 :  "
-            android:textSize="20dp" />
-        <!--
+            android:layout_weight="1"
+            android:gravity="right">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/back_border_corner_round">
+
                 <TextView
-                    android:id="@+id/activity_userId"
+                    android:id="@+id/place_send"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="myidissubin"
-                    android:textSize="20dp" />
-        -->
+                    android:layout_margin="6dp"
+                    android:text="SUBMIT"
+                    android:textColor="@color/pink"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+
     </LinearLayout>
 
-    <EditText
-        android:hint = "내용을 입력하세요 "
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edit_place_content"/>
+        android:layout_height="match_parent">
 
-    <EditText
-        android:hint = "사진를 입력하세요 "
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edit_place_photo"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/edit_place_price"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="시간 당 가격을 원 단위로 입력하세요"
-        android:inputType="number" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-    <EditText
-        android:hint = "제목 입력하세요 "
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edit_place_subject"/>
+                <EditText
+                    android:id="@+id/edit_place_subject"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="10"
+                    android:textSize="23dp"
+                    android:textStyle="bold"
+                    android:hint="제목" />
 
-    <EditText
-        android:hint= "컨셉을 입력하세요 "
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edit_place_concept"/>
+                <Button
+                    android:id="@+id/place_pic"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/picture_2"/>
+            </LinearLayout>
 
-    <EditText
-        android:hint= "최대인원을 입력하세요"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edit_place_maxnum"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/spinner">
 
-    <EditText
-        android:hint= "유형을 입력하세요 "
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edit_place_type"/>
+                    <Spinner
+                        android:id="@+id/edit_place_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/pink" />
+                </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/picView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/back_none" />
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/spinner">
 
+                    <Spinner
+                        android:id="@+id/edit_place_concept"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/pink" />
+                </RelativeLayout>
 
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/spinner"
+                    android:gravity="center">
+
+                    <Spinner
+                        android:id="@+id/edit_place_maxnum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/pink" />
+                </RelativeLayout>
+            </LinearLayout>
+            <EditText
+                android:id="@+id/edit_place_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="10"
+                android:hint="가격" />
+
+            <EditText
+                android:id="@+id/edit_place_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:hint="여기를 눌러서 글을 작성할 수 있습니다. "/>
+            <ImageView
+                android:id="@+id/place_picView"
+                android:layout_gravity="center"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_margin="20dp"/>
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

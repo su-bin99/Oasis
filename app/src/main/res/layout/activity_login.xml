@@ -1,68 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:gravity="center"
     android:background="@drawable/login_background_img"
-    tools:context=".LoginActivity"
-    android:scaleType="centerCrop">
+    android:gravity="center"
+    android:orientation="vertical"
+    android:scaleType="centerCrop"
+    tools:context=".LoginActivity">
 
     <LinearLayout
+        android:id="@+id/google"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:orientation="horizontal"
         android:background="@drawable/back_corner_circle"
         android:gravity="center"
-        android:id="@+id/google">
+        android:orientation="horizontal">
 
-        <ImageView
-            android:layout_marginLeft="17dp"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            app:srcCompat="@drawable/ic_google"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="Google 로그인"
-            android:gravity="left|center_vertical"
-            android:textSize="17dp"/>
+            android:layout_weight="1"
+            android:gravity="left">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="17dp"
+                app:srcCompat="@drawable/ic_google" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="2dp"
+                android:gravity="center|center_vertical"
+                android:text="Google 로그인"
+                android:textSize="17dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="right">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="17dp" />
+        </LinearLayout>
+
 
     </LinearLayout>
 
-
-    <View
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@color/white"/>
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="30dp"
+            android:layout_height="2dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/englishfont"
+            android:text="OR"
+            android:textColor="@color/white" />
+
+        <View
+            android:layout_width="30dp"
+            android:layout_height="2dp"
+            android:layout_marginLeft="20dp"
+            android:background="@color/white" />
+
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/nonMemberBtn"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:orientation="horizontal"
         android:background="@drawable/back_corner_circle"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="비회원으로 이용하기"
             android:gravity="center"
-            android:textSize="17dp"/>
+            android:text="비회원으로 이용하기"
+            android:textSize="17dp" />
 
     </LinearLayout>
-
-
-
 
 
 </LinearLayout>
