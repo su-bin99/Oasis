@@ -26,7 +26,6 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:background="@drawable/back_corner_circle"
-        android:layout_marginTop="50dp"
         android:gravity="center"
         android:orientation="horizontal">
 
