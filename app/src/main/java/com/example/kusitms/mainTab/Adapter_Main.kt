@@ -69,8 +69,6 @@ class Adapter_Main(options: FirebaseRecyclerOptions<Data_home>) :
             val radius = context!!.resources!!.getDimensionPixelSize(R.dimen.corner_radius)
             Glide.with(holder.itemView.context).load(imageURL)
                 .transforms(CenterCrop(), RoundedCorners(radius))
-            .placeholder(R.drawable.placeholder_thumbnail_square_dec_primary)
-                .error(R.drawable.placeholder_thumbnail_square_dec_primary)
                 .transition(DrawableTransitionOptions.withCrossFade())
             .into(holder.imageView);
         }
