@@ -40,6 +40,7 @@ class Info_Activity : AppCompatActivity() {
     }
 
     fun info(){
+        ainfoTab_subject.text = intent.getStringExtra("activity_subject")
         ainfoTab_type.text = intent.getStringExtra("activity_type")
         ainfoTab_writer.text = intent.getStringExtra("activity_writer")
         ainfoTab_object.text = intent.getStringExtra("activity_object")
