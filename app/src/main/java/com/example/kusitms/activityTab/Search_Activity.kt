@@ -19,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.fragment_main.*
 
-class Search_Activity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+class Search_Activity : AppCompatActivity() {
     var searchKeyword =""
 
     var field : String = "분야"
@@ -55,7 +55,6 @@ class Search_Activity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
             LinearLayoutManager.VERTICAL, false
         )
 
-        initspinner()
         initAdapter()
     }
 
@@ -97,44 +96,4 @@ class Search_Activity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
         activityAdapter.startListening()
     }
 
-    override fun onNothingSelected(p0: AdapterView<*>?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    fun initspinner(){
-        this.let {
-            ArrayAdapter.createFromResource(
-                it, R.array.a_searchFieldOption,android.R.layout.simple_spinner_item
-            ).also{adapter ->
-                a_field_spinner.adapter = adapter
-            }
-
-
-            ArrayAdapter.createFromResource(
-                it, R.array.a_searchTypeOption,android.R.layout.simple_spinner_item
-            ).also{adapter ->
-                a_type_spinner.adapter = adapter
-            }
-
-            ArrayAdapter.createFromResource(
-                it, R.array.a_searchTargetOption,android.R.layout.simple_spinner_item
-            ).also{adapter ->
-                a_target_spinner.adapter = adapter
-            }
-        }
-        a_field_spinner.onItemSelectedListener= this
-        a_type_spinner.onItemSelectedListener= this
-        a_target_spinner.onItemSelectedListener = this
-    }
-
-    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        val selectedItem = parent!!.getItemAtPosition(position).toString()
-        when(parent){
-            a_field_spinner->  field = selectedItem
-            a_target_spinner->  target = selectedItem
-            a_pnum_spinner->  pNum = selectedItem
-            a_type_spinner->  type = selectedItem
-
-        }
-    }
 }
