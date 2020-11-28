@@ -63,6 +63,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="15dp"
+                    android:text="subject"
                     android:gravity="left"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -176,8 +177,8 @@
                     android:paddingLeft="10sp"
                     android:paddingRight="10sp"
                     android:paddingBottom="30sp"
-                    android:textSize="20dp" />
-
+                    android:textSize="17dp"
+                    android:text="설명설명 이것은 설명입니다. \n설명인데오 설명설명 본문내용입니ㅏ요요요요요요\n설명설명설명"/>
             </LinearLayout>
 
         </LinearLayout>
